@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		html body ul li{margin:0;padding:0;}
+		#div1{width:200px;height:200px;position:absolute;top:20px;left:20px;background:red;}
+
+	</style>
+
+	<script type="text/javascript">
+		// window.onload = function(){
+		// 	var oDiv = document.getElementById("div1");
+
+		// 	var disX = 0;
+		// 	var disY = 0;
+		// 	oDiv.onmousedown = function(ev)
+		// 	{
+		// 		var oEvent = ev || event;
+		// 		disX = oEvent.clientX-oDiv.offsetLeft;
+		// 		disY = oEvent.clientY-oDiv.offsetTop;
+		// 		//console.log(disX+","+disY);
+
+		// 		document.onmousemove = function(ev)
+		// 		{
+		// 			var oEvent = ev || event;
+		// 			var l = oEvent.clientX-disX;
+		// 			var t = oEvent.clientY-disY;
+		// 			//console.log(l+","+t);
+
+		// 			if(l<0)
+		// 			{
+		// 				l=0;
+		// 			}
+		// 			if( l> (document.documentElement.clientWidth||document.body.clientWidth)-oDiv.offsetWidth )
+		// 			{
+		// 				l = (document.documentElement.clientWidth||document.body.clientWidth)-oDiv.offsetWidth;
+		// 			}
+		// 			if(t<0)
+		// 			{
+		// 				t=0;
+		// 			}
+		// 			if( t> (document.documentElement.clientHeight||document.body.clientHeight)-oDiv.offsetHeight )
+		// 			{
+		// 				t = (document.documentElement.clientHeight||document.body.clientHeight)-oDiv.offsetHeight;
+		// 			}
+
+		// 			oDiv.style.left = l+"px";
+		// 			oDiv.style.top = t+"px";
+		// 		}
+
+		// 		document.onmouseup = function()
+		// 		{
+		// 			document.onmousemove = null;
+		// 			document.onmouseup = null;
+		// 		}
+		// 	}
+		// }
+
+		var oDiv = null;
+
+		var disX = 0;
+		var disY = 0;
+
+		window.onload = function(){
+			
+			var d1 = new Drag("div1");
+			d1.init();
+		}
+
+		function Drag(id){
+			this.oDiv = document.getElementById(id);
+			this.disX = 0;
+			this.disY = 0;
+		}
+
+		Drag.prototype.init=function(){
+			var This = this;
+			this.oDiv.onmousedown = function(ev){
+				var oEvent = ev || event;
+				This.fnDown(oEvent);
+			};
+		}
+		Drag.prototype.fnDown=function(oEvent){
+			
+			this.disX = oEvent.clientX-this.oDiv.offsetLeft;
+			this.disY = oEvent.clientY-this.oDiv.offsetTop;
+
+			var This = this;
+			document.onmousemove = function(ev){
+				var oEvent = ev || event;
+				This.fnMove(oEvent);
+				return false;
+			};
+
+			document.onmouseup = this.fnUp;
+		}
+		Drag.prototype.fnMove=function(oEvent){
+			
+			var l = oEvent.clientX-this.disX;
+			var t = oEvent.clientY-this.disY;
+			//console.log(l+","+t);
+
+			if(l<0)
+			{
+				l=0;
+			}
+			if( l> (document.documentElement.clientWidth||document.body.clientWidth)-this.oDiv.offsetWidth )
+			{
+				l = (document.documentElement.clientWidth||document.body.clientWidth)-this.oDiv.offsetWidth;
+			}
+			if(t<0)
+			{
+				t=0;
+			}
+			if( t> (document.documentElement.clientHeight||document.body.clientHeight)-this.oDiv.offsetHeight )
+			{
+				t = (document.documentElement.clientHeight||document.body.clientHeight)-this.oDiv.offsetHeight;
+			}
+
+			this.oDiv.style.left = l+"px";
+			this.oDiv.style.top = t+"px";
+		}
+		Drag.prototype.fnUp=function(){
+			document.onmousemove = null;
+			document.onmouseup = null;
+		}
+	</script>
+</head>
+<body>
+		<div id="div1"></div>
+		
+</body>
+</html>

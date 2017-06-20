@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	body{margin: 0;padding: 0px;border: 0px;height: 1000px;}
+
+	#box1{
+		width: 200px;
+		height:200px;
+		border:20px solid #f00;
+		margin:30px 0px 0px 30px;
+		line-height:200px;
+		text-align:center;
+		box-sizing:content-box;
+	}
+	#box2{
+		width: 200px;
+		height:200px;
+		border:20px solid #f00;
+		margin:30px 0px 0px 30px;
+		line-height:200px;
+		text-align:center;
+		box-sizing:border-box;
+	}
+	#box3{
+		width: 100px;
+		height:150px;
+		border:2px solid #f00;
+		margin:30px 0px 0px 30px;
+		background:url("http://www.zhutizhijia.net/uploads/130730/24-130I009231N55.jpg") repeat-y;
+		overflow-y:scroll;
+		overflow-x:hidden;
+		background-attachment:local;
+	}
+	.top{position:fixed;top:0;width: 100%;height: 30px;background-color: red}
+	/*.mask{position: fixed;width: 100%;height:100%;top: 0;left: 0;z-index: 999;background-color: #333;opacity: 0.6}*/
+	</style>
+</head>
+<body>
+<!--
+	<div id="box1">示例代码</div>
+	<div id="box2">
+		width: 200px;
+	</div>-->
+	<div class='top'></div>
+	<div id="box3">background
+	backgroundbackgroundbackgroundbackgroundbackground
+	backgroundbackgroundbackgroundbackgroundbackgroundbackground
+	backgroundbackgroundbackgroundbackground
+	backgroundbackgroundbackgroundbackground
+	background
+	background
+	background
+	background
+	background
+	background
+	</div>
+	
+	<style>
+.m-ul{list-style:none;font-size:12px;width:220px}
+.m-ul .li1{height:30px;line-height:30px;border-top:1px solid #333}
+.m-ul .li2{height:30px;line-height:30px;border-top:1px dashed #333}
+.m-ul li .span1{margin-right:5px;border:1px solid #f00;text-align:center;padding: 2px 4px 2px 4px}
+.m-ul li .span2{margin-right:5px;border:1px solid #333;text-align:center;padding: 2px 4px 2px 4px}
+.m-ul li a:hover{color:#f00;cursor:pointer}
+.clear{clear:both;line-height:0px;font-size:0px;height:0px;}
+</style>
+<h2>图书畅销榜</h2>
+<ul class='m-ul'>
+<li class='li1'><span class='span1'>1</span><a title="当我足够好，才会遇见你">当我足够好，才会遇见你</a></li>
+<li class='li1'><span class='span1'>2</span><a title="皮囊">皮囊</a></li>
+<li class='li1'><span class='span1'>3</span><a title="李光耀论中国与世界">李光耀论中国与世界</a></li>
+<li class='li2'><span class='span2'>4</span><a title="乖，摸摸头">乖，摸摸头</a></li>
+<li class='li2'><span class='span2'>5</span><a title="男女内参">男女内参</a></li>
+<div class="clear"></div>
+</ul>
+<div class="mask"></div>
+</body>
+</html>

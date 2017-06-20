@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!-- saved from url=(0043)http://gaoxz.baozouzhu.com/1030/index2.html -->
+<html><head lang="en"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title></title>
+    <style>
+        *{margin: 0px; padding: 0px;}
+        .div1{width: 50px; height: 50px; background: red; position: absolute}
+    </style>
+    <script src="./手机拖拽_files/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<div class="div1" style="left: 194.10599899292px; top: 177.536005020142px;">
+
+</div>
+
+
+<script>
+    $(function(){
+var xStart,yStart,xEnd,xMove,yMove,dicX,dicY;
+        $('.div1').on('touchstart', function(e){
+            var touch=e.originalEvent.targetTouches[0];
+            xStart=touch.pageX;
+            yStart=touch.pageY;
+            dicX=xStart-$('.div1').position().left;
+            dicY=yStart-$('.div1').position().top;
+            xStart = touch.pageX;
+            $(document).on('touchmove', function(e){
+               
+                var touch = e.originalEvent.changedTouches[0];
+                xMove = touch.pageX-dicX;
+                yMove = touch.pageY-dicY;
+
+                console.log(xMove)
+                $('.div1').css({left:xMove,top:yMove})
+            })
+            $(document).on('touchend', function(e){
+                var touch = e.originalEvent.changedTouches[0];
+                xEnd = touch.pageX;
+                if(xStart>xEnd){
+                    console.log('你在往左')
+                }else{
+                    console.log('你在往右')
+                }
+                $(document).off('touchstart')
+                $(document).off('touchmove')
+            })
+        })
+
+
+    })
+</script>
+
+
+
+</body></html>

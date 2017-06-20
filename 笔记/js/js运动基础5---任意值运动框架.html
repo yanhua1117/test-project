@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8"/>
+    <title>弹窗效果样式</title>
+    <script type="text/javascript">
+        var timer = null;
+        var alpha = 30;
+
+        window.onscroll = function(){
+            var oDiv = document.getElementById("div1");
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+
+            //oDiv.style.top = document.documentElement.clientHeight-oDiv.offsetHeight+scrollTop+"px";
+            //startMove(oDiv,"left",600);
+
+        }
+        window.onload = function(){
+            var oDiv = document.getElementById("div1");
+            //startMove(oDiv,"opacity",600);
+
+            oDiv.onmouseover = function(){
+                startMove(oDiv,{width:201,height:300,opacity:100},5,function(){});
+            }
+            oDiv.onmouseout = function(){
+                startMove(oDiv,{width:200,height:200,opacity:30},5,function(){});
+            }
+        }
+
+        function startMove(obj,json,fenmu,fun){
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function(){
+                var flag = true;         //假设所有值都到了
+
+                for(var attr in json){
+                    var cur = 0;
+                    if(attr == "opacity")
+                    {
+                        cur = Math.round( parseFloat( getStyle(obj,attr) )*100 );
+                    }
+                    else
+                    {
+                        cur = Math.round( parseInt( getStyle(obj,attr) ) );
+                    }
+
+                    var speed = (json[attr]-cur)/fenmu;
+                    speed = speed>0?Math.ceil(speed):Math.floor(speed);
+                    
+
+                    if(json[attr] != cur)
+                    {
+                        flag = false;
+                    }
+
+
+                    if(attr == "opacity")
+                    {
+                        obj.style.filter = "alpha(opacity:"+(cur+speed)+")";
+                        obj.style.opacity = (cur+speed)/100;
+                    }
+                    else
+                    {
+                        obj.style[attr] = cur+speed+"px";
+                    }
+                }
+                if(flag)
+                {
+                    clearInterval(obj.timer);
+                    if(fun)fun();
+                }
+                
+            },30);
+        }
+
+        function getStyle(obj,name){
+            if(obj.currentStyle)
+            {
+                return obj.currentStyle[name];
+            }
+            else
+            {
+                return getComputedStyle(obj,null)[name];
+            }
+        }
+        
+    </script>
+    <style type="text/css">
+        *{margin:0;padding:0;border:0;}
+        /*body{height:3000px;}
+        #div1{width:100px;height:150px;position:absolute;background:red;right:0;top:245px;}*/
+        #div1{width:200px;height:200px;position:absolute;left:20px;top:100px;background:red;filter:alpha(opacity:30); opacity:0.3;}
+    </style>
+    </head>
+    <body>
+        <div id="div1"></div>
+    </body>
+</html>

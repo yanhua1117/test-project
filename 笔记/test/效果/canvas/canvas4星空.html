@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="canvas" style="display: block;margin:0 auto;border:1px solid #000"></canvas>
+	</body>
+	<script type="text/javascript" src="js/digit.js"></script>
+	<script type="text/javascript">
+		var WINDOW_WIDTH = 800;
+		var WINDOW_HEIGHT = 800;
+		
+		var canvas = document.getElementById("canvas");
+		var context = canvas.getContext("2d");
+		canvas.width = WINDOW_WIDTH;
+		canvas.height = WINDOW_HEIGHT;
+		
+		context.fillStyle = "#000";
+		context.rect(0,0,WINDOW_WIDTH,WINDOW_HEIGHT);
+		context.fill();
+		
+		for (var i=0;i<100;i++) {
+			var r = Math.round( Math.random()*10+10 );
+			var x = Math.round( Math.random()*WINDOW_WIDTH );
+			var y = Math.round( Math.random()*WINDOW_HEIGHT );
+			var a = Math.round( Math.random()*360 );
+			drawStar(context,r/2.0,r,x,y,a);
+		}
+		
+		function drawStar(context,r,R,x,y,rot){
+			context.beginPath();
+			for (var i=0;i<5;i++) {
+				context.lineTo( Math.cos( (18+i*72-rot)*Math.PI/180 ) * R + x,-Math.sin( (18+i*72-rot)*Math.PI/180 ) * R + y );
+				context.lineTo( Math.cos( (54+i*72-rot)*Math.PI/180 ) * r + x,-Math.sin( (54+i*72-rot)*Math.PI/180 ) * r + y );
+			}
+			context.lineWidth = 3;
+			context.lineJoin = "round";
+			context.strokeStyle = "#fd5";
+			context.fillStyle = "#fb3";
+			context.closePath();
+			context.fill();
+			context.stroke();
+		}
+		
+		
+	</script>
+</html>

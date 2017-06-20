@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="canvas" style="display: block;margin:0 auto;border:1px solid #000"></canvas>
+	</body>
+	<script type="text/javascript" src="js/digit.js"></script>
+	<script type="text/javascript">
+		var WINDOW_WIDTH = 1024;
+		var WINDOW_HEIGHT = 768;
+		var ball = {x:512 ,y:100 ,r:20 ,g:2 ,vx:-4 ,vy:0 ,color:"#E87C25"};
+		
+		var canvas = document.getElementById("canvas");
+		var context = canvas.getContext("2d");
+		canvas.width = WINDOW_WIDTH;
+		canvas.height = WINDOW_HEIGHT;
+		
+		context.lineWidth = 10;
+		context.strokeStyle = "#000";
+		
+		
+		context.beginPath();
+		context.moveTo(100,200);
+		context.lineTo(900,200);
+		context.stroke();
+		context.closePath();
+		
+		context.beginPath();
+		context.moveTo(100,400);
+		context.lineTo(900,400);
+		context.lineCap="round";
+		context.stroke();
+		context.closePath();
+		
+		context.beginPath();
+		context.moveTo(100,500);
+		context.lineTo(900,500);
+		context.lineCap="square";
+		context.stroke();
+		context.closePath();
+		
+		context.beginPath();
+		context.lineWidth = 1;
+		context.moveTo(100,100);
+		context.lineTo(100,600);
+		context.moveTo(900,100);
+		context.lineTo(900,600);
+		context.stroke();
+		context.closePath();
+		
+		
+		
+	</script>
+</html>

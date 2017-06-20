@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="canvas" style="display: block;margin:0 auto;border:1px solid #000"></canvas>
+	</body>
+	<script type="text/javascript" src="js/digit.js"></script>
+	<script type="text/javascript">
+		var WINDOW_WIDTH = 800;
+		var WINDOW_HEIGHT = 800;
+		
+		var canvas = document.getElementById("canvas");
+		var context = canvas.getContext("2d");
+		canvas.width = WINDOW_WIDTH;
+		canvas.height = WINDOW_HEIGHT;
+		var p = Math.PI;
+		
+		drawRoundRect(context,100,100,600,600,50);
+		function drawRoundRect(context,x,y,width,height,radius){
+			context.save();
+			context.translate(x,y);
+			roundPath(context,width,height,radius);
+			context.strokeStyle = "#000";
+			context.stroke();
+			context.restore();
+		}
+		
+		function roundPath(context,width,height,radius){
+			context.beginPath();
+			context.arc( width-radius,height-radius,radius,0,p/2 );
+			context.lineTo( radius,height );
+			context.arc( radius,height-radius,radius,p/2,p );
+			context.lineTo( 0,radius );
+			context.arc( radius,radius,radius,p,p*3/2 );
+			context.lineTo( width-radius,0 );
+			context.arc( width-radius,radius,radius,p*3/2,2*p );
+			context.closePath();
+		}
+		
+	</script>
+</html>

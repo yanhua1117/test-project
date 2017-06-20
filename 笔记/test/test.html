@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <style type="text/css">
+            div {
+                width: 200px;
+                height: 200px;
+                border: 1px solid #FF0000;
+            }
+        </style>
+        <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    </head>
+
+    <body>
+        <div id="box"></div>
+        <img src="" alt="" id="img" />
+        <div id="result"></div>
+    </body>
+    <script type="text/javascript">
+        //		console.log( null instanceof Object );
+        //		console.log( null === undefined );
+        //		console.log( null == ( undefined ? null : undefined ) );
+        //		console.log( NaN == NaN );
+
+        //		var foo = {
+        //          bar : function(){
+        //              return this.baz
+        //          },
+        //          baz : 1
+        //      }
+        //      var bar = "asdf";
+        //      window.bar = [1,2,3];
+        //      var c = typeof(function(){
+        //          this.a = foo;
+        //          return this;
+        //      })().a.bar();
+        //      var d = typeof( f = foo.bar )();
+        //      alert(c),alert(d)
+
+//      function Foo() {
+//          getName = function() {
+//              alert(1);
+//          }
+//          return this;
+//      }
+//      Foo.getName = function() {
+//          alert(2);
+//      }
+//      Foo.prototype.getName = function() {
+//          alert('baidu' && "google");
+//      }
+//      var getName = function() {
+//          alert(4);
+//      }
+//
+//      function getName() {
+//          alert(5+1);
+//      }
+//      Foo.getName();
+//      getName();
+//      Foo().getName();
+//      getName();
+//      new Foo.getName();
+//      new Foo().getName();
+//      new new Foo().getName()
+
+//      console.log( (function(){
+//          console.log(1);
+//          setTimeout( function(){
+//              console.log(2);
+//          },1000 );
+//          setTimeout( function(){
+//              console.log(3);
+//          },0 );
+//          setTimeout( function(){
+//              console.log(5);
+//          },0 );
+//          console.log(4);
+//      })() )
+
+//      localStorage.setItem("a","b");
+//      document.getElementById("result").innerHTML = localStorage.getItem("a");
+//      localStorage.aaa = "bbb";
+//      document.getElementById("result").innerHTML = localStorage.a;
+//      localStorage.removeItem("a");
+        
+//      for( var i=1;i<=3;i++ ){
+//          setTimeout( function(){
+//              console.log(i);
+//          },0 )
+//      }
+
+//      if( !String.prototype.trim ){
+//          String.prototype.trim = function(){
+//              return this.replace(/^\s+/,'').replace(/\s+$/,'');
+//          }
+//      }
+//      var str = "\t\n test string ".trim();
+//      alert( str == "test string" );
+
+//      var obj = {
+//          name : "zhangsan",
+//          show : function(){
+//              alert(this.name);
+//          }
+//      }
+//      obj.show();
+        
+        var a = 100;
+        function test(){
+            alert(a);
+            var a = 10;
+            alert(a);
+        }
+        test();
+    </script>
+
+</html>

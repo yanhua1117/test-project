@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="canvas" style="display: block;margin:0 auto;border:1px solid #000"></canvas>
+	</body>
+
+	<script type="text/javascript">
+		var WINDOW_WIDTH = 800;
+		var WINDOW_HEIGHT = 800;
+		var p = Math.PI;
+		
+		var canvas = document.getElementById("canvas");
+		var context = canvas.getContext("2d");
+		canvas.width = WINDOW_WIDTH;
+		canvas.height = WINDOW_HEIGHT;
+		
+		var balls = [];
+		for (var i=0;i<10;i++) {
+			var ball = {x:Math.random()*WINDOW_WIDTH , y:Math.random()*WINDOW_HEIGHT , r:Math.random()*50+20};
+			balls[i] = ball;
+		}
+		canvas.addEventListener("mouseup",detect);
+		draw();
+		
+		function draw(){
+			for (var i=0;i<balls.length;i++) {
+				context.beginPath();
+				context.arc(balls[i].x,balls[i].y,balls[i].r,0,2*p);
+				context.fillStyle = "#058";
+				context.fill();
+				context.closePath();
+			}
+		}
+		
+		function detect(event){
+			var x = event.clientX - canvas.getBoundingClientRect().left;
+			var y = event.clientY - canvas.getBoundingClientRect().top;
+			
+			for (var i=0;i<balls.length;i++) {
+				context.beginPath();
+				context.arc( balls[i].x,balls[i].y,balls[i].r,0,2*p );
+				if( context.isPointInPath(x,y) ){
+					context.fillStyle = "red";
+					context.fill();
+				}
+			}
+		}
+	</script>
+</html>

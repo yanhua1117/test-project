@@ -1,0 +1,88 @@
+body {
+  background: #fff;
+  color: #555;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Avenir Next", "microsoft yahei", sans-serif;
+  font-size: 14px;
+}
+.wrap {
+  width: 300px;
+  height: 300px;
+  margin: 100px auto;
+  padding: 10px;
+  border-radius: 50%;
+  position: relative;
+  background: #000;
+}
+.wrap .click_me {
+  position: absolute;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  text-align: center;
+  background: #fff;
+  color: #fff;
+  cursor: pointer;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+.wrap nav {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: all .5s;
+  border-radius: 50%;
+}
+.wrap nav .clock {
+  position: absolute;
+  display: inline-block;
+  width: 10px;
+  height: 2px;
+  background: #fff;
+  left: 50%;
+  top: 50%;
+  margin-left: -5px;
+  margin-top: -1px;
+}
+.wrap nav .is_hour {
+  width: 18px;
+  margin-left: -9px;
+}
+.wrap nav .times {
+  position: absolute;
+  display: inline-block;
+  left: 50%;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  color: #fff;
+  transform: translate(90%, 70%);
+}
+.wrap nav span {
+  position: absolute;
+  display: inline-block;
+  background: #fff;
+  left: 50%;
+  top: 50%;
+  transform-origin: left center;
+  transform: translate(0, -1px);
+}
+.wrap nav .hour {
+  width: 80px;
+  height: 4px;
+}
+.wrap nav .minute {
+  width: 110px;
+  height: 2px;
+}
+.wrap nav .second {
+  width: 140px;
+  height: 1px;
+}
+.wrap nav.active {
+  transform: scale(1);
+  opacity: 1;
+}
+/*# sourceMappingURL=clock.css.map */

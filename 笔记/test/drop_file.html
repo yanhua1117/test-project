@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width:200px;
+				height:200px;
+				border: 1px solid #FF0000;
+			}
+		</style>
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js" ></script>
+	</head>
+	<body>
+		<div id="box"></div>
+		<img src="" alt="" id="img" />
+	</body>
+	<script type="text/javascript">
+		window.onload = function(){
+			var box = document.getElementById("box");
+			box.addEventListener('dragover', function (e) {
+			  e.preventDefault(); // 必须阻止默认事件
+			}, false);
+			
+			box.addEventListener('drop', function (e) {
+			  e.preventDefault(); // 阻止默认事件
+			  var file = e.dataTransfer.files[0]; //获取文件
+			  src = window.createObjectURL && window.createObjectURL(file) || window.URL && window.URL.createObjectURL(file) || window.webkitURL && window.webkitURL.createObjectURL(file);
+			  $("#img").attr("src",src);
+			  // code
+			}, false);
+		}
+	</script>
+</html>

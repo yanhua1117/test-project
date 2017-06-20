@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		html body ul li{margin:0;padding:0;}
+		a{margin:10px;}
+	</style>
+	<script type="text/javascript" src="../js/move.js"></script>
+	<script type="text/javascript">
+		window.onload = function(){
+			page({
+				id : "div1",
+				nowNum : 9,
+				allNum : 10,
+				callback : function(nowNum,allNum){
+					//alert("当前页:"+nowNum+"，总页数:"+allNum);
+				}
+			});
+		}
+		
+		function page(opt){
+			if( !opt.id ){return;}
+			
+			var obj = document.getElementById(opt.id);
+			var nowNum = opt.nowNum || 1;
+			var allNum = opt.allNum || 5;
+			var callback = opt.callback;
+			
+			if(nowNum >= 4){
+				var oA = document.createElement("a");
+				oA.href = "#1";
+				oA.innerHTML = "首页";
+				obj.appendChild(oA);
+			}
+			if(nowNum >= 2){
+				var oA = document.createElement("a");
+				oA.href = "#"+(nowNum-1);
+				oA.innerHTML = "上一页";
+				obj.appendChild(oA);
+			}
+			
+			if( allNum <= 5 ){
+				for(var i=1;i<=allNum;i++){
+					var oA = document.createElement("a");
+					oA.href = "#"+i;
+					if( i==nowNum ){
+						oA.innerHTML = i;
+					}else{
+						oA.innerHTML = "["+i+"]";
+					}
+					obj.appendChild(oA);
+				}
+			}else{
+				if( nowNum == 1 || nowNum == 2 ){
+					for(var i=1;i<=5;i++){
+						var oA = document.createElement("a");
+						oA.href = "#"+i;
+						if( i==nowNum ){
+							oA.innerHTML = i;
+						}else{
+							oA.innerHTML = "["+i+"]";
+						}
+						obj.appendChild(oA);
+					}
+				}else if( nowNum == (allNum-1) || nowNum ==(allNum-2) || nowNum == allNum ){
+					for(var i=1;i<=5;i++){
+						var oA = document.createElement("a");
+						oA.href = "#"+(allNum-5+i);
+						if( (allNum-5+i)==nowNum ){
+							oA.innerHTML = (allNum-5+i);
+						}else{
+							oA.innerHTML = "["+(allNum-5+i)+"]";
+						}
+						obj.appendChild(oA);
+					}
+				}else{
+					for(var i=1;i<=5;i++){
+						var oA = document.createElement("a");
+						oA.href = "#"+(nowNum-3+i);
+						if( i==3 ){
+							oA.innerHTML = (nowNum-3+i);
+						}else{
+							oA.innerHTML = "["+(nowNum-3+i)+"]";
+						}
+						obj.appendChild(oA);
+					}
+				}
+				
+			}
+			
+			if( allNum-nowNum>0 ){
+				var oA = document.createElement("a");
+				oA.href = "#"+(nowNum+1);
+				oA.innerHTML = "下一页";
+				obj.appendChild(oA);
+			}
+			if( allNum-nowNum>=3 ){
+				var oA = document.createElement("a");
+				oA.href = "#"+(allNum);
+				oA.innerHTML = "尾页";
+				obj.appendChild(oA);
+			}
+			
+			callback(nowNum,allNum);
+			
+			var aA = obj.getElementsByTagName("a");
+			for(var i=0;i<aA.length;i++){
+				aA[i].onclick = function(){
+					obj.innerHTML = "";
+					var nowNum = parseInt(this.getAttribute("href").substring(1));
+					
+					page({
+						id : "div1",
+						nowNum : nowNum,
+						allNum : allNum,
+						callback : function(nowNum,allNum){
+							//alert("当前页："+nowNum+",总页数："+allNum);
+						}
+					});
+					
+					return false;
+				}
+			}
+			
+		}
+	</script>
+</head>
+<body>
+	<div id="div1">
+
+	</div>
+</body>
+</html>

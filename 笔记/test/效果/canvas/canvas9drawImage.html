@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body style="background: #000">
+		<canvas id="canvas" style="display: block;margin:0 auto;border:1px solid #fff"></canvas>
+		<input type="range" id="range" min="0.5" max="3.0" step="0.01" value="1" style="width:800px;display: block; margin:50px auto" />
+		<canvas id="watermark" style="display: none;margin:0 auto;border:1px solid #fff"></canvas>
+	</body>
+	<script type="text/javascript" src="js/digit.js"></script>
+	<script type="text/javascript">
+		var WINDOW_WIDTH = 1024;
+		var WINDOW_HEIGHT = 768;
+		
+		var canvas = document.getElementById("canvas");
+		var context = canvas.getContext("2d");
+		var slider = document.getElementById("range");
+		canvas.width = WINDOW_WIDTH;
+		canvas.height = WINDOW_HEIGHT;
+		
+		//水印
+		var watermarkcanvas = document.getElementById("watermark");
+		var watermarkcontext = watermarkcanvas.getContext("2d");
+		watermarkcanvas.width = 400;
+		watermarkcanvas.height = 100;
+		
+		watermarkcontext.font = "bold 50px Arial";
+		watermarkcontext.fillStyle = "rgba(255,255,255,0.5)";
+		watermarkcontext.textBaseline = "middle";
+		watermarkcontext.textAlign = "center";
+		watermarkcontext.fillText("baidu.com",200,50);    //文字  开始的X Y坐标
+		
+		window.onload = function(){
+			var scale = slider.value;
+			
+			var img = new Image();
+			img.src = "../css3动态图片/img/7.jpg";
+			img.onload = function(){
+				slider.onmousemove = function(){
+					scale = slider.value;
+					drawImageByScale(img,scale);
+				}
+				drawImageByScale(img,scale);
+			}
+		}
+		
+		function drawImageByScale(img,scale){
+			var imgW = WINDOW_WIDTH*scale;
+			var imgH = WINDOW_HEIGHT*scale;
+			
+			var dx = canvas.width/2-imgW/2;
+			var dy = canvas.height/2-imgH/2;
+			context.clearRect( 0 , 0 , canvas.width , canvas.height );
+			context.drawImage( img , dx , dy , imgW , imgH );
+			context.drawImage( watermarkcanvas , canvas.width-watermarkcanvas.width , canvas.height-watermarkcanvas.height , watermarkcanvas.width , watermarkcanvas.height );
+		}
+		
+	</script>
+</html>

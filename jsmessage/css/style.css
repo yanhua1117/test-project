@@ -1,0 +1,33 @@
+.main {
+  border: 1px solid #DED6E7;
+  width: 235px;
+}
+.main .top {
+  height: 370px;
+  width: 235px;
+  border-bottom: 2px solid #ded6e7;
+}
+.main .bottom {
+  height: 50px;
+  width: 235px;
+}
+.main .bottom #img {
+  height: 35px;
+  width: 35px;
+  border: 1px solid #ded6e7;
+  margin: 7px 5px;
+  border-radius: 15px;
+}
+.main .bottom #txt {
+  height: 33px;
+  width: 140px;
+  border: 1px solid #DED6E7;
+  border-radius: 15px;
+  margin: 7px 5px;
+}
+.main .bottom #btn {
+  height: 35px;
+  width: 35px;
+  font-size: 14px;
+  margin-top: 7px;
+}

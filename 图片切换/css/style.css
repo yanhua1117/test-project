@@ -1,0 +1,48 @@
+body {
+  background: #333;
+}
+body #pic {
+  width: 400px;
+  height: 500px;
+  position: relative;
+  margin: 0 auto;
+  background: url(../img/loader_ico.gif) no-repeat center #ffffff;
+}
+body #pic img {
+  width: 400px;
+  height: 500px;
+}
+body #pic ul {
+  position: absolute;
+  top: 0;
+  right: -50px;
+  width: 40px;
+}
+body #pic ul li {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 4px;
+  background: #666;
+}
+body #pic ul .active {
+  background: orangered;
+}
+body #pic span,
+body #pic p {
+  color: #fff;
+  width: 400px;
+  height: 30px;
+  line-height: 30px;
+  position: absolute;
+  left: 0;
+  text-align: center;
+  background: #000;
+}
+body #pic span {
+  position: absolute;
+  top: 0;
+}
+body #pic p {
+  position: absolute;
+  bottom: 0;
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<script src="js/vue.js"></script>
+		<title></title>
+		<style>
+			.red{
+				color:red;
+			}
+		</style>
+	</head>
+	<body>
+		<!--模板-->
+		<div id="demo">
+			<span :customId="id" :class="{red:addClass}" >{{message}}</span>
+		</div>
+	</body>
+	<script type="text/javascript">
+		let data = {
+			message : "hello vue!",
+			id : "abc",
+			addClass : true
+		}
+		new Vue({
+			el : "#demo",
+			data : data
+		})
+	</script>
+</html>

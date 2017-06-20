@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="canvas" width="800" height="800" style="display: block;margin:0 auto"></canvas>
+	</body>
+	<script type="text/javascript">
+		var canvas = document.getElementById("canvas");
+		var context = canvas.getContext("2d");
+		
+		context.arc(400,400,200,0,Math.PI,true);// 圆心横坐标  圆心纵坐标  半径  从哪开始  画多少（Math.PI=180度） true:逆时针  默认false顺时针  
+		context.stroke();
+		context.fillStyle = "#f00";
+		context.fill();
+		//  closePath()  默认把不闭合的图形以直线闭合
+	</script>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script type="text/javascript">
+			(function(){
+				setRem();
+				function setRem(){
+					var html = document.documentElement;
+					var width = html.clientWidth;
+					html.style.fontSize = width/16 + "px";	
+				}
+				window.addEventListener('orientation' in window ? 'deviceorientation' : 'resize',setRem)
+			})()
+		</script>
+		<link rel="stylesheet" type="text/css" href="css/loading.css"/>
+
+	</head>
+
+	<body>
+		<header>米休小栈</header>
+		<div id="box">
+			<ul id="list">
+				<li>
+					<img src="img/1.jpg" alt="" />
+				</li>
+				<li>
+					<img src="img/2.jpg" alt="" />
+				</li>
+				<li>
+					<img src="img/3.jpg" alt="" />
+				</li>
+				<li>
+					<img src="img/4.jpg" alt="" />
+				</li>
+				<li>
+					<img src="img/5.jpg" alt="" />
+				</li>
+				<li>
+					<img src="img/6.jpg" alt="" />
+				</li>
+			</ul>
+		</div>
+		<section class="imgPage">
+			<header>大图预览<a href="javascript:;" id="backBtn"><</a></header>
+			<div class="imgBox">
+				<img src="img/1.jpg" id="bigPic" alt="" />
+			</div>
+		</section>
+	</body>
+	<script src="js/m.Tween.js"></script>
+	<script src="js/loading.js"></script>
+	<script>
+		var bigPic = document.querySelector("#bigPic");
+		css( bigPic,"translateZ",0.01 );
+		new Gesture({
+			el: bigPic,
+			start: function(e) {
+				//this.style.backgroundColor = "blue";
+//				startScale = css(bigPic,"scale");
+//				startRotate = css(bigPic,"rotate");
+			},
+			change: function(e,startScale,startRotate,maxScale,minScale) {
+				startScale = startScale/100;
+				var scale = startScale*e.scale;
+				if( scale > maxScale ){
+					scale = maxScale;
+				}else if( scale < minScale ){
+					scale = minScale;
+				}
+				css( bigPic , "scale" , scale*100 );
+				css( bigPic , "rotate" , startRotate + e.rotation );
+				//this.innerHTML = e.rotation;
+				//this.innerHTML = e.scale;
+				//e.scale
+				//e.rotation
+			},
+			end: function(e) {
+			},
+			maxScale : 1.5,
+			minScale : 0.5
+		});
+	</script>
+
+</html>

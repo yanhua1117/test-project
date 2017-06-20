@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{margin:0;padding:0;transition:all .4s;color:#fff;}
+			figure{
+				position:relative;
+				width:33.33%;
+				float:left;
+				height:360px;
+				overflow: hidden;
+			}
+			figcaption{
+				position:absolute;
+				top:0;
+				left:0;
+			}
+			figure img{
+				width:672px;
+				height:378px;
+			}
+			figure:hover img:not(.f4_img){
+				transform:translateX(-30px);
+				opacity: 0.8;
+			}
+			
+			@media screen and (max-width:600px){
+				figure{
+					width:100%;
+					min-width: 300px;
+				}
+			}
+			@media screen and (min-width:601px) and (max-width:1000px){
+				figure{
+					width:50%;
+				}
+			}
+			@media screen and (min-width:1001px){
+				figure{
+					width:33.33%;
+				}
+			}
+			
+			.f1 figcaption{top:280px;left:50px;}
+			.f1 figcaption p{color:#000;transform:translate(0,120px)}
+			.f1:hover figcaption p{color:#fff;transform:translate(0,-10px)}
+			.f1:hover figcaption h2{bottom:10px;transform:translate(0,-20px)}
+			
+			.f2 figcaption{top:80px;left:20px;}
+			.f2 figcaption p{transform:translate(-120px,0);background: #fff;color:#000;width:100px;margin-top:5px}
+			.f2:hover figcaption>p:nth-of-type(1){transform:translate(0,0)}
+			.f2:hover figcaption>p:nth-of-type(2){transform:translate(0,0);transition:transform .3s linear 0.05s}
+			.f2:hover figcaption>p:nth-of-type(3){transform:translate(0,0);transition:transform .3s linear .1s}
+			
+			.f3 figcaption{top:15%;left:10%;}
+			.f3 div{position: absolute;top:10%;left:10%;width:80%;height:80%;border: 1px solid #fff;transform:translate(0,-350px) rotate(0deg);}
+			.f3:hover div{transform:translate(0,0px) rotate(360deg);}
+			
+			.f4 figcaption{top:15%;left:15%;}
+			.f4 img{transform:scale(1,1)}
+			.f4>figcaption>h2,.f4>figcaption>p{transform:scale(1.2,1.2);margin-top:5px;opacity:0}
+			.f4 div{position: absolute;top:10%;left:10%;width:80%;height:80%;border: 1px solid #fff;transform:scale(1.2,1.2);opacity:0}
+			.f4:hover div{transform:scale(1,1);opacity:1}
+			.f4:hover figcaption h2,.f4:hover figcaption p{transform:scale(1,1);opacity:1;transition:all .3s linear}
+			.f4:hover img{transform:scale(1.2,1.2);opacity:0.8}
+			
+			.f5{background: #000;}
+			.f5 figcaption{top:40%;left:40%;}
+			.f5>figcaption>h2,.f5>figcaption>p{transform:skew(90deg);margin-top:5px}
+			.f5:hover figcaption h2{transform:skew(0deg);transition:all .2s linear 0.05s}
+			.f5:hover figcaption p{transform:skew(0deg);transition:all .2s linear 0.1s}
+		</style>
+	</head>
+	<body>
+		<figure class="f1">
+			<img src="img/1.jpg" alt="" />
+			<figcaption>
+				<h2>平移动画1</h2>
+				<p>描述</p>
+			</figcaption>
+		</figure>
+		<figure class="f2">
+			<img src="img/2.jpg" alt="" />
+			<figcaption>
+				<h2>平移动画2-多条文字</h2>
+				<p class="f2_p1">描述1</p>
+				<p class="f2_p2">描述2</p>
+				<p class="f2_p3">描述3</p>
+			</figcaption>
+		</figure>
+		<figure class="f3">
+			<img src="img/3.jpg" alt="" />
+			<figcaption>
+				<h2>旋转飞入飞出</h2>
+				<p>通过旋转和位移，制作飞入效果</p>
+			</figcaption>
+			<div></div>
+		</figure>
+		<figure class="f4">
+			<img src="img/4.jpg" alt="" class="f4_img" />
+			<figcaption>
+				<h2>缩放</h2>
+				<p>图片缩放</p>
+			</figcaption>
+			<div></div>
+		</figure>
+		<figure class="f5">
+			<img src="img/5.jpg" alt="" />
+			<figcaption>
+				<h2>文字扭曲</h2>
+				<p>文字扭曲详细描述</p>
+			</figcaption>
+		</figure>
+		<figure class="f6">
+			<img src="img/6.jpg" alt="" />
+			<figcaption>
+				<h2>标题</h2>
+				<p>描述</p>
+			</figcaption>
+		</figure>
+	</body>
+</html>

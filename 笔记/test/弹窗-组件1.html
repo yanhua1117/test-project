@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<style>
+	.dialog{width:200px;height:200px;position:absolute;top:0;left:0;border:1px solid #000}
+	.dialog_title{height:30px;background:gray;color:white}
+	.dialog_title .title{float:left}
+	.dialog_title .close{float:right}
+	</style>
+	<script>
+		window.onload = function(){
+			var inputs = document.getElementsByTagName("input");
+			inputs[0].onclick = function(){
+				var dl1 = new Dialog();
+				dl1.init({
+					w : 500,
+					h : 500,
+					dir : "center",
+					title : "登陆"
+				});
+			}
+			inputs[1].onclick = function(){
+				var dl1 = new Dialog();
+				dl1.init({
+					w : 100,
+					h : 200,
+					dir : "right",
+					title : "几十块"
+				});
+			}
+		}
+		
+		function Dialog(){
+			this.obj = null,
+			this.settings = {
+				w : 300,
+				h : 300,
+				title : "弹出窗口",
+				dir : "center"
+			}
+		}
+		
+		Dialog.prototype.init= function( opt ){
+			
+			extend( this.settings, opt );
+			
+			this.create();
+		}
+		
+		Dialog.prototype.create = function(){
+			this.obj = document.createElement("div");
+			this.obj.className = "dialog";
+			this.obj.innerHTML = '<div class="dialog_title">'
+			+ '<span class="title">' + this.settings.title + '</span><span class="close">X</span></div>'
+			+ '<div class="content"></div>';
+			
+			document.body.appendChild( this.obj );
+			this.setData();
+		}
+		
+		Dialog.prototype.setData = function(){
+			this.obj.style.width = this.settings.w + "px";
+			this.obj.style.height = this.settings.h + "px";
+			if( this.settings.dir == "center" ){
+				this.obj.style.left = (viewWidth() - this.obj.offsetWidth)/2 + "px";
+				this.obj.style.top = (viewHeight() - this.obj.offsetHeight)/2 + "px";
+			}else if( this.settings.dir == "right" ){
+				this.obj.style.left = (viewWidth() - this.obj.offsetWidth) + "px";
+				this.obj.style.top = (viewHeight() - this.obj.offsetHeight) + "px";
+			}
+		}
+		
+		function extend( obj1,obj2 )
+		{
+		    for(var attr in obj2){
+		        obj1[attr] = obj2[attr];
+		    }
+		}
+		
+		function viewWidth(){
+			return document.documentElement.clientWidth;
+		}
+		
+		function viewHeight(){
+			return document.documentElement.clientHeight;
+		}
+	</script>
+	<body>
+		<input type="button" value="0" />
+		<input type="button" value="1" />
+	</body>
+</html>

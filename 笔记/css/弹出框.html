@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8"/>
+    <title>弹窗效果样式</title>
+    <link rel="stylesheet" href="*.css" />
+    <style type="text/css">
+        body{
+            height:1000px;
+            margin:0;
+            }
+        .boxes{
+            position:fixed;
+            top: 200px;
+            width:300px;
+            height:150px;
+            border:1px solid #ccc;
+            background:red;
+            left:0;
+            right:0;
+            margin-left:auto;
+            margin-right:auto;
+        }
+        .box{
+        	position:fixed;
+            top: 200px;
+            width:300px;
+            border:1px solid #ccc;
+            border-radius: 5px;
+            left:0;
+            right:0;
+            margin-left:auto;
+            margin-right:auto;
+            /*transform-origin:0 0;
+            transform:rotate(90deg);*/
+        }
+        .box .title{
+        	height:40px;
+        	font:14px/40px 'Microsoft YaHei';
+        	background-color: #eee;
+        	border-radius:5px 5px 0 0;
+        	white-space:nowrap;
+        	text-overflow:ellipsis;
+        	padding:0px 20px;
+        }
+
+        .box .title .text{
+			float:left;
+        }
+        .box .title .close{
+			float:right;
+        }
+
+        .content{
+        	position:relative;
+        	padding:20px;
+        	clear:both;
+        }
+        .content p{
+        	font-size: 12px;
+        	font-family:"宋体";
+        	margin:0;
+        	line-height:1.5em;
+			
+        }
+        .content .btn{
+        	display:block;
+        	margin:0 auto;
+        	width:80px;
+        	height:30px;
+        	border:0;
+        	border-radius:5px;
+        	background:#007dc6;
+        	color:#fff;
+        	margin-top:20px;
+        }
+
+
+    </style>
+    </head>
+    <body>
+        <div class="boxes"> </div>
+        <div class="box">
+        	<div class="title"><span class="text">标题栏</span><span class="close">关闭</span></div>
+        	<div class="content">
+        		<p>内容区段落</p>
+        		<button class="btn">确定</button>
+        	</div>  	
+        </div>
+    </body>
+</html>

@@ -1,0 +1,72 @@
+.main {
+  height: 600px;
+  width: 500px;
+  border: 1px solid #C6C6C6;
+}
+.main .btn {
+  padding-top: 3px;
+  width: 500px;
+  height: 50px;
+}
+.main .btn input {
+  height: 40px;
+  width: 150px;
+  border: 1px solid #C6C6C6;
+  margin-left: 60px;
+  background: #c6c6c6;
+}
+.main p {
+  width: 500px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+}
+.main .pic,
+.main .pic img {
+  width: 500px;
+  height: 500px;
+  border-top: 1px solid #C6C6C6;
+}
+.main .pic {
+  position: relative;
+}
+.main .pic a {
+  width: 40px;
+  height: 40px;
+  font-size: 35px;
+  font-weight: bolder;
+  background: #fff;
+  line-height: 40px;
+  opacity: 0.8;
+}
+.main .pic a:hover {
+  opacity: 0.3;
+}
+.main .pic #p1,
+.main .pic #p2 {
+  width: 500px;
+  height: 30px;
+  background: #FFFFFF;
+  opacity: 0.5;
+  line-height: 30px;
+}
+.main .pic #p2 {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.main .pic #p1 {
+  position: absolute;
+  left: 0;
+  top: 471px;
+}
+.main .pic #pre {
+  position: absolute;
+  left: 5px;
+  top: 230px;
+}
+.main .pic #next {
+  position: absolute;
+  left: 455px ;
+  top: 230px ;
+}

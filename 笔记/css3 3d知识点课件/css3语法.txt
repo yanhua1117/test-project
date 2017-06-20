@@ -1,0 +1,64 @@
+2d变形
+transform：rotate(45deg);                      顺时针旋转
+transform：translate(50px,20%);                移动  x:右  y:下
+transform：translateX(50px);
+transform：translateY(50px);
+
+transform：scale(2,4);                         放大缩小
+transform：scaleX(2);
+transform：scaleY(2);
+
+transform：rotate(45deg)  translate(50px,50px);     多个方法
+transform-origin:50% 50%                            旋转原点
+
+3D变形
+transform：rotateY(45deg);						以Y轴旋转45度
+perspective：500px								透视效果 距离
+perspective-origin：left bottom					透视角度 （左下）
+
+transform：translate3d(50px,50px,50px)			3d空间移动
+transform：scale3d(2,2,2)						3d放大缩小
+transform：rotate3d(1,1,1,45deg)				以x轴1点 y轴1点 z轴1点到原点的线为轴 旋转
+transform-style:flat|preserve-3d				透视效果  flat：扁平化    preserve-3d：保留3D空间
+backface-visibility：hidden						背面不可见  一个div放两个pre 第一个首先旋转180度 向Z轴移动1px
+
+
+
+transition
+transition-property：all|none|left、color		指定做动画的属性   left:500px,color:#f00
+transition-duration：2s							动画执行时间     pre:nth-child(0){transition-duration:2s}
+transition-timing-function：ease|cubic-bezier(0.25,0.1,0.25,0.1)|steps(3,start|end)       ease:两头慢中间快  linear:匀速  ease-out:结束时慢  ease-in:开始慢  ease-in-out:两头慢中间快
+transition-delay：2s							动画延时时间
+
+transition：left 2s ease 1s,color 2s
+
+animation-name：abc
+animation-duration：2s
+animation-iteration-count:1,infinite			动画执行次数
+animation-direction：normal|reverse|alternate|alternate-reverse			alternate:往返   alternate-reverse:反向往返
+animation-play-state：paused|running			paused：暂停
+animation-delay：2s
+animation-fill-mode：none|backwards|forwards|both						both：开始时是第一帧的位置  结束时是最后一帧的位置
+
+animation：abc      2s        ease        		0s        1        normal        none       running
+		  name    duration   timing-function   delay    count      direction    fill-mode    state
+
+@-webkit-keyframes abc{
+	0%{left:0;top:0}
+	50%{left:250px;top:100px}
+	100%{left:500px;top:0}
+}
+@-webkit-keyframes abcd{
+	0%{color:#fff}
+	100%{color:#000}
+}
+
+@-webkit-keyframes abc{
+	from{opacity:1;height:100px}
+	to{opacity:0.5;height:200px}
+}
+
+@-webkit-keyframes flash{				闪动
+	0%,50%,100%{opacity:1}
+	25%,75%{opacity:0}
+}

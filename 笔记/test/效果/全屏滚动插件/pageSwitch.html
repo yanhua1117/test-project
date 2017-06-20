@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/pageSwitch.css"/>
+	</head>
+	<body>
+		<div class="main">
+			<div class="sections">
+				<div class="section" id="pic1"></div>
+				<div class="section" id="pic2"></div>
+				<div class="section" id="pic3"></div>
+				<div class="section" id="pic4"></div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/scroll.js"></script>
+	<script type="text/javascript">
+		$(".main").PageSwitch({
+			selectors : {
+				sections : ".sections",
+				section : ".section",
+				page : ".pages",
+				active : ".active"
+			},
+			index : 0,
+			easing : "ease",
+			duration : 1000,
+			pagination : true,
+			loop : false,
+			keyboard : true,
+			dicretion : "vertical",//horazontal  vertical
+			callback : ""
+		});
+	</script>
+</html>

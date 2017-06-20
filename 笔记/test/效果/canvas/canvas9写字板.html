@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport"
+          content=" height = device-height,
+                    width = device-width,
+                    initial-scale = 1.0,
+                    minimum-scale = 1.0,
+                    maximum-scale = 1.0,
+                    user-scalable = no"/>
+		<title></title>
+		<script type="text/javascript" src="../../js/jquery-1.11.3.min.js"></script>		
+		<style type="text/css">
+			.item{
+				width:50px;
+				height:50px;
+				display: inline-block;
+			}
+			.item1{
+				background: #000;
+			}
+			.item2{
+				background: #f00;
+			}
+			.item3{
+				background: #058;
+			}
+			.item4{
+				background: #B5C334;
+			}
+			.item5{
+				background: #FE8463;
+			}
+			.cur{
+				border:5px solid #FF6347;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas" style="display: block;margin:0 auto"></canvas>
+		<div style="width:800px;margin:20px auto;" id="controler">
+			<div style="float:left">
+				<div class="item item1" data-value="#000"></div>
+				<div class="item item2" data-value="#f00"></div>
+				<div class="item item3" data-value="#058"></div>
+				<div class="item item4" data-value="#B5C334"></div>
+				<div class="item item5" data-value="#FE8463"></div>
+			</div>
+			<div style="float: right"><a href="javascript:clear()" >清除</a></div>
+		</div>
+		
+	</body>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$(".item").on("click",function(){
+				$(".item").removeClass("cur");
+				color = $(this).attr("data-value");
+				$(this).addClass("cur");
+			})
+		})
+	
+		var canvas = document.getElementById("canvas");
+		var context = canvas.getContext("2d");
+		var p = Math.PI;
+		var lastPoint = {x:0,y:0}
+		var color = "#000";
+		var is_stroke = false;
+		
+		canvas.width = Math.min( 800,$(window).width()-20 );
+		canvas.height = canvas.width;
+		$("#controler").width( canvas.width );
+		
+		function drawGrid (){
+			context.save();
+		
+			context.beginPath();
+			context.lineWidth = 6;
+			context.strokeStyle = "rgb(230,11,9)";
+			context.strokeRect( 0,0,canvas.width,canvas.height );
+			context.closePath();
+			
+			context.beginPath();
+			context.strokeStyle = "rgb(230,11,9)";
+			context.lineWidth = 1;
+			context.moveTo( 0,0 );
+			context.lineTo( canvas.width,canvas.height );
+			
+//			context.moveTo( 400,0 );
+//			var y = 0;
+//			for (var i=0;i<800;i+=5) {
+//				y += 5;
+//				if( i%10 == 0 ){
+//					context.lineTo(400,y);
+//					context.moveTo(400,y+5);
+//				}
+//			}
+//			
+//			context.moveTo( 0,400 );
+//			var x = 0;
+//			for (var i=0;i<800;i+=5) {
+//				x += 5;
+//				if( i%10 == 0 ){
+//					context.lineTo(x,400);
+//					context.moveTo(x+5,400);
+//				}
+//			}
+
+			context.moveTo( 0,canvas.height/2 );
+			context.lineTo( canvas.width,canvas.height/2 );
+			
+			context.moveTo( canvas.width/2,0 );
+			context.lineTo( canvas.width/2,canvas.height );
+			
+			context.moveTo( 0,canvas.height );
+			context.lineTo( canvas.width,0 );
+			context.stroke();
+			
+			context.closePath();
+			context.restore();
+		}
+		drawGrid();
+		function windowToCanvas(x,y){
+			var left = canvas.getBoundingClientRect().left;
+			var right = canvas.getBoundingClientRect().top;
+			return {
+				x:x-left,
+				y:y-right
+			}
+		}
+		
+		function write(point){
+			var r = 10;
+			context.beginPath();
+			context.lineWidth = r;
+			context.lineCap = "round";
+			context.lineJoin = "round";
+			context.strokeStyle = color;
+			context.moveTo( lastPoint.x,lastPoint.y );
+			context.lineTo( point.x,point.y );
+			context.stroke();
+			
+//			context.fillStyle = "#000000";
+//			context.arc( point.x,point.y,r/2,0,2*p );
+//			context.fill();
+			
+			context.closePath();
+			lastPoint = point;
+		}
+		
+		function clear(){
+			context.clearRect( 0,0,canvas.width,canvas.height );
+			drawGrid();
+		}
+		
+		function beginStroke(point){
+			var p = windowToCanvas(point.x,point.y);
+			is_stroke = true;
+			lastPoint = p;
+		}
+		function endStroke(){
+			is_stroke = false;
+		}
+		canvas.onmousedown = function(e){
+			e.preventDefault();
+			beginStroke( {x:e.clientX,y:e.clientY} );
+		}
+		canvas.onmousemove = function(e){
+			e.preventDefault();
+			var point = windowToCanvas(e.clientX,e.clientY);
+			if( is_stroke ){
+				write(point);
+			}
+		}
+		canvas.onmouseup = function(e){
+			e.preventDefault();
+			endStroke();
+		}
+		canvas.onmouseout = function(e){
+			e.preventDefault();
+			endStroke();
+		}
+		
+		canvas.addEventListener("touchstart",function(e){
+			e.preventDefault();
+			var touch = e.touches[0];
+			beginStroke( {x:touch.pageX,y:touch.pageY} );
+			
+		})
+		canvas.addEventListener("touchmove",function(e){
+			e.preventDefault();
+			var touch = e.touches[0];
+			write( {x:touch.pageX,y:touch.pageY} );
+			
+		})
+		canvas.addEventListener("touchend",function(e){
+			e.preventDefault();
+			var touch = e.touches[0];
+			endStroke();
+			
+		})
+	</script>
+</html>

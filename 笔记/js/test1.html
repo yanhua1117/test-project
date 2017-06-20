@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8"/>
+    <title>弹窗效果样式</title>
+    <script type="text/javascript">
+        // var a = 0;
+        // var b = true&&a++;
+        // console.log(a);
+        // console.log(b);
+        function myType(obj)
+        {
+          return Object.prototype.toString.call(obj);
+        }
+        window.onload = function(){
+          //load();
+          var obj = document.getElementById("parent");
+          alert( getElementsByClassName(obj,"test you").length );
+        }
+
+        function load(){
+            alert(add(1)(2)(3)(4));
+        }
+
+        function add(x){
+            //由于要一个数记住每次的计算值，所以使用了闭包，在addFake中记住了x的值，第一次调用add(),初始化了addFake，并将x保存在addFake的作用链中，然后返回addFake
+            //保证了第二次调用的是addFake函数，后面的计算都是在条用addFake, 因为addFake也是返回的自己，保证了第二次之后的调用也是调用addFake，而在addFake中将传入的
+            //参数与保存在作用链中x相加并付给x，这样就保证了计算；但是在计算完成后还是返回了addFake这个函数，这样就获取不到计算的结果了，我们需要的结果是一个计算的数字
+            //那么怎么办呢，首先要知道JavaScript中，打印和相加计算，会分别调用toString或valueOf函数，所以我们重写addFake的toString和valueOf方法，返回x的值
+            function addFake(y){
+                x = x + y;
+                return addFake;
+            };
+            addFake.toString = addFake.valueOf = function(){return x;};
+            return addFake;
+        }
+
+        function getElementsByClassName(obj,names)
+        {
+          var aChild = obj.getElementsByTagName("*");
+          var result = [];
+          var names = names.split(" ");
+          for(var i=0;i<aChild.length;i++)
+          {
+            var flag = true;
+            
+            for (var j = 0; j < names.length; j++) {
+              if(aChild[i].className.indexOf(names[j]) == -1 )
+              {
+                flag = false;
+              }
+            };
+            if(flag)
+            {
+              result.push(aChild[i]);
+            }
+          }
+
+          return result;
+        }
+
+        if(!document.documentElement.dataset){
+          Element.prototype.__defineGetter__("dataset",function(){
+            var datas = this.attributes;
+            var dataset = {};
+                for(var i=0;i<attrs.length;i++){
+                    var name = attrs[i].name;
+                    //匹配
+                    if(name.indexOf("data-") === 0){
+                        dataset[name.substring(5)] = attrs[i].value;
+                    }
+                }
+            return dataset;
+          });
+        }
+    </script>
+    
+    </head>
+    <body>
+        <ul id="parent">
+            <li class="test"></li>
+            <li class="test"></li>
+            <li class="test you"></li>
+            <li></li>
+        </ul>
+    </body>
+</html>

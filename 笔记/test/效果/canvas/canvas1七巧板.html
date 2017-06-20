@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="canvas" width="800" height="800" style="display: block;margin:0 auto"></canvas>
+	</body>
+	<script type="text/javascript">
+		var canvas = document.getElementById("canvas");
+		var context = canvas.getContext("2d");
+		
+		var item_list = [
+			{p:[{x:0,y:0},{x:400,y:400},{x:0,y:800},{x:0,y:0}],color:"#C1232B"},
+			{p:[{x:0,y:0},{x:400,y:400},{x:800,y:0},{x:0,y:0}],color:"#B5C334"},
+			{p:[{x:0,y:800},{x:200,y:600},{x:400,y:800},{x:0,y:800}],color:"#FCCE10"},
+			{p:[{x:200,y:600},{x:400,y:400},{x:600,y:600},{x:400,y:800},{x:200,y:600}],color:"#E87C25"},
+			{p:[{x:400,y:400},{x:600,y:200},{x:600,y:600},{x:400,y:400}],color:"#27727B"},
+			{p:[{x:600,y:200},{x:800,y:0},{x:800,y:400},{x:600,y:600},{x:600,y:200}],color:"#FE8463"},
+			{p:[{x:400,y:800},{x:800,y:400},{x:800,y:800},{x:400,y:800}],color:"#9BCA63"}
+		]
+		
+		for (var i=0;i<item_list.length;i++) {
+			item = item_list[i];
+			context.beginPath();
+			context.moveTo(item.p[0].x,item.p[0].y);
+			for (var j=0;j<item.p.length;j++) {
+				context.lineTo(item.p[j].x,item.p[j].y);
+			}
+//			context.lineWidth = 1;
+//			context.strokeStyle = "#000";
+//			context.stroke();
+			
+			context.fillStyle = item.color;
+			context.fill();
+			context.closePath();
+		}
+		
+//		context.moveTo(100,100);
+//		context.lineTo(500,500);
+//		context.lineTo(100,500);
+//		context.lineTo(100,100);
+		
+		
+//		context.fillStyle = "#F65F57";
+//		context.fill();
+		
+//		context.lineWidth = 5;
+//		context.strokeStyle = "#007DC6";
+//		context.stroke();
+	</script>
+</html>

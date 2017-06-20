@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#main{
+				width:1800px;
+				position:relative;
+				margin:0 auto;
+				-webkit-column-width: 280px;
+				-moz-column-width:280px;
+				-o-column-width:280px;
+				-ms-column-width:280px;
+			}
+			.box{
+				width:280px;
+				padding:10px;
+				border:none;
+			}
+			.pic{
+				width:260px;
+				padding:10px;
+				box-shadow: 0 0 11px #666;
+				border-radius:8px;
+			}
+			.pic>img{
+				width:260px;
+				border-radius:4px;
+			}
+		</style>
+		<script>
+			window.onload = function(){
+				scrollView("main","box");
+//				window.onscroll = function(){
+//					scrollData("main");
+//				}
+			}
+			var hCol = [];
+			function scrollView(main,box){
+				var oMain = document.getElementById("main");
+				var aBox = getByClass(box);
+				var minWidth = aBox[0].offsetWidth;
+				var cols = Math.floor( oMain.offsetWidth/minWidth );
+				var minH = "";
+				hCol = [];
+				for (var i=0;i<aBox.length;i++) {
+					if( i<cols ){
+						hCol.push( aBox[i].offsetHeight );
+					}else{
+						minH = Math.min.apply(null,hCol);
+						var index = getIndex(hCol,minH);
+						//aBox[i].style.cssText = "position:absolute;top:"+minH+"px;left:"+(index*minWidth)+"px";
+						hCol[index] += aBox[i].offsetHeight; 
+					}
+				}
+				console.log(minH);
+				console.log(hCol);
+			}
+			function scrollData(main){
+				var oMain = document.getElementById("main");
+				var result = {code:1,data:[{src:"../img/pbl/1.jpg"},{src:"../img/pbl/2.jpg"},{src:"../img/pbl/3.jpg"},{src:"../img/pbl/4.jpg"}
+				,{src:"../img/pbl/5.jpg"},{src:"../img/pbl/6.jpg"}]};
+				
+				var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+				var clientHeight = document.body.clientHeight || document.documentElement.clientHeight;
+				
+				var maxH = Math.max.apply(null,hCol);
+				if( (scrollTop+clientHeight)>( maxH-50 ) ){
+					for ( var i=0;i<result.data.length;i++ ) {
+						var obj = result.data[i];
+						var oBox = document.createElement("div");
+						oBox.className = "box";
+						var oPic = document.createElement("div");
+						oPic.className = "pic";
+						var oImg = document.createElement("img");
+						oImg.src = obj.src;
+						oPic.appendChild(oImg);
+						oBox.appendChild(oPic);
+						oMain.appendChild(oBox);
+					}
+				}
+				scrollView("main","box");
+			}
+			function getByClass(cla){
+				var arr = [];
+				var all = document.getElementsByTagName("*");
+				for( var i=0;i<all.length;i++ ){
+					if( all[i].className == cla ){
+						arr.push(all[i]);
+					}
+				}
+				return arr;
+			}
+			function getIndex(arr,val){
+				var index;
+				for (var i=0;i<arr.length;i++) {
+					if( arr[i] == val ){
+						index = i;
+					}
+				}
+				return index;
+			}
+		</script>
+	</head>
+	<body>
+		<div id="main">
+			<div class="box">
+				<div class="pic">
+					<img src="../img/pbl/1.jpg" alt="" />
+				</div>
+			</div>
+			<div class="box">
+				<div class="pic">
+					<img src="../img/pbl/2.jpg" alt="" />
+				</div>
+			</div>
+			<div class="box">
+				<div class="pic">
+					<img src="../img/pbl/3.jpg" alt="" />
+				</div>
+			</div>
+			<div class="box">
+				<div class="pic">
+					<img src="../img/pbl/4.jpg" alt="" />
+				</div>
+			</div>
+			<div class="box">
+				<div class="pic">
+					<img src="../img/pbl/5.jpg" alt="" />
+				</div>
+			</div>
+			<div class="box">
+				<div class="pic">
+					<img src="../img/pbl/6.jpg" alt="" />
+				</div>
+			</div>
+			
+			
+			<div class="box">
+				<div class="pic">
+					<img src="../img/pbl/1.jpg" alt="" />
+				</div>
+			</div>
+			<div class="box">
+				<div class="pic">
+					<img src="../img/pbl/2.jpg" alt="" />
+				</div>
+			</div>
+			<div class="box">
+				<div class="pic">
+					<img src="../img/pbl/3.jpg" alt="" />
+				</div>
+			</div>
+			<div class="box">
+				<div class="pic">
+					<img src="../img/pbl/4.jpg" alt="" />
+				</div>
+			</div>
+			<div class="box">
+				<div class="pic">
+					<img src="../img/pbl/5.jpg" alt="" />
+				</div>
+			</div>
+			<div class="box">
+				<div class="pic">
+					<img src="../img/pbl/6.jpg" alt="" />
+				</div>
+			</div>
+			
+			
+			<div class="box">
+				<div class="pic">
+					<img src="../img/pbl/1.jpg" alt="" />
+				</div>
+			</div>
+			<div class="box">
+				<div class="pic">
+					<img src="../img/pbl/2.jpg" alt="" />
+				</div>
+			</div>
+			<div class="box">
+				<div class="pic">
+					<img src="../img/pbl/3.jpg" alt="" />
+				</div>
+			</div>
+			<div class="box">
+				<div class="pic">
+					<img src="../img/pbl/4.jpg" alt="" />
+				</div>
+			</div>
+			<div class="box">
+				<div class="pic">
+					<img src="../img/pbl/5.jpg" alt="" />
+				</div>
+			</div>
+			<div class="box">
+				<div class="pic">
+					<img src="../img/pbl/6.jpg" alt="" />
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

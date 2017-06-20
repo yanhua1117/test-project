@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="canvas" style="display: block;margin:0 auto;border:1px solid #000"></canvas>
+	</body>
+	<script type="text/javascript" src="js/digit.js"></script>
+	<script type="text/javascript">
+		var WINDOW_WIDTH = 800;
+		var WINDOW_HEIGHT = 800;
+		var p = Math.PI;
+		
+		var canvas = document.getElementById("canvas");
+		var context = canvas.getContext("2d");
+		canvas.width = WINDOW_WIDTH;
+		canvas.height = WINDOW_HEIGHT;
+		
+//		var skyStyle = context.createLinearGradient(0,0,0,WINDOW_HEIGHT);
+		var skyStyle = context.createRadialGradient(400,800,0,400,800,800);
+		skyStyle.addColorStop(0,"#035");
+		skyStyle.addColorStop(1,"black");
+		
+		context.globalAlpha = 1;
+		context.fillStyle = skyStyle;
+		context.fillRect(0,0,WINDOW_WIDTH,WINDOW_HEIGHT);
+		
+		drawMoon(context,100,WINDOW_WIDTH*3/4,WINDOW_HEIGHT/4,0);
+		drawGround(context);
+		for (var i=0;i<100;i++) {
+			var r = Math.round( Math.random()*5+5 );
+			var x = Math.round( Math.random()*WINDOW_WIDTH );
+			var y = Math.round( Math.random()*WINDOW_HEIGHT*0.65 );
+			var a = Math.round( Math.random()*360 );
+			drawStar(context,r,x,y,a);
+		}
+		
+		function drawStar(context,R,x,y,rot){
+			context.save();
+			
+			context.translate(x,y);
+			context.rotate( rot/180*Math.PI );
+			context.scale(r,r);
+			setPath(context);
+			
+			context.fillStyle = "#fb3";
+			context.fill();
+			context.restore();
+		}
+		
+		function setPath(context){
+			context.beginPath();
+			for (var i=0;i<5;i++) {
+				context.lineTo( Math.cos( (18+i*72)*Math.PI/180 ),-Math.sin( (18+i*72)*Math.PI/180 ) );
+				context.lineTo( Math.cos( (54+i*72)*Math.PI/180 )*0.5,-Math.sin( (54+i*72)*Math.PI/180 )*0.5 );
+			}
+			context.closePath();
+		}
+		
+		function drawMoon(context,r,x,y,rot){
+			context.save();
+			
+			console.log(x+","+y);
+			context.translate(x,y);
+			context.rotate( rot/180*Math.PI );
+			context.scale(r,r);
+			
+			pathMoon(context);
+			context.fillStyle = "#fb3";
+			context.fill();
+			context.restore();
+		}
+		
+		function pathMoon(context){
+			context.beginPath();
+			context.arc(0,0,1,0.5*p,1.5*p,true);
+			context.moveTo(0,-1);
+			context.quadraticCurveTo(1.2,0,0,1);
+			context.closePath();
+		}
+		
+		function drawGround(context){
+			context.save();
+			
+			context.beginPath();
+			context.moveTo(0,600);
+			context.bezierCurveTo(340,390,600,750,800,600);
+			context.lineTo(1200,800);
+			context.lineTo(0,800);
+			context.closePath();
+			
+			var landStyle = context.createLinearGradient(0,800,0,0);
+			landStyle.addColorStop(0,"#030");
+			landStyle.addColorStop(1,"#580");
+			context.fillStyle = landStyle;
+			context.fill();
+			
+			context.restore();
+		}
+		
+		
+	</script>
+</html>

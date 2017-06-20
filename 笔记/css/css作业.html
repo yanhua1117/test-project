@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8"/>
+    <title>弹窗效果样式</title>
+    <link rel="stylesheet" href="*.css" />
+    <style type="text/css">
+        body{
+            height:1000px;
+            margin:0px;
+            padding:0px;
+            }
+        .parent{margin:0 auto;width:810px;height:200px;}
+        .side{width:200px;height:200px;margin-right: 10px;background-color:#DA0000;float:left;}
+        .main{width:600px;height:200px;background-color:#3580B7;float:left;clear:right;}
+        .font_s{width:12em;font-family:"simsun";font-size:16px;font-color:#000;font-weight: bold;
+        line-height:25px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;}
+
+        .slide{position:relative;width:495px;}
+        .slide img{display:block;}
+        .pointer{position:absolute;bottom:0px;right:0px;height:30px;line-height:30px;}
+        .pointer i{width:10px;height:10px;border-radius:5px;background-color:#000;display:inline-block;margin-right:10px;}
+        .pointer .current{background-color:#fff;}
+    </style>
+    </head>
+    <body>
+        <div class="parent"> 
+            <div class="side">侧栏</div>
+            <div class="main">主栏</div>
+        </div>
+        <div class="font_s">标题文字标题文字标题文字标题文字标题文字</div>
+        <div class="slide">
+            <img src="http://img1.gtimg.com/news/pics/hv1/6/128/1855/120654021.jpg" />
+            <div class="pointer"><i class="current"></i><i></i><i></i></div>
+        </div>
+    </body>
+</html>

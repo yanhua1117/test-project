@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8"/>
+    <title>弹窗效果样式</title>
+    <script type="text/javascript">
+        var timer = null;
+
+        window.onload = function(){
+            
+            var oDiv = document.getElementById("div1");
+            
+            oDiv.onmouseover = function(){
+                startMove(0);
+            }
+            oDiv.onmouseout = function(){
+                startMove(-150);
+            }
+            
+        }
+
+        function startMove(target){
+            var oDiv = document.getElementById("div1");
+
+            clearInterval(timer);
+            timer = setInterval(function(){
+                var speed = 7;
+                if(oDiv.offsetLeft > target){
+                    speed = -7;
+                }else{
+                    speed = 7;
+                }
+
+                if(Math.abs(target-oDiv.offsetLeft)<=speed){
+                    clearInterval(timer);
+                    oDiv.style.left = target;
+                }else{
+                    oDiv.style.left = oDiv.offsetLeft + speed + "px";
+                }
+            },30)
+        }
+        
+    </script>
+    <style type="text/css">
+        *{margin:0;padding:0;border:0;}
+        #div1{width:150px;height:200px;background:red;position:absolute;left:-150px;}
+        #div1 span{width:20px;height:60px;background:blue;right:-20px;top:70px;position:absolute;}
+    </style>
+    </head>
+    <body>
+        <div id="div1">
+            <span id="div2">分享到</span>
+        </div>
+    </body>
+</html>

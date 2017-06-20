@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			#logo{
+				display: none;
+				position:absolute;
+			}
+		</style>
+		<script>
+			window.onload = function(){
+				function selectText(){
+					if( document.selection ){//ie
+						return document.selection.createRange().text;
+					}else{
+						return window.getSelection().toString();
+					}
+				}
+				var p1 = document.getElementById("p1");
+				var logo = document.getElementById("logo");
+				
+				p1.onmouseup = function(ev){
+					var ev = ev || window.event;
+					var x = ev.clientX;
+					var y = ev.clientY;
+					
+					if( selectText().length>=10 ){
+						setTimeout(function(){
+							logo.style.display = "block";
+							logo.style.left = x+"px";
+							logo.style.top = y+"px";
+						},500);
+					}else{
+						logo.style.display = "none";
+					}
+				}
+				
+				p1.onclick = function(ev){
+					var ev = ev || window.event;
+					ev.cancelBubble();
+				}
+				
+				document.onclick = function(){
+					logo.style.display = "none";
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<p id="p1">
+			女子惨死脸缠胶带，死因成迷。据陕西台报道，1月13日一大早，西安南郊一个城中村里有不少警察在勘察现场。
+			随后，记者赶到西安市高新区长里村了解情况，就在今天早上八点多钟的时候，村里一个房东发现一名女房客在自己的租住房内已经死亡，而种种迹象表明，被害的可能性很大。
+		</p>
+		<div id="logo"><img src="../img/wb.png" width="25" height="25" alt="" /></div>
+	</body>
+</html>

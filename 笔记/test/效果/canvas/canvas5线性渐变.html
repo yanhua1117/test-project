@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="canvas" style="display: block;margin:0 auto;border:1px solid #000"></canvas>
+	</body>
+	<script type="text/javascript" src="js/digit.js"></script>
+	<script type="text/javascript">
+		var WINDOW_WIDTH = 800;
+		var WINDOW_HEIGHT = 800;
+		
+		var canvas = document.getElementById("canvas");
+		var context = canvas.getContext("2d");
+		canvas.width = WINDOW_WIDTH;
+		canvas.height = WINDOW_HEIGHT;
+		
+		var linearGrad = context.createLinearGradient(0,0,WINDOW_WIDTH,WINDOW_HEIGHT);
+		
+		linearGrad.addColorStop(0,"yellow");
+		linearGrad.addColorStop(0.25,"red");
+		linearGrad.addColorStop(0.5,"blue");
+		linearGrad.addColorStop(0.75,"black");
+		linearGrad.addColorStop(1,"green");
+		
+		context.fillStyle = linearGrad;
+		context.fillRect(0,0,WINDOW_WIDTH,WINDOW_HEIGHT);
+		
+		
+	</script>
+</html>

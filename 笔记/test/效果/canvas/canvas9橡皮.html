@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body style="background: url(http://www.bz55.com/uploads/allimg/150309/139-150309101A0.jpg)">
+		<div style="text-align: center">
+			<canvas id="canvasa" style="display: inline-block;margin:0 auto;border:1px solid #000"></canvas>
+			<canvas id="canvasb" style="display: inline-block;margin:0 auto;border:1px solid #000"></canvas>
+		</div>		
+		<div style="text-align: center">
+			<a href="javascript:;" onclick="filter();">filter</a>&nbsp;
+			<a href="javascript:;" onclick="grey();">grey Effect</a>&nbsp;
+			<a href="javascript:;" onclick="black();">black Effect</a>&nbsp;
+			<a href="javascript:;" onclick="reverse();">reverse Effect</a>&nbsp;
+			<a href="javascript:;" onclick="blurs();">blur Effect</a>&nbsp;
+			<a href="javascript:;" onclick="mosaic();">mosaic Effect</a>&nbsp;
+		</div>
+	</body>
+	<script type="text/javascript" src="js/digit.js"></script>
+	<script type="text/javascript">
+		var WINDOW_WIDTH = 800;
+		var WINDOW_HEIGHT = 800;
+		
+		var canvasa = document.getElementById("canvasa");
+		var contexta = canvasa.getContext("2d");		
+		
+		var canvasb = document.getElementById("canvasb");
+		var contextb = canvasb.getContext("2d");
+
+		window.onload = function(){
+						
+			var img = new Image();
+			img.src = "../css3动态图片/img/1.jpg";
+			img.onload = function(){
+				canvasa.width = img.width;
+				canvasa.height = img.height;
+				canvasb.width = img.width;
+				canvasb.height = img.height;
+				
+				contexta.drawImage( img , 0 , 0 , canvasa.width , canvasa.height );
+
+			}
+		}
+		function filter(){
+			var imageData = contexta.getImageData( 0 , 0 , canvasa.width , canvasa.height );
+			var pixelData = imageData.data;
+			for ( var i = 0 ; i < canvasa.width*canvasb.height ; i++ ) {				
+				pixelData[4*i+0] = 0;
+				pixelData[4*i+1] = 0;
+				pixelData[4*i+2] = 0;
+			}
+			
+			contextb.putImageData( imageData , 0 , 0 );
+		}
+		function grey(){
+			contextb.clearRect( 0 , 0 , canvasb.width , canvasb.height );
+			var imageData = contexta.getImageData( 0 , 0 , canvasa.width , canvasa.height );
+			var pixelData = imageData.data;
+			for ( var i = 0 ; i < canvasa.width*canvasb.height ; i++ ) {
+				var r = pixelData[4*i+0];
+				var g = pixelData[4*i+1];
+				var b = pixelData[4*i+2];
+				
+				var grey = r*0.3 + g*0.59 + b*0.11;
+				
+				pixelData[4*i+0] = grey;
+				pixelData[4*i+1] = grey;
+				pixelData[4*i+2] = grey;
+			}
+			
+			contextb.putImageData( imageData , 0 , 0 );
+		}
+		function black(){
+			contextb.clearRect( 0 , 0 , canvasb.width , canvasb.height );
+			var imageData = contexta.getImageData( 0 , 0 , canvasa.width , canvasa.height );
+			var pixelData = imageData.data;
+			for ( var i = 0 ; i < canvasa.width*canvasb.height ; i++ ) {
+				var r = pixelData[4*i+0];
+				var g = pixelData[4*i+1];
+				var b = pixelData[4*i+2];
+				
+				var grey = r*0.3 + g*0.59 + b*0.11;
+				var val;
+				if( grey > 255/2 ){
+					val = 255;
+				}else{
+					val = 0;
+				}
+				
+				pixelData[4*i+0] = val;
+				pixelData[4*i+1] = val;
+				pixelData[4*i+2] = val;
+			}
+			
+			contextb.putImageData( imageData , 0 , 0 );
+		}
+		function reverse(){
+			contextb.clearRect( 0 , 0 , canvasb.width , canvasb.height );
+			var imageData = contexta.getImageData( 0 , 0 , canvasa.width , canvasa.height );
+			var pixelData = imageData.data;
+			for ( var i = 0 ; i < canvasa.width*canvasb.height ; i++ ) {
+				var r = pixelData[4*i+0];
+				var g = pixelData[4*i+1];
+				var b = pixelData[4*i+2];
+				
+				pixelData[4*i+0] = 255-r;
+				pixelData[4*i+1] = 255-g;
+				pixelData[4*i+2] = 255-b;
+			}
+			
+			contextb.putImageData( imageData , 0 , 0 );
+		}
+		
+		function blurs(){
+			contextb.clearRect( 0 , 0 , canvasb.width , canvasb.height );
+			var tempImageData = contexta.getImageData( 0 , 0 , canvasa.width , canvasa.height );
+			var tempPixelData = tempImageData.data;
+			
+			var imageData = contexta.getImageData( 0 , 0 , canvasa.width , canvasa.height );
+			var pixelData = imageData.data;
+			
+			var blur = 2;
+			var totals = (2*blur+1)*(2*blur+1);
+			for (var i=blur;i<canvasb.height-blur;i++) {
+				for (var j=blur;j<canvasb.width-blur;j++) {
+					var totalR=0,totalG=0,totalB=0;
+					for ( var dx = -blur;dx<=blur;dx++ ) {
+						for (var dy=-blur;dy<=blur;dy++) {
+							var x = i + dx;
+							var y = j + dy;
+							
+							var p = x*canvasb.width+y;
+							totalR += tempPixelData[p*4+0];
+							totalG += tempPixelData[p*4+1];
+							totalB += tempPixelData[p*4+2];
+						}
+					}
+					var p = i*canvasb.width+j;
+					pixelData[p*4+0] = totalR/totals;
+					pixelData[p*4+1] = totalG/totals;
+					pixelData[p*4+2] = totalB/totals;
+				}
+			}
+			
+			contextb.putImageData( imageData , 0 , 0 , 0 , 0 , canvasb.width , canvasb.height );
+		}
+		function mosaic(){
+			contextb.clearRect( 0 , 0 , canvasb.width , canvasb.height );
+			var tempImageData = contexta.getImageData( 0 , 0 , canvasa.width , canvasa.height );
+			var tempPixelData = tempImageData.data;
+			
+			var imageData = contexta.getImageData( 0 , 0 , canvasa.width , canvasa.height );
+			var pixelData = imageData.data;
+			
+			var size = 10;
+			var totals = size*size;
+			for (var i=0;i<canvasb.height;i+=size) {
+				for (var j=0;j<canvasb.width;j+=size) {
+					var totalR=0,totalG=0,totalB=0;
+					for ( var dx = 0;dx<size;dx++ ) {
+						for (var dy=0;dy<size;dy++) {
+							var x = i + dx;
+							var y = j + dy;
+							
+							var p = x*canvasb.width+y;
+							totalR += tempPixelData[p*4+0];
+							totalG += tempPixelData[p*4+1];
+							totalB += tempPixelData[p*4+2];
+						}
+					}
+					var p = i*canvasb.width+j;
+					var resr = totalR/totals;
+					var resg = totalG/totals;
+					var resb = totalB/totals;
+					
+					for ( var dx = 0;dx<size;dx++ ) {
+						for (var dy=0;dy<size;dy++) {
+							var x = i + dx;
+							var y = j + dy;
+							var p = x*canvasb.width+y;
+							pixelData[p*4+0] = resr;
+							pixelData[p*4+1] = resg;
+							pixelData[p*4+2] = resb;
+						}
+					}
+				}
+			}
+			
+			contextb.putImageData( imageData , 0 , 0 , 0 , 0 , canvasb.width , canvasb.height );
+		}
+		
+		canvas.onmousemove = function(e){
+			
+		}
+
+	</script>
+</html>

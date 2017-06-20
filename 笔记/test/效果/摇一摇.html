@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		请摇动您的手机
+	</body>
+	<script type="text/javascript">
+		(function(){
+			var box = document.querySelector("#box");
+			var lastX,lastY,lastZ;
+			var maxRang = 70;
+			var minRang = 10;
+			var isShake = false;
+			window.addEventListener("devicemotion",function(e){
+				var motion = e.accelerationIncludingGravity;
+				var x = Math.round(motion.x);
+				var y = Math.round(motion.y);
+				var z = Math.round(motion.z);
+				if( getAdr() ){
+					x = -x;
+					y = -y;
+					z = -z;
+				}
+				if( lastX == undefined ){
+					lastX = x;
+				}
+				if( lastY == undefined ){
+					lastY = y;
+				}
+				if( lastZ == undefined ){
+					lastZ = z;
+				}
+				var dis = Math.abs( x-lastX ) + Math.abs( y-lastY ) + Math.abs( z-lastZ );
+				if( dis > maxRang ){
+					isShake = true;
+				}
+				if( dis < 10 && isShake ){
+					isShake = false;
+					alert( "摇一摇" );
+				}
+				
+			})
+			function getAdr(){
+				var u = navigator.userAgent;
+				return u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
+			}
+		})()
+	</script>
+</html>

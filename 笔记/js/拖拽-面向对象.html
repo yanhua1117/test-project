@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<style>
+	#div1{width:100px;height:100px;position:absolute;background: red;}
+	</style>
+	<script>
+		window.onload = function(){
+			var d1 = new Drag("div1");
+			d1.init();
+		}
+		
+		function Drag(id){
+			this.obj = document.getElementById(id);
+			this.disX = 0;
+			this.disY = 0;
+		}
+		
+		Drag.prototype.init = function(){
+			var This = this;
+			this.obj.onmousedown = function(ev){
+				var oEvent = ev || window.event;
+				This.fnDown(oEvent);
+			}
+		}
+		
+		Drag.prototype.fnDown = function(oEvent){
+			var This = this;
+			
+			this.disX = oEvent.clientX - this.obj.offsetLeft;
+			this.disY = oEvent.clientY - this.obj.offsetTop;
+			
+			document.onmousemove = function(ev){
+				var oEvent = ev || window.event;
+				This.fnMove(oEvent);
+				return false;
+			}
+		}
+		
+		Drag.prototype.fnMove = function(oEvent){
+			var This = this;
+			
+			var l = oEvent.clientX - this.disX;
+			var t = oEvent.clientY - this.disY;
+			
+			if(l<0){
+				l=0;
+			}else if(l>document.documentElement.clientWidth-this.obj.offsetWidth){
+				l=document.documentElement.clientWidth-this.obj.offsetWidth;
+			}
+			
+			if(t<0){
+				t=0;
+			}else if( t>document.documentElement.clientHeight-this.obj.offsetHeight ){
+				t=document.documentElement.clientHeight-this.obj.offsetHeight;
+			}
+			
+			this.obj.style.left = l + "px";
+			this.obj.style.top = t + "px";
+			
+			document.onmouseup = function(){
+				This.fnUp();
+			}
+		}
+		
+		Drag.prototype.fnUp = function(){
+			document.onmousemove = null;
+			document.onmouseup = null;
+		}
+	</script>
+	<body>
+		<div id="div1"></div>
+	</body>
+</html>

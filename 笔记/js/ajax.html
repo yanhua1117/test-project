@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8"/>
+    <title>弹窗效果样式</title>
+    <script type="text/javascript">
+        window.onload = function()
+        {
+            var oBtn = document.getElementById("btn");
+            oBtn.onclick = function()
+            {
+                //1 创建一个ajax对象
+                if(window.XMLHttpRequest)
+                {
+                    var oAjax = new XMLHttpRequest();
+                }
+                else
+                {
+                    var oAjax = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                //2 连接服务器
+                oAjax.open("get","http://www.d1cm.com/api/select.do?method=getFirstClass",true);
+
+                //3 发送请求
+                oAjax.send();
+
+                //4 接收请求内容
+                /**
+                0  (未初始化) 还没有调用open()方法
+                1  (载入)  已调用send() 正在发送请求
+                2  (载入完成) send() 方法完成，已收到全部响应内容
+                3  (解析) 正在解析响应内容
+                4  (完成) 响应内容解析完成
+                */
+                oAjax.onreadystatechange = function()
+                {
+                    if(oAjax.readyState == 4)//代表完成
+                    {
+                        if(oAjax.status == 200)//代表成功
+                        {
+                            alert(oAjax.responseText);
+                        }
+                        else
+                        {
+                            alert("失败");
+                        }
+                    }
+                }
+
+            }
+        }
+    </script>
+    </head>
+    <body style="height:2000px;">
+        <input type="button" id="btn" value="按钮" />
+    </body>
+</html>

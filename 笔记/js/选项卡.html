@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>标题</title>
+  
+<style>
+    #tab_box { width:572px; height:200px; border:1px solid #999; font:14px 'Microsoft YaHei'; color:#333; overflow:hidden; }
+    #tab_box ul,
+    #tab_box li { margin:0; padding:0; list-style:none; }
+      
+    #tab_box .tab_title { width:100%; height:40px; margin:0; }
+    #tab_box .tab_title li { float:left; width:190px; height:39px; border-bottom:1px solid #cecece; border-right:1px solid #cecece; background:#f1f1f1; line-height:39px; text-align:center; cursor:pointer; }
+    #tab_box .tab_title li:last-child { border-right:0; }
+    #tab_box .tab_title li.active { border-bottom:0; background:#fff; }
+      
+    #tab_box .tab_main { position:relative; width:100%; height:160px; clear:both; overflow:hidden; }
+    #tab_box .tab_main li { position:absolute; left:0; top:0; width:100%; height:160px; padding:20px; box-sizing:border-box; background:#fff; display:none; }
+    #tab_box .tab_main li:first-child { display:block; }
+</style>
+  
+<script>
+/**window.onload=function(){
+    var tabBox=document.getElementById('tab_box');
+    var tabTitles=tabBox.getElementsByTagName('ul')[0].getElementsByTagName('li');
+    var tabMains=tabBox.getElementsByTagName('ul')[1].getElementsByTagName('li');
+    var len=tabTitles.length;
+      
+    for(var i=0; i<len; i++){
+        tabTitles[i].index=i;
+        tabTitles[i].onclick=function(){
+            for(var j=0; j<len; j++){
+            tabTitles[j].className='';
+            tabMains[j].style.display='none';
+            };
+            this.className='active';
+            tabMains[this.index].style.display="block";
+        };
+    };
+};*/
+window.onload=function(){
+    var textBox = document.getElementById("tab_box");
+    var tab_title = textBox.getElementsByTagName("ul")[0].getElementsByTagName("li");
+    var tab_content = textBox.getElementsByTagName("ul")[1].getElementsByTagName("li");
+    var len = tab_title.length;
+    for (var i = 0; i < len; i++) {
+        tab_title[i].index = i;
+        tab_title[i].onclick = function(){
+            for (var j = 0; j < len; j++) {
+                tab_title[j].className = '';
+                tab_content[j].style.display = 'none';
+            };
+            this.className="active";
+            tab_content[this.index].style.display="block";
+        }
+    };
+};
+</script>
+</head>
+  
+<body>
+    <div id="tab_box">
+        <ul class="tab_title">
+            <li class="active">课程</li>
+            <li>学习计划</li>
+            <li>技能图谱</li>
+        </ul>
+        <ul class="tab_main">
+            <li>课程内容</li>
+            <li>学习计划内容</li>
+            <li>技能图谱内容</li>
+        </ul>
+    </div>
+</body>
+</html>

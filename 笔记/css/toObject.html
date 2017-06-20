@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8"/>
+    <title>弹窗效果样式</title>
+    <script type="text/javascript">
+        function Circle(r){
+            this.r = r;
+        }
+        Circle.prototype = {
+            constractor:Circle,
+            getZC:function(){
+                return 2*Math.PI*this.r;
+            },
+            getArea:function(){
+                return this.r*this.r;
+            }
+        }
+        var c = new Circle(5);
+        console.log(c.getZC());
+        console.log(c.getArea());
+
+        var clone = (function(){
+            var F = function(){};
+            return function(proto){
+                F.prototype = proto;
+                return new F();
+            }
+        })();
+
+        var superType = function(name){
+            this.name = name;
+            this.color = ["red","blue","black"];
+        }
+
+        superType.prototype.SayName=function(){
+            alert(this.name);
+        }
+
+        function subType(name,age){
+            this.name = name;
+            this.age = age;
+        }
+        subType.prototype = new superType();
+        subType.prototype.constractor = subType;
+        subType.prototype.SayAge = function(){
+            alert(this.age);
+        }
+        var ex1 = new subType("zy",21);
+        ex1.SayName();
+        ex1.color.push("white");
+        ex1.SayAge();
+        
+    </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

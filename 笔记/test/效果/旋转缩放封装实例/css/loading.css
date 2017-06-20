@@ -1,0 +1,76 @@
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+header {
+  height: 2rem;
+  line-height: 2rem;
+  text-align: center;
+  font-size: .8rem;
+  color: #fff;
+  background: #000;
+  position: relative;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#box,
+.imgBox {
+  width: 100%;
+  position: absolute;
+  top: 2rem;
+  left: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+#box #list,
+.imgBox #list {
+  overflow: hidden;
+}
+#box #list li,
+.imgBox #list li {
+  width: 7rem;
+  height: 7rem;
+  margin: .5rem;
+  float: left;
+  overflow: hidden;
+}
+#box #list li img,
+.imgBox #list li img {
+  display: block;
+  width: 100%;
+}
+.imgPage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #ccc;
+}
+.imgPage img {
+  position: absolute;
+  width: 10rem;
+  height: 12rem;
+  margin-left: 3rem;
+  top: 50%;
+  margin-top: -6rem;
+}
+.imgPage #backBtn {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 2rem;
+  width: 2rem;
+  line-height: 2rem;
+  font-size: 1.6rem;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+}
+/*# sourceMappingURL=loading.css.map */

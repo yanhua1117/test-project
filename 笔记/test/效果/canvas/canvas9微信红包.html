@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport"
+          content=" height = device-height,
+                    width = device-width,
+                    initial-scale = 1.0,
+                    minimum-scale = 1.0,
+                    maximum-scale = 1.0,
+                    user-scalable = no"/>
+		<title></title>
+		<script type="text/javascript" src="../../js/jquery-1.11.3.min.js"></script>		
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			#controler{
+				position:relative;
+				text-align: center;
+				margin:0px auto;
+				overflow: hidden;
+			}
+			img{
+				position:absolute;
+				z-index: 1;
+				left:0;
+				top:0;
+				-webkit-filter:blur(10px);
+				-o-filter:blur(10px);
+				-moz-filter:blur(10px);
+				-ms-filter:blur(10px);
+			}
+			canvas{
+				position: absolute;
+				z-index: 10;
+				left:0;
+				top:0;
+			}
+			.button{
+				display: block;
+				position:absolute;
+				z-index: 100;
+				
+				width:100px;
+				height:30px;
+				
+				color:white;
+				text-decoration:none;
+				text-align: center;
+				line-height: 30px;
+				
+				border-radius: 5px;
+			}
+			#reset-button{
+				left:50px;
+				bottom:20px;
+				background-color:#058;
+			}
+			#reset-button:hover{
+				background-color:#047;
+			}
+			#show-button{
+				right:50px;
+				bottom:20px;
+				background-color:#085;
+			}
+			#show-button:hover{
+				background-color:#074;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="controler">
+			<img src="../css3动态图片/img/9.jpg" alt="" id="blur_img" />
+			<canvas id="canvas" style="display: block;margin:0 auto"></canvas>
+			<a href="javascript:;" onclick="reset()" class="button" id="reset-button">Reset</a>
+			<a href="javascript:;" onclick="show()" class="button" id="show-button">Show</a>
+		</div>
+		
+	</body>
+	<script type="text/javascript">
+	
+		var canvas = document.getElementById("canvas");
+		var context = canvas.getContext("2d");
+		var p = Math.PI;
+		var is_reset = false;
+		var is_clear = false;
+		
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+		
+		var r = 60;
+		var circle = {x:canvas.width/2,y:canvas.height/2,r:r}
+		
+		var leftMargin;
+		var topMargin;
+		
+		var img = new Image();
+//		img.src = "../css3动态图片/img/7.jpg";
+		img.src = "../css3动态图片/img/9.jpg";
+		img.onload = function(){
+			$("#controler").width( canvas.width );
+			$("#controler").height( canvas.height );
+			
+			$("#blur_img").width( img.width );
+			$("#blur_img").height( img.height );
+			
+			canvas.height = img.height;
+			
+			leftMargin = (img.width-canvas.width)/2;
+			topMargin = (img.height-canvas.height)/2;
+			
+			$("#blur_img").css( "top" , "-"+topMargin+"px" );
+			$("#blur_img").css( "left" , "-"+leftMargin+"px" );
+			
+			draw(circle);
+		}
+		
+		function draw(circle){
+			context.save();
+			context.beginPath();
+			context.clearRect( 0,0,canvas.width,canvas.height );
+			context.arc( circle.x,circle.y,circle.r,0,2*p );
+			console.log(circle.x+","+circle.y);
+			context.clip();
+			context.drawImage( img,leftMargin,topMargin,canvas.width,canvas.height,0,0,canvas.width,canvas.height );
+			//context.drawImage( img,0,0 );
+			context.closePath();
+			context.restore();
+		}
+		function show(){
+			var end = Math.ceil( Math.sqrt( canvas.width*canvas.width + canvas.height*canvas.height ) );
+			var timer = setInterval(function(){
+				console.log("animate")
+				if( circle.r < end ){
+					is_reset = false;
+					circle.r += 30;
+					draw(circle);
+				}else{
+					is_reset = true;
+					clearInterval(timer);
+				}
+			},30)
+		}
+		function reset(){
+			if( !is_reset ){
+				return;
+			}
+			circle.r = r;
+			circle.x = Math.random()*(canvas.width-2*r)+r;
+			circle.y = Math.random()*((canvas.height-(img.height-window.innerHeight))-2*r)+r;
+			draw(circle);
+		}
+		canvas.onmousedown = function(e){
+			e.preventDefault();
+			is_clear = true;
+		}
+		canvas.onmousemove = function(){
+			e.preventDefault();
+			if( is_clear ){
+				
+			}
+		}
+		canvas.onmouseup = function(){
+			e.preventDefault();
+			is_clear = false;
+		}
+		canvas.onmouseout = function(){
+			e.preventDefault();
+			is_clear = false;
+		}
+	</script>
+</html>

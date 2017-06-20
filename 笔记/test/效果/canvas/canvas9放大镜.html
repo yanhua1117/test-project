@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body style="background: #000">
+		<canvas id="canvas" style="display: block;margin:0 auto;border:1px solid #fff"></canvas>
+		<canvas id="offcanvas" style="display: none;margin:0 auto;border:1px solid #fff"></canvas>
+	</body>
+	<script type="text/javascript" src="js/digit.js"></script>
+	<script type="text/javascript">
+		var WINDOW_WIDTH = 1024;
+		var WINDOW_HEIGHT = 768;
+		var p = Math.PI;
+		
+		var canvas = document.getElementById("canvas");
+		var context = canvas.getContext("2d");
+		canvas.width = WINDOW_WIDTH;
+		canvas.height = WINDOW_HEIGHT;
+		
+		var offcanvas = document.getElementById("offcanvas");
+		var offcontext = offcanvas.getContext("2d");
+		var scale;
+		var is_magnifier = false;
+		
+		window.onload = function(){
+			
+			var img = new Image();
+			img.src = "../css3动态图片/img/img-lg.jpg";
+			img.onload = function(){
+				offcanvas.width = img.width;
+				offcanvas.height = img.height;
+				scale = offcanvas.width/canvas.width;
+				context.drawImage( img , 0 , 0 , WINDOW_WIDTH , WINDOW_HEIGHT );
+				offcontext.drawImage( img , 0 , 0 );
+			}
+			
+			function windowToCanvas(x,y){
+				var left = canvas.getBoundingClientRect().left;
+				var right = canvas.getBoundingClientRect().top;
+				return {
+					x:x-left,
+					y:y-right
+				}
+			}
+			function drawM(is_m,point){
+				context.clearRect( 0 , 0 , canvas.width , canvas.height );
+				context.drawImage( img , 0 , 0 , canvas.width , canvas.height );
+				
+				if( is_m ){
+					drawOff(point);
+				}
+				
+			}
+			function drawOff(point){
+				var big_x = point.x*scale;
+				var big_y = point.y*scale;
+				
+				var mr = 200;
+				
+				var sx = big_x-mr;
+				var sy = big_y-mr;
+				var dx = point.x-mr;
+				var dy = point.y-mr;
+				
+				context.save();
+				
+				context.beginPath();
+				context.lineWidth = 5;
+				context.strokeStyle = "#000";
+				context.arc( point.x,point.y,mr,0,2*p );
+				context.stroke();
+				context.clip();
+				context.drawImage( offcanvas , sx , sy , 2*mr , 2*mr , dx , dy , 2*mr , 2*mr );
+				context.restore();
+			}
+			
+			canvas.onmousedown = function(e){
+				var e = e || window.event;
+				e.preventDefault()
+				e.stopPropagation();
+				
+				var point = windowToCanvas(e.clientX,e.clientY);
+				
+				drawM(true,point);
+				canvas.onmousemove = function(e){
+					var e = e || window.event;
+					e.preventDefault()
+					e.stopPropagation();
+					
+					point = windowToCanvas(e.clientX,e.clientY)
+					drawM(true,point);
+				}
+				
+			}
+			
+			canvas.onmouseup = function(e){
+				e.preventDefault()
+				e.stopPropagation();
+				
+				drawM(false);
+				is_magnifier = false;
+				canvas.onmousemove = null;
+				
+			}
+			canvas.onmouseleave = function(e){
+				e.preventDefault()
+				e.stopPropagation();
+				
+				drawM(false);
+				is_magnifier = false;
+				canvas.onmousemove = null;
+				
+			}
+		}
+		
+	</script>
+</html>

@@ -1,0 +1,67 @@
+﻿
+//得到元素的样式
+function getStyle(obj,name){
+	if(obj.currentStyle){
+		return obj.currentStyle[name];
+	}else{
+		return getComputedStyle(obj,false)[name];
+	}
+}
+
+//得到变量的类型
+function type(obj){
+	return obj.prototype.toString.call(obj).slice(8,-1).toLowerCase();
+}
+
+function getConstructorName(obj){
+	return obj && obj.constructor && obj.constructor.toString().match(/function\s*([^(]*)/)[1];
+}
+
+//根据classname获得指定元素
+function getByClass(oParent,classname){
+	var aResult = [];
+	var aChild = oParent.getElementsByTagName("*");
+
+	for(var i=0;i<aChild.length;i++){
+		if(aChild[i].className == classname){
+			aResult.push(aChild[i]);
+		}
+	}
+	return aResult;
+}
+
+
+childNodes       所有子节点 包括文本节点和标签节点    obj.childNodes
+children         所有标签子节点						  obj.children
+parentNode       父级元素							  obj.parentNode
+offsetParent     用来定位的父级元素					  obj.offsetParent
+
+firstChild、firstElementChild
+lastChild、lastElementChild
+nextSibling、nextElementSibling
+previousSibling、previousSibling
+
+if(obj.firstChild){
+	obj.firstChild.style.color="red";
+}else{
+	obj.firstElementChild.style.color="red";
+}
+
+if(aLi.length>0)
+{
+	oUl.insertBefore(oLi,aLi[0]);			在第一位插入子元素
+}
+else
+{
+	oUl.appendChild(oLi);					在最后插入子元素
+}
+
+
+document.selection.createRange().text  //ie
+window.getSelection().tostring()       //标准
+
+cloneNode(true/false)  //true:包括子节点 false:不包括子节点
+
+onpropertychange   //ie
+oninput            //标准
+var ie = !-[1,];   //判断是否为ie
