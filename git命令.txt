@@ -1,0 +1,37 @@
+git--工具，版本控制
+GitHub--网站，社交平台，开源项目，远程仓库
+
+git工具：
+不同系统，方式不同
+
+创建一个库并克隆至本地文件夹下
+命令：
+1.访问workspace根目录e盘     cd e:
+2.访问workspace下的项目文件  cd workspace/test-project
+3.克隆远程库                 git clone https://github.com/yanhua1117/hello-world.git
+
+设置贡献者
+命令：
+git config --global user.name "yanhua1117"
+git config --global user.email ""
+查看所有文件：git config --list
+查看用户名或者邮箱：git config --global user.name(email)
+
+
+
+git 的三个区：工作区 暂存区 版本区
+提交文件流程：工作区（修改的文件）----->暂存区（作为过渡层，方便分支处理，防止误操作，保护工作区和版本区）---->版本区
+
+Git 命令：
+git status  查看状态
+将工作区的文件添加到暂存区：   
+git add . （提交所有修改的文件） 或者是 git add demo.html（要添加的文件名）(提交单个修改的文件）-----然后查看是否添加成功：git status 若添加成功，文件名为绿色，不成功为红色
+将暂存区文件添加到版本区：
+git commit----出现一个添加注释的操作（最好写英文）或者是 git commit -m "注释内容"
+
+**简写：git commit -a -m "注释内容" （-a是add的操作，-m是添加注释）
+
+对比：
+git diff （指工作区和暂存区的差异对比）
+git diff --cached 或者是 -- staged（暂存区和版本区的差异对比）
+git diff 加分支名称（工作区与版本区差异对比）
