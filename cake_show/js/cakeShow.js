@@ -5,6 +5,8 @@ window.onload = function(){
 	var oImg = document.getElementById('pic');
 	var oUl = document.getElementById('btn');
 	var aLi = oUl.getElementsByTagName('li');
+	var oSmDiv = document.getElementById('sm_show');
+	var oSmImg = document.getElementById('sm_img');
 	var arrPic = ['img/cake01.jpg','img/cake02.jpg','img/cake03.jpg','img/cake04.jpg','img/cake05.jpg']
 	var num = 0;
 	var oldLi = null;
@@ -67,9 +69,13 @@ window.onload = function(){
 			clearAll();
 		}
 		aLi[i].onmouseover = function(){
-//			num = this.index;
-//			oImg.src = arrPic[num];
-			
+			num = this.index;
+			oSmDiv.style.display = 'block';
+			oSmDiv.style.left = 400+30*num+'px';
+			oSmImg.src = arrPic[num];
+		}
+		aLi[i].onmouseout = function(){
+			oSmDiv.style.display = 'none';
 		}
 	}
 	

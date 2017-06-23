@@ -1,9 +1,13 @@
+html{
+    height:100%;
+}
 body{
-    height: 620px;
-    width: 1345px;
+    height: 100%;
+    width: 100%;
     background: url(../img/bg.jpg)left center no-repeat;
+    background-size: cover;
     .main{
-        height: 620px;
+//      height: 620px;
         width: 1200px;
         margin: 0 auto;
         h2{
@@ -46,7 +50,7 @@ body{
             }
         }
         .cut_btn{
-            height: 10px;
+//          height: 10px;
 //          border: 1px solid #000;
             width: 1200px;
             position: relative;
@@ -57,6 +61,9 @@ body{
                 height: 15px;
                 /* border: 1px solid #000; */
                 margin: 17px auto;
+                position: absolute;
+                left: 518px;
+                top: 7px;
                 li{
                     float: left;
                     width: 15px;
@@ -85,10 +92,15 @@ body{
                 border: 1px solid #ccc;
                 border-radius: 8px;
                 position: relative;
+                left: 400px;
+                top: -104px;
                 z-index: 100;
+                text-align: center;
+                display: none;
                 img{
                     height: 104px;
                     width: 240px;
+                    padding-top: 5px;
                 }
             }
             .sm_pic:after{
