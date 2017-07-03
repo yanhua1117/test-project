@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			li{
+				list-style: none;
+				width: 114px;
+				height: 140px;
+				background: url(img/HBuilder.png)no-repeat;
+				float: left;
+				margin-right: 20px;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				var aLi = document.getElementsByTagName('li');
+				var onOff = true;
+				for(var i=0;i<aLi.length; i++){
+					aLi[i].onOff = true;
+					aLi[i].onclick = function(){
+						if(this.onOff){
+							this.style.background = 'burlywood';
+							this.onOff = false;
+						}else{
+							this.style.background = 'url(img/HBuilder.png)no-repeat';
+							this.onOff = true;
+						}
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</body>
+</html>

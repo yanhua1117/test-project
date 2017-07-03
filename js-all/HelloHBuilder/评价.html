@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				height: 100px;
+				width: 500px;
+				border: 1px solid #333333;
+				padding:5px 5px ;
+			}
+			span{
+				font-size: 20px;
+			}
+			li{
+				float: left;
+				width: 20px;
+				height: 20px;
+				border: 1px solid #333333;
+				list-style: none;
+				margin-right: 20px;
+			}
+			.back{
+				background: #FF4500;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="main">
+			<span>
+				总体评价：
+			</span>
+			<ul id="list">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+			<p>打分</p>
+		</div>
+		<script type="text/javascript">
+			window.onload = function(){
+				var oUl = document.getElementById('list');
+				var aLi = oUl.getElementsByTagName('li');
+				var oP = document.getElementsByTagName('p')[0];
+				var arrP = ['很差','较差','还行','推荐','力挺'];
+				
+				for(var i=0;i<aLi.length;i++){
+					aLi[i].index = i;
+					aLi[i].onmouseover = function(){
+						var cla = this.className;
+						for(var j=0;j<=this.index;j++){
+							if( cla.indexOf("back") < 0 ){
+								aLi[j].style.background = "#FF4500";
+							}
+						}
+						
+//						this.style.background = '#FF4500';
+						oP.innerHTML = arrP[this.index];
+					}
+					aLi[i].onmouseout = function(){
+						var cla_new = this.className.replace(/back/g,"");
+						for(var j=0;j<=this.index;j++){
+							var cla = aLi[j].className;
+							if( cla.indexOf("back") < 0 ){
+								aLi[j].style.background = "";
+//								aLi[j].className = cla_new;
+							}
+							
+						}
+						
+					}
+					aLi[i].onclick =function(){
+						var cla = this.className;
+						for(var j=0;j<=this.index;j++){
+							aLi[j].className = cla+" back";
+						}
+					
+						for(var j=this.index+1;j<aLi.length;j++){
+							aLi[j].style.background = "";
+							aLi[j].className = cla.replace(/back/g,"");
+						}
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

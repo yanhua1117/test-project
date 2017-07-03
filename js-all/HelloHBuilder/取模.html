@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			li{
+				list-style: none;
+				height: 50px;
+				background: #FF4500;
+				margin-bottom: 2px;
+			}
+		</style>
+	</head>
+	<body>
+		<ul id="main">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</body>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oUl = document.getElementById('main');
+			var aLi = oUl.getElementsByTagName('li');
+			var aColor = ['red','blue','yellow'];
+			
+			for(var i=0;i<aLi.length;i++){
+//				aLi[i].index = i;
+				aLi[i].style.background = aColor[i%aColor.length];
+				aLi[i].onmouseover = function(){
+					str = this.style.opacity;
+					this.style.opacity = 0.5;
+				}
+				aLi[i].onmouseout = function(){
+//					this.style.background = aColor[this.index%aColor.length];
+					this.style.opacity = str;
+				}
+				aLi[i].onclick = function(){
+					this.style.background = 'black';
+				}
+			}
+		}
+	</script>
+</html>

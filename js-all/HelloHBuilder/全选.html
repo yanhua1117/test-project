@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.list li:nth-of-type(n){
+				background: #f00;
+			}
+			.list li:nth-of-type(2n){
+				background: #ccc;
+			}
+			.list li:hover{
+				background: #333333;
+			}
+		</style>
+	</head>
+	<body>
+		<ul class="list">
+			<li><input type="checkbox" name="" id="" value="" />私奔</li>
+			<li><input type="checkbox" name="" id="" value="" />北京北京</li>
+			<li><input type="checkbox" name="" id="" value="" />我爱你中国</li>
+			<li><input type="checkbox" name="" id="" value="" />花火</li>
+			<li><input type="checkbox" name="" id="" value="" />回来</li>
+			<li><input type="checkbox" name="" id="" value="" />爱</li>
+		</ul>
+		<div id="">
+			<input type="checkbox" name="" id="all" value="" />全选
+		</div>
+	</body>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oUl = document.getElementsByClassName('list')[0];
+			var aInput = oUl.getElementsByTagName('input');
+			var oAll = document.getElementById('all');
+			for( var i=0;i<aInput.length;i++){
+				aInput[i].onclick = function(){
+					var num = 0;
+					for( var j=0;j<aInput.length;j++){
+						if(aInput[j].checked){
+							num++;
+						}
+					}
+//					if(num==aInput.length){
+//						oAll.checked=true;
+//					}else{
+//						oAll.checked=false;
+//					}
+					num==aInput.length ? oAll.checked=true : oAll.checked=false;
+				}
+			}
+			oAll.onclick = function(){
+				for( var i=0;i<aInput.length;i++ ){
+					aInput[i].checked = this.checked;
+				}
+			}
+		}
+	</script>
+</html>

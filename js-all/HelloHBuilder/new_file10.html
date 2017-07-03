@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			window.onload = function(){
+				var aBtn = document.getElementsByTagName('input');
+				var aP = document.getElementsByTagName('p');
+				var arr = ['呀','哈','嘿'];
+				for(var i=0;i<arr.length;i++){
+					aBtn[i].index = i;			//添加index自定义属性,为每一个btn添加索引值
+					aBtn[i].onclick = function(){
+						this.value = arr[this.index];
+						aP[this.index].innerHTML = arr[this.index];
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button" id="" value="" />
+		<input type="button" id="" value="" />
+		<input type="button" id="" value="" />
+		<p></p>
+		<p></p>
+		<p></p>
+	</body>
+</html>

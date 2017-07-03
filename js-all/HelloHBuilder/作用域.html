@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+//变量作用域
+//			var num = 1;
+//			function fn(){
+////				var num = 2;
+////				num = 2;
+//				return num;
+//			}
+//			alert(fn());
+//函数作用域
+//			var num = 1;
+//			function fn(){
+//				alert(num);
+//				var num = 1;
+//				alert(num);
+//			}
+//			fn();
+//			function t(flag){  
+//		    if(flag){  
+//		        var s="ifscope";  
+//		        for(var i=0;i<2;i++)   
+//		            ;  
+//		    }  
+//		    	console.log(i);  
+//		    	console.log(s);  
+//			}  
+//t(true);  
+			var a = 1;
+			function fn1(a){
+				alert(a);
+				a = 2;
+			}
+			fn1(a);          //1
+			alert(a);       //2
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

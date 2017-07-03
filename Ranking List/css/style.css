@@ -1,0 +1,32 @@
+.list {
+  height: 100%px;
+  width: 250px;
+  border: 1px solid #000000;
+}
+.list span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  background: blue;
+  color: #fff;
+  line-height: 20px;
+  margin-right: 10px;
+}
+.list li {
+  margin: 15px 0;
+  border-bottom: 1px dotted #000;
+}
+.list div {
+  width: 230px;
+  height: 80px;
+  float: left;
+}
+.list div img {
+  width: 80px ;
+  height: 60px;
+  display: inline-block;
+}
+.list div p {
+  display: inline-block;
+}
