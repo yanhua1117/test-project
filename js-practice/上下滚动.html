@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<style type="text/css">
+			.main{
+				width: 200px;
+				height: 500px;
+				border: 1px solid #656565;
+			}
+			.main a{
+				display: block;
+				width: 200px;
+				height: 20px;
+				background: cornflowerblue;
+			}
+			.list{
+				width: 200px;
+				height: 460px;
+				overflow:hidden
+			}
+			.list li{
+				width: 200px;
+				height: ;
+				padding: 10px 10px;
+				border-bottom: 1px solid #656565;
+			}
+			li img{
+				width: 100px;
+				height: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="main">
+			<a href="#">up</a>
+			<ul class="list">
+				<li>
+					<h3>笔记本电脑</h3>
+					<p>RMB 7，068起，最多降低了35%</p>
+					<img src="img/cake01.jpg"/>
+				</li>
+				<li>
+					<h3>笔记本电脑</h3>
+					<p>RMB 7，068起，最多降低了35%</p>
+					<img src="img/cake01.jpg"/>
+				</li>
+				<li>
+					<h3>笔记本电脑</h3>
+					<p>RMB 7，068起，最多降低了35%</p>
+					<img src="img/cake01.jpg"/>
+				</li>
+				<li>
+					<h3>笔记本电脑</h3>
+					<p>RMB 7，068起，最多降低了35%</p>
+					<img src="img/cake01.jpg"/>
+				</li>
+				<li>
+					<h3>笔记本电脑</h3>
+					<p>RMB 7，068起，最多降低了35%</p>
+					<img src="img/cake01.jpg"/>
+				</li>
+				<li>
+					<h3>笔记本电脑</h3>
+					<p>RMB 7，068起，最多降低了35%</p>
+					<img src="img/cake01.jpg"/>
+				</li>
+				<li>
+					<h3>笔记本电脑</h3>
+					<p>RMB 7，068起，最多降低了35%</p>
+					<img src="img/cake01.jpg"/>
+				</li>
+			</ul>
+			<a href="#">down</a>
+		</div>
+		<script type="text/javascript">
+			window.onload = function (){
+				var aBtn = document.getElementsByTagName('a'),
+					oUl = document.getElementsByClassName('list')[0];
+					timer = null,
+					num = 0;
+					
+				//向上滚动按钮鼠标按下时，ul向上滚动	
+				aBtn[0].onmousedown = function (){
+					clearInterval(timer);
+					timer = setInterval( function (){
+						num -= 5;
+						if(num >= 460){
+							clearInterval(timer);
+						}else{
+							oUl.style.marginTop = num + 'px';
+						}
+					},60 );
+					
+				}
+				
+				//向上滚动按钮鼠标松开时，ul停止滚动
+				aBtn[0].onmouseup = function (){
+					clearInterval(timer);
+				}
+				
+				//向下滚动按钮鼠标按下时，ul向下滚动
+				aBtn[1].onmousedown = function (){
+					clearInterval(timer);
+					timer = setInterval(function (){
+						num += 5;
+						oUl.style.marginTop = num + 'px';
+					},60);
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -11,6 +11,15 @@ window.onload = function(){
 	var num = 0;
 	var oldLi = null;
 	
+	
+	var timer = null;
+	timer = setInterval( function(){
+		num++;
+		num% = arrPic.length;
+		
+	},1000);
+	
+	
 	//清除上一张按钮样式并未当前添加样式
 	function clearAll(){
 		for(var i=0;i<aLi.length;i++){
