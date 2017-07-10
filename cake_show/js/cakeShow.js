@@ -12,12 +12,12 @@ window.onload = function(){
 	var oldLi = null;
 	
 	
-	var timer = null;
-	timer = setInterval( function(){
-		num++;
-		num% = arrPic.length;
-		
-	},1000);
+//	var timer = null;
+//	timer = setInterval( function(){
+//		num++;
+//		num% = arrPic.length;
+//		
+//	},1000);
 	
 	
 	//清除上一张按钮样式并未当前添加样式
