@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="reset.css"/>
+		<style type="text/css">
+			body{
+				font-size: 16px;
+				font-weight: bold;
+			}
+			#mainNav{
+				height: 30px;
+				width: 500px;
+				background: lightskyblue;
+			}
+			#mainNav li{
+				float: left;
+				height: 30px;
+				line-height: 30px;
+				padding: 0 20px;
+			}
+			.nav{
+				height: 30px;
+				width: 250px;
+				background: lightblue;
+				margin-top: 15px;
+				display: none;
+			}
+			.nav li{
+				float: left;
+				height: 30px;
+				line-height: 30px;
+				padding: 0 5px;
+				font-size: 12px;
+			}
+			li a{
+				color: #FFFFFF;
+			}
+			li a:hover{
+				text-decoration: underline;
+			}
+		</style>
+	</head>
+	<body>
+		<ul id="mainNav">
+			<li><a href="#">首页</a></li>
+			<li><a href="#">关于我们</a></li>
+			<li><a href="#">作品</a></li>
+			<li><a href="#">博客</a></li>
+		</ul>
+		<div class="nav">
+			<ul id="btm_nav">
+				<li><a href="#">最近更新</a></li>
+				<li><a href="#">活动</a></li>
+				<li><a href="#">报名试听</a></li>
+				<li><a href="#">学员反馈</a></li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			window.onload = function (){
+				var oUl = document.getElementById('mainNav');
+					aLi = oUl.getElementsByTagName('li');
+					oDiv = document.getElementsByClassName('nav')[0];
+					num = 0;
+					timer = null;
+					
+					
+				for( var i = 0 ; i < aLi.length ; i++ ){
+					aLi[i].index = i;
+					
+					aLi[i].onmouseover = function (){
+						num = this.index;
+						oDiv.style.display = 'block';
+						oDiv.style.marginLeft = 70*num + 'px';
+					}
+					
+					aLi[i].onmouseout = function (){
+						clearInterval(timer);
+						timer = setInterval( function (){
+							oDiv.style.display = 'none';
+						},1000 );
+
+					}
+					
+					oDiv.onmouseover = function (){
+						clearInterval(timer);
+						oDiv.style.display = 'block';
+					}
+					oDiv.onmouseout = function (){
+						timer = setInterval( function (){
+							oDiv.style.display = 'none';
+						},1000);
+					}
+				}
+				
+			}
+		</script>
+	</body>
+</html>

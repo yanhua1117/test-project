@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#main{
+				width: 100px;
+				height: 100px;
+				background: #FF4500;
+				position: absolute;
+				top: 50px;
+				left: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" name="" id="" value="向后" />
+		<input type="button" name="" id="" value="向前" />
+		<div id="main">
+			
+		</div>
+		<script type="text/javascript">
+			var aBtn = document.getElementsByTagName('input');
+				oDiv = document.getElementById('main');
+//				timer = null;
+			aBtn[1].onclick = function (){
+//				clearInterval(oDiv.timer);
+//				oDiv.timer = setInterval(function (){
+//					var speed = parseInt(getStyle(oDiv,'left')) + 12;
+//					if(speed>800){
+//						speed = 800;
+//					}
+//					oDiv.style.left = speed + 'px';
+//					if( speed ==800 ){
+//						clearInterval( oDiv.timer );
+//					}
+//				},30);
+
+				doMove( oDiv,'left', 12, 800, function (){
+//					doMove( oDiv, 'height', 80, 500 );
+				} );
+			}
+			function getStyle (obj ,attr ){
+				return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj)[attr];
+			}
+			
+			aBtn[0].onclick = function (){
+//				clearInterval(oDiv.timer);
+//				oDiv.timer = setInterval(function (){
+//					var speed = parseInt(getStyle( oDiv , 'left')) +-12;
+//					if(speed<10){
+//						speed = 10;
+//					}
+//					oDiv.style.left = speed + 'px';
+//					if( speed == 10 ){
+//						clearInterval( oDiv.timer );
+//					}
+//				},30);
+
+				doMove( oDiv, 'left', 12, 10);
+			}
+			
+			
+			//整合代码，设三个参数，div对象，每一步移动距离，目标长度
+			function doMove( obj, attr, dir, target ,endFn ){
+				dir = parseInt( getStyle( obj,attr ) ) < target ? dir : -dir;
+				clearInterval(obj.timer);
+				oDiv.timer = setInterval(function (){
+					//div移动速度
+					var speed = parseInt(getStyle( obj , 'left')) +dir;
+					
+					//如果移动的地方小于目的地并且向左移动，则停止移动;
+					//或者如果移动的地方大于目的地并且向右移动，则停止移动
+					if( speed<target && dir<0 ||  speed > target && dir>0 ){
+						speed = target;
+					}
+					
+//					//如果移动的地方大于目的地并且向右移动，则停止移动
+//					if( speed > target && dir>0 ){
+//						speed = target;
+//					}
+					obj.style.left = speed + 'px';
+					
+					if( speed == target ){
+						clearInterval( obj.timer );
+						
+					endFn && endFn();
+					}
+				},30);
+			}
+		</script>
+	</body>
+</html>

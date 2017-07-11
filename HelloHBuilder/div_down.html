@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/doMove.js" ></script>
+		<script type="text/javascript">
+			window.onload = function (){
+				var str = '',
+					len = 20,
+					aDiv = document.getElementsByTagName('div');
+					timer = null;
+
+				//添加一排div，并设置样式
+				for ( var i = 0; i < len; i++){
+					str += '<div style="width:50px; height:50px; background:blue; position:absolute; top:0px; left:'+ i*60 +'px;"></div>';
+				}
+				
+				document.body.innerHTML = str;
+				
+				//设置一个开关，控制点击次数，每次点击后，关闭定时器后将true改成false或者把false改成true
+				var onOff = true;
+				document.onclick = function (){
+					//初始化，从第一个div开始，每次执行完毕后num+1
+					var num = 0;
+					clearInterval( timer );
+					if( onOff ){
+						timer = setInterval( function (){
+							doMove( aDiv[num],'top',23,500 );
+							num++;
+							if( num ===len ){
+								clearInterval( timer );
+								onOff = false;
+							}
+						},100 );
+					}else{
+						timer = setInterval( function (){
+							doMove( aDiv[num],'top',23,0 );
+							num++;
+							if( num ===len ){
+								clearInterval( timer );
+								onOff = true;
+							}
+						},100 );
+					}
+					
+//					timer = setInterval( function (){
+//						doMove( aDiv[num],'top',23,500 );
+//						num++;
+//						if( num ===len ){
+//							clearInterval( timer );
+//						}
+//					},100 );
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

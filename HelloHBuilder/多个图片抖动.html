@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			img{
+				width: 150px;
+				position: absolute;
+				top: 300px;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function (){
+				
+				var aImg = document.getElementsByTagName('img');
+				
+				for( var i = 0; i < aImg.length; i++ ){
+					aImg[i].style.left = 100+i*220+'px';
+					//设置一个开关，让每一次抖动结束后才可以抖动下一次*******
+					aImg[i].sharkable = true;
+					
+					aImg[i].onmouseover = function (){
+						if( this.sharkable )
+						shake( this,'top' );
+					}
+				}
+			}
+			
+			function shake(obj,attr,endFn){
+				obj.sharkable = false;
+				var arr = [];
+			    var num = 0;
+			    var timer = null;
+			    var pos = parseInt( getStyle(obj,attr) );
+			    
+			    
+				for( var i = 20; i > 0; i-=2 ){
+				arr.push( i,-i );
+				}
+				arr.push(0);
+		
+				clearInterval( obj.shake );
+				obj.shake = setInterval( function (){
+					obj.style[attr] = pos + arr[num] + 'px';
+					num++;
+					if( num === arr.length ){
+						clearInterval( obj.shake );
+						obj.sharkable = true;
+						endFn && endFn();
+					}
+				},50 );
+			}
+			
+			function getStyle ( obj, attr ) { return obj.currentStyle?obj.currentStyle[attr] : getComputedStyle( obj )[attr]; }
+		</script>
+	</head>
+	<body>
+		<img src="img/cake01.jpg"/>
+		<img src="img/cake02.jpg"/>
+		<img src="img/cake03.jpg"/>
+		<img src="img/cake04.jpg"/>
+		<img src="img/cake05.jpg"/>
+	</body>
+</html>

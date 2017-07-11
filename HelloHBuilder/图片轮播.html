@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="reset.css"/>
+		<style type="text/css">
+			body{
+				font-size: 18px;
+				color: #FFFFFF;
+				font-weight: bold;
+				line-height: 30px;
+			}
+			.main{
+				width: 333px;
+				height: 104px;
+			}
+			.main2{
+				display: none;
+			}
+			.menu{
+				height: 30px;
+				overflow: hidden;
+			}
+			.menu li{
+				float: left;
+				padding: 0 12px;
+				border-right: 1px solid #FFFFFF;
+				margin-bottom: 0px!important;
+				margin-top: 0px!important;
+				background: #ADD8E6;
+			}
+			img{
+				width:240px;
+				height:104px;
+				float: left;
+			}
+			.menu2{
+				height: 36.4px;
+				width: 88px;
+				background: #ADD8E6;
+				float: left;
+				text-align: center;
+				height:104px;
+				line-height:34px;
+			}
+			.menu2 li{
+				border-bottom: 1px solid #FFFFFF;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="all clearfix">
+			<ul class="menu">
+				<li>MENU 1</li>
+				<li>MENU 2</li>
+			</ul>
+			<div class="main main1">
+				<img src="img/cake01.jpg"/>
+				<ul class="menu2">
+					<li class="item" data-id="1" data-index='0'>图片一</li>
+					<li class="item" data-id="2" data-index='0'>图片二</li>
+					<li class="item" data-id="3" data-index='0'>图片三</li>
+				</ul>
+			</div>
+			<div class="main main2">
+				<img src="img/cake01.jpg"/>
+				<ul class="menu2">
+					<li class="item" data-id="4" data-index='1'>图片四</li>
+					<li class="item" data-id="5" data-index='1'>图片五</li>
+					<li class="item" data-id="6" data-index='1'>图片六</li>
+				</ul>
+			</div>
+		</div>
+		<script type="text/javascript">
+			window.onload = function (){
+				var arrPic = ['img/cake01.jpg' , 'img/cake02.jpg' , 'img/cake03.jpg' , 'img/cake04.jpg' , 'img/cake02.jpg' , 'img/cake03.jpg'];
+				var arrText = ['图片一' , '图片二' , '图片三' , '图片四' , '图片五' , '图片六'];
+				var oUl_main = document.getElementsByClassName('menu')[0];
+				var aLi_main = oUl_main.getElementsByTagName('li');
+				var oUl_text = document.getElementsByClassName('menu2')[0];
+				var aLi_text = document.getElementsByClassName('item');
+//				var aA_text = oUl_text.getElementsByTagName('a');
+				var oImg = document.getElementsByTagName('img');
+
+				var timer = null;
+				
+				//定时器轮播图片
+				timer = setInterval( function (){
+					
+				},2000 );
+				
+				function reset(){
+						this.style.background = '#ADD8E6';
+				}
+				
+				//循环主导航，当鼠标移入时，显示对应的div，另一个则隐藏
+				for( var i = 0 ; i < aLi_main.length ; i++ ){
+					aLi_main[i].index = i+1;         //索引值，当前鼠标所在的li的索引
+					
+					aLi_main[i].onmouseover = function (){
+						
+						this.style.background = 'cornflowerblue';
+						//先把所有menu1和menu2下的div都隐藏
+						var aMain = document.getElementsByClassName("main");
+						for( var j = 0; j < aMain.length; j++ ){
+							var obj = aMain[j];
+							obj.style.display = 'none';
+						}
+						
+						//index储存当前索引值，鼠标移入那个索引值的menu就显示那个menu下的div
+						var index = this.index;
+						var oMain = document.getElementsByClassName("main"+index)[0];
+						oMain.style.display = 'block';
+					}
+					aLi_main[i].onmouseout = reset;
+				}
+				
+				//data-index是两个div的索引，data-id是副导航的三个li的索引
+				//当鼠标移入副导航的每一个li时，显示对应的图片，dataId则用来替换图片src的1,2,3,4,5,6
+				for( var i = 0; i < aLi_text.length; i++){
+					aLi_text[i].onmouseover = function (){
+						this.style.background = 'cornflowerblue';
+						
+						var dataIndex = parseInt(this.getAttribute("data-index"));
+						var dataId = this.getAttribute("data-id");
+						oImg[dataIndex].src = 'img/cake0'+dataId+".jpg";
+					}
+					aLi_text[i].onmouseout = reset;
+					
+				}
+				
+				
+				
+//				timer = setInterval( function (){
+//					for( var i = 0 ; i < aLi_main.length ; i++){
+//						
+//						
+//					}
+//				},2000 );
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function getNum( num ){
+			    if( num <= 1 ){
+			        return num;
+			    }else{
+			        return num*getNum(--num);
+			    }
+			}
+			alert(getNum(10));
+		</script>
+	</body>
+</html>

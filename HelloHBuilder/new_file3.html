@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="">
+			<span>请输入一个整数：</span>
+			<input type="text" id="input"/>
+			<input type="button" value="判断" onclick="result()">
+		</form>
+		<script type="text/javascript">
+			function result(){
+				var num = document.getElementById("input").value;
+//				if(num==1){
+//					ducument.write("1既不是素数也不是合数");
+//				}else{
+//					for(var i=1;i<num;i++){
+//						if(num%i==0){
+//							ducument.write("不是素数");
+//						}else if(num==i){
+//							ducument.write("是素数");
+//						}
+//					}
+//				}
+		if(num==1){
+          document.write("1既不是素数也不是合数");
+        }else if(num==2){
+          document.write("2是素数");
+        }else{
+          for(var i=2;i<num;i++){
+            if(num%i==0){
+              document.write(num+"不是素数");
+              break;
+            }
+          }
+          if(i==num){
+            document.write(num+"是素数");
+          }
+			}
+		</script>
+	</body>
+</html>

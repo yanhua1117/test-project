@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 200px;
+				height: 150px;
+				background: #FF4500;
+			}
+		</style>
+		<script>
+			window.onload = function (){
+				function getStyle(obj,attr){
+//					if(obj.currentStyle){
+//						return obj.currentStyle[attr];
+//					}else{
+//						return obj.getComputedStyle[attr];
+//					}
+					return obj.currentStyle ? obj.currentStyle[attr] : obj.getComputedStyle[attr];
+				}
+				var oBtn = document.getElementById('btn');
+				oBtn.onclick = 
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button" name="" id="btn" value="点击" />
+		<div id="abc"></div>
+	</body>
+	
+</html>
