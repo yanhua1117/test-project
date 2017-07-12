@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<style type="text/css">
+			body{
+				background: powderblue;
+			}
+			#main{
+				width: 900px;
+				height: 150px;
+				margin: 150px auto;
+				background: red;
+				position: relative;
+			}
+			#main ul{
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			div img{
+				width: 100%;
+				height: 100%;
+			}
+			div ul li{
+				float: left;
+				width: 225px;
+				height: 150px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="main">
+			<ul>
+				<li><img src="img/cake01.jpg"/></li>
+				<li><img src="img/cake02.jpg"/></li>
+				<li><img src="img/cake03.jpg"/></li>
+				<li><img src="img/cake04.jpg"/></li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			
+			window.onload = function (){
+				
+				var oDiv = document.getElementById('main');
+				var oUl = oDiv.getElementsByTagName('ul')[0];
+				var aLi = oUl.getElementsByTagName('li');
+				var timer = null;
+				
+				oUl.innerHTML += oUl.innerHTML;
+				//给ul加上宽度，使li在一行显示；ul的宽度等于一个li的宽度乘以li的个数
+				oUl.style.width = aLi[0].offsetWidth*aLi.length + 'px';
+				timer = setInterval( doMove,30 );
+				
+				function doMove(){
+					oUl.style.left = oUl.offsetLeft + 2 + 'px';
+					if()
+				}
+				
+			}
+		</script>
+	</body>
+</html>

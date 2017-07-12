@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/doMove.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<style type="text/css">
+			.all{
+				width: 500px;
+				height: 217px;
+				border: 1px solid #333333;
+				overflow: hidden;
+				position: relative;
+			}
+			#main{
+				position: absolute;
+				left: 0;
+				top: 0px;
+				
+			}
+			#main li{
+				width: 500px;
+				height: 217px;
+				position:relative;
+				/*float: left;*/
+			}
+			#main li div{
+				width: 500px;
+				height: 60px;
+				background: #333333;
+				position: absolute;
+				left: 100%;
+				bottom: 0;
+				z-index: 100;
+				opacity: 0.5;
+				color: #FFFFFF;
+				/*float: left;*/
+			}
+			#main img{
+				height: 100%;
+				width: 100%;
+			}
+			#text{
+				width: 500px;
+				height: 60px;
+				background: #333333;
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				z-index: 100;
+				opacity: 0.5;
+				color: #FFFFFF;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="all">
+			<ul id="main">
+				<li>
+					<img src="img/cake01.jpg"/>
+					<div>
+						<h3>标题一</h3>
+						<p>内容一</p>
+					</div>
+				</li>
+				<li>
+					<img src="img/cake02.jpg"/>
+					<div>
+						<h3>标题二</h3>
+						<p>内容二</p>
+					</div>
+				</li>
+				<li>
+					<img src="img/cake03.jpg"/>
+					<div>
+						<h3>标题三</h3>
+						<p>内容三</p>
+					</div>
+				</li>
+				<li>
+					<img src="img/cake04.jpg"/>
+					<div>
+						<h3>标题四</h3>
+						<p>内容四</p>
+					</div>
+				</li>
+			</ul>
+			
+		</div>
+		<script type="text/javascript">
+			window.onload = function (){
+				
+				var oUl = document.getElementById('main');
+				var aLi = oUl.getElementsByTagName('li');
+				var oDiv = document.getElementById('text');
+				var timer = null;
+				var timer2 = null;
+				var num = 0;
+				var arrH3 = ['标题一','标题二','标题三','标题四'];
+				var arrP = ['内容一','内容二','内容三','内容四'];
+				
+				//图片轮播定时器不加doMove()
+//				clearInterval( timer );
+//				timer = setInterval( function (){
+//					
+//					oUl.style.top = 217*num + 'px';
+//					num--;
+//					if( num == -aLi.length ){
+//						num = 0;
+//					}
+//				},2000 );
+				
+				//图片轮播定时器加doMove()
+				clearInterval( timer );
+				
+				//设置第一张图片的文字div移入效果，一般这种开定时器的都要考虑第一个的情况，否则会有一个时间间隔，因为定时器的原因
+				var _num = Math.abs(num);		//取num的绝对值
+				var _oDiv = oUl.getElementsByTagName("div")[_num];  //获取第一个div
+				doMove( _oDiv,'left',23,0 );
+				//1.5秒后文字div移出
+				setTimeout(function(){
+					doMove( _oDiv,'left',23,500 );
+				},1500)
+				
+				//图片轮播的定时器
+				timer = setInterval( function (){
+					num--;
+					if( num == -aLi.length ){
+						num = 0;
+					}
+					doMove( oUl,'top',23,217*num,function(){
+						var _num = Math.abs(num);
+						var oDiv = oUl.getElementsByTagName("div")[_num];
+						doMove( oDiv,'left',23,0 );
+						setTimeout(function(){
+							doMove( oDiv,'left',23,500 );
+						},1500)
+					} );
+					
+				},3500 );
+
+			}
+		</script>
+	</body>
+</html>
