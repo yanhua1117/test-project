@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			p{
+				border: 1px solid yellowgreen;
+				width: 300px;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function (){
+				
+				var oP = document.getElementsByTagName('p')[0];
+				var oSpan = oP.getElementsByTagName('span')[0];
+				var oA = oP.getElementsByTagName('a')[0];
+				var str = oSpan.innerHTML;
+				var onOff = true;
+				
+				oA.onclick = function (){
+					if( onOff ){
+						oSpan.innerHTML = str.substring(0,18);
+						oA.innerHTML = '>>展开';
+					}else{
+						oSpan.innerHTML = str;
+						oA.innerHTML = '>>收缩';
+					}
+					onOff = !onOff;
+					
+					
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<p>
+			<span>
+				近日，他告诉澎湃新闻，其所在小区公办幼儿园建成近4年一直闲置，其他幼儿园最近的也在10公里外。“住过来孩子没办法上学，现在很多业主都只能继续在市里租房子住。”王勇说。<br />对此，横山区教育局办公室的一名工作人员对澎湃新闻表示，该幼儿园迟迟未开放的原因主要是小区居住率太低，“现在没有生源，有生源就会启用的。”而教育局一马姓副局长则回应澎湃新闻称，一定可以如期招生，预计在9月份开始正式招生。
+			</span>......
+			<a href="javascript:;">>>收缩</a></p>
+	</body>
+</html>

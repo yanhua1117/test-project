@@ -1,29 +1,95 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-	</head>
-	<body>
-		<!--<form action="">
-			<label>你对什么运动感兴趣：</lable><br />
-			<label for="running">慢跑</label>
-			<input type="checkbox" id="running" name="sport" value="running"/><br />
-			<label for="swiming">游泳</label>
-			<input type="checkbox" name="sport" id="swiming" value="swiming"/>			<lable for=""></lable>
-		</form>-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<style type="text/css">
+li{
+	float:left;
+	border:1px solid red;
+	}
+ li ul li{
+	position:relative;
+	border:none;
+	background:#0FF;
+	float:none;
+	}
+	li ul{
+		display:none;
+		}
+</style>
+<script type="text/javascript" >
+function testShow(num){
+	//alert("the show");
+	for(var i=1; i<5; i++){
+		var obj=document.getElementById("test"+i);
+		obj.style.display="none";
+		}
+	    var obj1=document.getElementById("test"+num);
+		obj1.style.display="block";
+	}
+</script>
+</head>
+<body>
+<input type="button"  value="click" onclick="testShow()" />
+ <ul>
+   <li onmouseover="testShow(1)">第一个第一层
+     <ul id="test1">
+      <li>第一个第二层</li>
+      <li>第一个第二层</li>
+     </ul>
+     
+   <li onmouseover="testShow(2)">第二个第一层
+     <ul id="test2" >
+       <li>第二个第二层</li>
+       <li>第二个第二层</li>
+     </ul>
+   <li  onmouseover="testShow(3)">
+     第三个第一层
+     <ul id="test3">
+       <li>第三个第二层</li>
+       <li>第三个第二层</li>
+     </ul>
+   </li>
+   <li onmouseover="testShow(4)">
+   第四个第一层
+     <ul id="test4" >
+       <li>第四个第二层</li>
+       <li>第四个第二层</li>
+     </ul>
+   </li>
+   <li></li>
+ </ul>
+  
+</body>
+<!--var arr = [1,2,3,4,5,6,7,8];
+	var oUl = document.getElementById("list");
+	
+	loadList(arr);
+	var oBtn1 = document.getElementById("btn1");
+	var oBtn2 = document.getElementById("btn2");
+	oBtn1.onclick = function(){
+		arr.sort(function(a,b){
+			return b-a;
+		})
+		loadList(arr);
+	}
+	oBtn2.onclick = function(){
+		arr.sort(function(a,b){
+			return 0.5 - Math.random();
+		})
+		loadList(arr);
+	}
+	function loadList(arr){
+		var html = '';
 		
-	<!--<form>
-      <label>你对什么运动感兴趣:</label><br />
-      <label for="mp">慢跑 </label>
-      <input type="checkbox" name="manpao" id="mp" value="慢跑" />
-      <br />
-      <label for="ds">登山</label>
-      <input type="checkbox" name="dengshan" value="登山" id="ds" />
-      <br />
-      <label for="lq">篮球</label>
-      <input type="checkbox" name="dlanq" value="篮球" id="lq" />
-  </form>-->
-  		<a href="javascript:alert('清除成功');">清除缓存</a>
-	</body>
+		for( var i=0;i<arr.length;i++ ){
+			html += `<li>
+						<img src="img/cake0${arr[i]}.jpg"/>
+						<p>${arr[i]}-蛋糕${arr[i]}</p>
+					</li>`;
+		}
+		oUl.innerHTML = html;
+	}
+</script>-->
 </html>

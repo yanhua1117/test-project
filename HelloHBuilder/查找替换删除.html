@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<style type="text/css">
+			body{
+				background: gainsboro;
+				font-size: 16px;
+				
+			}
+			#main{
+				width: 400px;
+				height: 300px;
+				background: #FFFFFF;
+				padding: 20px 20px;
+				float: left;
+				margin-right: 40px;
+			}
+			#select{
+				display: none;
+			}
+			#list{
+				float: left;
+			}
+			#select li,span{
+				width: 50px;
+				height: 30px;
+				line-height: 30px;
+				border-bottom: 1px solid #FFFFFF;
+				text-align: center;
+				background: #CCCCCC;
+			}
+			span{
+				display: inline-block;
+			}
+			#bottom{
+				float: left;
+				margin: 30px 10px;
+				clear:both;
+				width: 350px;
+				height: 150px;
+				border: 5px solid #FF4500;
+				background: #FFFFCC;
+				/*margin-left: 40px ;*/
+				padding: 40px;
+				display: none;
+			}
+			#btm_nav{
+				width: 350px;
+				height: 30px;
+				border-bottom: 3px solid #FF4500;
+			}
+			#btm_nav li{
+				float: left;
+				width: 100px;
+				height: 30px;
+				line-height: 30px;
+				text-align: center;
+				/*margin-right: 20px;*/
+			}
+			.com_text{
+				width: 300px;
+				height: 30px;
+				border: 2px solid #FF4500;
+				margin-top: 30px;
+			}
+			.com_btn{
+				width: 40px;
+				height: 34px;
+				text-align: center;
+				line-height: 30px;
+				background: #FF4500;
+			}
+			.active{
+				background: #FF4500;
+			}
+			p span{
+				background: #FF4500;
+			}
+			.com{
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="all">
+			<div id="main">
+				<p>JavaScript一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言，内置支持类型。它的解释器被称为JavaScript引擎，为浏览器的一部分，广泛用于客户端的脚本语言，最早是在HTML（标准通用标记语言下的一个应用）网页上使用，用来给HTML网页增加动态功能。在1995年时，由Netscape公司的Brendan Eich，在网景导航者浏览器上首次设计实现而成。因为Netscape与Sun合作，Netscape管理层希望它外观看起来像Java，因此取名为JavaScript。但实际上它的语法风格与Self及Scheme较为接近。[1]为了取得技术优势，微软推出了JScript，CEnvi推出ScriptEase，与JavaScript同样可在浏览器上运行。为了统一规格，因为JavaScript兼容于ECMA标准，因此也称为ECMAScript。</p>
+			</div>
+			<div id="list">
+				<span>展开</span>
+				<ul id="select">
+					<li>查找</li>
+					<li>替换</li>
+				</ul>
+			</div>
+			
+			<div id="bottom">
+				<ul id="btm_nav">
+					<li>查找</li>
+					<li>替换</li>
+				</ul>
+				<div id="searchDiv" class="com">
+					<input type="text" name="" id="text" value="" class="com_text"/>
+					<input type="button" name="" id="search" value="查找" class="com_btn"/>
+				</div>
+				<div class="com" id="replaceDiv">
+					<input type="text" name="replaceOld" id="replaceOld" value="" class="com_text" />
+					<input type="text" name="replaceNew" id="replaceNew" value="" class="com_text" />
+					<input type="button" name="replaceBtn" id="replaceBtn" value="替换"  class="com_btn"/>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			window.onload = function (){
+				
+				var oSpan = document.getElementsByTagName('span')[0];
+				var oUl_list = document.getElementById('select');
+				var aLi_list = oUl_list.getElementsByTagName('li');
+				var oDiv_btm = document.getElementById('bottom');
+				var oUl_btm = document.getElementById('btm_nav');
+				var aLi_btm = oUl_btm.getElementsByTagName('li');
+				var oP = document.getElementsByTagName('p')[0];
+				var oInput_text = document.getElementById('text');
+				var oInput_btn = document.getElementById('search');
+				var showSearch = document.getElementById('searchDiv');
+				var showReplace = document.getElementById('replaceDiv');
+				var replace_btn = document.getElementById('replaceBtn');
+				var aInputReplace = showReplace.getElementsByTagName('input');
+				var onOff = true;
+				
+				oSpan.onclick = function (){
+					if( onOff ){
+						oUl_list.style.display = 'block';
+					}else{
+						oUl_list.style.display = 'none';
+					}
+					onOff = !onOff;
+				}
+				
+				for( var i = 0; i < aLi_list.length; i++ ){
+					aLi_list[i].onmouseover = function (){
+						this.style.background = '#FF4500';
+					}
+					aLi_list[i].onmouseout = function (){
+						this.style.background = '#CCCCCC';
+					}
+				}
+				
+				aLi_list[0].onclick = function (){
+					oDiv_btm.style.display = 'block';
+					search();
+				}
+				aLi_list[1].onclick = function (){
+					oDiv_btm.style.display = 'block';
+					replace();
+				}
+				function search(){
+					showSearch.style.display = 'block';
+					showReplace.style.display = 'none';
+					aLi_btm[0].className = 'active';
+					aLi_btm[1].className = '';
+					oInput_btn.onclick = function (){
+						var str = oInput_text.value;
+						oP.innerHTML = oP.innerHTML.split(str).join('<span>'+str+'</span>');
+					}
+				}
+				function replace(){
+					showReplace.style.display = 'block';
+					showSearch.style.display = 'none';
+					aLi_btm[1].className = 'active';
+					aLi_btm[0].className = '';
+					replace_btn.onclick = function (){
+						var str = oP.innerHTML;
+//						oP.innerHTML = str;
+						var arr = str.split(aInputReplace[0].value);
+						oP.innerHTML = arr.join( aInputReplace[1].value);
+						str = oP.innerHTML;
+						aInputReplace[0].value = '';
+						aInputReplace[1].value = '';
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<style type="text/css">
+			#all{
+				width: 800px;
+				height: 450px;
+				/*border: 1px solid #000000 ;*/
+				background: #FFFFCC;
+			}
+			#top{
+				width: 200px;
+				height: 40px;
+				margin: 20px auto;
+			}
+			#top input{
+				width: 80px;
+				height: 40px;
+				background: #B0E0E6;
+				color: #FFFFFF;
+				font-size: 16px;
+				margin-top: 20px;
+			}
+			#list li{
+		        width: 160px;
+				height: 100%;
+			    float: left;
+			    margin: 30px 10px;
+			    font-size: 0;
+			    border: 10px solid #FFFFFF;
+			}
+			img{
+				width: 100%;
+				height: 100%;
+			}
+			#list p{
+				width: 160px;
+				height: 30px;
+				background: #B0E0E6;
+				line-height: 30px;
+				text-align: center;
+				color: #FFFFFF;
+				font-size: 12px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="all">
+			<div id="top">
+				<input type="button" name="" id="btn1" value="从大到小" />
+				<input type="button" name="" id="btn2" value="打乱顺序 " />
+			</div>
+			<div id="bottom">
+				<ul id="list">
+					<!--<li>
+						<img src="img/cake01.jpg"/>
+						<p>1-蛋糕1</p>
+					</li>
+					<li>
+						<img src="img/cake02.jpg"/>
+						<p>2-蛋糕2</p>
+					</li>
+					<li>
+						<img src="img/cake03.jpg"/>
+						<p>3-蛋糕3</p>
+					</li>
+					<li>
+						<img src="img/cake04.jpg"/>
+						<p>4-蛋糕4</p>
+					</li>
+					<li>
+						<img src="img/cake05.jpg"/>
+						<p>5-蛋糕5</p>
+					</li>
+					<li>
+						<img src="img/cake06.jpg"/>
+						<p>6-蛋糕6</p>
+					</li>
+					<li>
+						<img src="img/cake07.jpg"/>
+						<p>7-蛋糕7</p>
+					</li>
+					<li>
+						<img src="img/cake08.jpg"/>
+						<p>8-蛋糕8</p>
+					</li>-->
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	var arr = [1,2,3,4,5,6,7,8];
+	var arrBtn = ['从大到小','从小到大'];
+	var oUl = document.getElementById('list');
+	var oBtn1 = document.getElementById('btn1');
+	var oBtn2 = document.getElementById('btn2');
+	var onOff = true;
+	
+	loadList(arr);
+	
+	oBtn1.onclick = function (){
+		
+		if( onOff ){
+			oBtn1.value = arrBtn[1];
+			arr.sort( function (a,b){
+				return b-a;
+			} );
+			loadList(arr);
+		}else{
+			oBtn1.value = arrBtn[0];
+			arr.sort( function (a,b){
+				return a-b;
+			} );
+			loadList(arr);
+		}
+		onOff = !onOff;
+	}
+	
+	
+	oBtn2.onclick = function (){
+		
+		arr.sort( function (a,b){
+			return 0.5 - Math.random();
+		} );
+		loadList(arr);
+	}
+	
+	
+	function loadList(arr){
+	
+		var html = '';
+		
+		for( var i = 0; i < arr.length; i++ ){
+			html += `<li>
+						<img src="img/cake0${arr[i]}.jpg"/>
+						<p>${arr[i]}-蛋糕${arr[i]}</p>
+					</li>`;
+		}
+		oUl.innerHTML = html;
+	}
+	
+	
+	
+</script>
