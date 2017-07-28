@@ -12,12 +12,19 @@ window.onload = function(){
 	var oldLi = null;
 	
 	
-//	var timer = null;
-//	timer = setInterval( function(){
-//		num++;
-//		num% = arrPic.length;
-//		
-//	},1000);
+	var timer = null;
+	clearInterval( timer );
+	timer = setInterval( function(){
+		num++;
+		pic.src = arrPic[num];
+		
+		if( num>=arrPic.length-1 ){
+			num = 0;
+		}
+		
+		doMove( oImg,'left','-1200' );
+		
+	},1500);
 	
 	
 	//清除上一张按钮样式并未当前添加样式

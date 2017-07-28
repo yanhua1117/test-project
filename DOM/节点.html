@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			ul{
+				width: 200px;
+			}
+			ul li{
+				color: #666;
+				background: #eee;
+				/*font-weight: bold;*/
+				font-size: 14px;
+				height: 30px;
+				line-height: 30px;
+				padding: 0 20px;
+				list-style: none;
+			}
+			ul .focus{
+				font-size: 22px;
+				background: #555;
+				color: #fff;
+			}
+			ul .near{
+				font-size: 18px;
+				background: #ccc;
+				color: blue;
+			}
+			ul .none{
+				background: #333;
+				color: #FFFFFF;
+			}
+			ul .side{
+				background: orange;
+			}
+		</style>
+	</head>
+	<body>
+		<ul id="ul1">
+			<li class="none">这是首行</li>
+			<li>第一行</li>
+			<li>第二行</li>
+			<li>第三行</li>
+			<li>第四行</li>
+			<li>第五行</li>
+			<li>第六行</li>
+			<li>第七行</li>
+			<li>第八行</li>
+			<li>第九行</li>
+			<li>第十行</li>
+			<li class="none">这是末行</li>
+		</ul>
+		
+		<script type="text/javascript">
+			window.onload = function (){
+				
+				var oUl = document.getElementById('ul1');
+				var aLi = oUl.children;
+				var first = oUl.firstElementChild;
+				var last = oUl.lastElementChild;
+				
+				for( var i = 0; i < aLi.length; i++ ){
+					
+					aLi[i].onmouseover = function (){
+						
+						if( this === first || this === last ){
+							this.className = 'side'
+						}else{
+							this.className = 'focus';
+							this.previousElementSibling.className = 'near';
+							this.nextElementSibling.className = 'near';
+							first.className = last.className = 'none';
+						}
+						
+					}
+					
+					aLi[i].onmouseout = function (){
+						for( var i = 0; i < aLi.length; i++ ){
+							aLi[i].className = '';
+							first.className = last.className = 'none';
+						}
+
+						
+					}
+					
+				}
+				
+			}
+		</script>
+	</body>
+</html>

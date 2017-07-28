@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script type="text/javascript">
+			window.onload = function (){
+				
+				var oBtn = document.getElementsByTagName('input');
+				opener = window.open();
+				
+				oBtn[0].onclick = function (){
+					
+//					open( '页面的地址url','打开方式' ) 
+//					方法:打开一个新的窗口(页面)
+//					
+//					如果url为空,则默认打开一个空白页面
+//					如果打开方式为空,默认为新窗口方式打开
+//					
+//					返回值:返回新打开的窗口的window对象
+					
+					window.open( 'www.baidu.com' );
+					
+				}
+				
+				oBtn[1].onclick = function (){
+					
+//					close()方法 关闭窗口
+//					1.火狐:默认无法关闭
+//					2.谷歌:默认直接关闭
+//					3.ie:询问用户
+
+//					可以关闭在本窗口中通过js打开的新窗口
+					
+					window.close();
+
+				}
+				
+				oBtn[2].onclick = function (){
+					
+					opener.close();
+					
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button" name="btn" id="btn" value="打开新窗口" />
+		<input type="button" name="btn" id="btn" value="关闭窗口" />
+		<input type="button" name="btn" id="btn" value="关闭新窗口" />
+	</body>
+</html>
