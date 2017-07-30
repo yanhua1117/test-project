@@ -1,0 +1,10 @@
+#all {
+  border: 1px solid #656565;
+  display: inline-block;
+}
+#all h3 {
+  font-weight: bold;
+}
+#all #list li {
+  display: inline-block;
+}
