@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#menu{
+				width: 100px;
+				height: 200px;
+				border: 1px solid red;
+				position: absolute;
+				display: none;
+			}
+		</style>
+		<script type="text/javascript">
+//			事件默认行为:当一个事件发生的时候浏览器自己会默认做的事情
+//			要知道是什么时间触发的,然后在这个时间的处理函数中使用return false********
+//			
+//			
+//			oncontextmenu : 右键菜单事件,当右键菜单（环境菜单)显示出来的时候触发
+
+			window.onload = function (){
+				
+				var oDiv = document.getElementById('menu');
+				
+				document.oncontextmenu = function (ev){
+					
+					var ev = ev || event;
+					
+					oDiv.style.display = 'block';
+					oDiv.style.left = ev.clientX + 'px';
+					oDiv.style.top = ev.clientY + 'px';
+					
+					return false;
+					
+				}
+				
+				document.onclick = function (){
+					oDiv.style.display = 'none';
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div id="menu">
+			鼠标右键自定义菜单
+		</div>
+	</body>
+</html>
