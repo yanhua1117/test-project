@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box{
+				width: 200px;
+				height: 30px;
+				-webkit-border-image: url(img/bg.jpg) 0 10; /*0代表上下切割大小   10代表左右切割大小*/
+				border-left-width: 10px;
+				border-right-width: 10px;
+			}
+			/*
+				border-image-sourceg   引入图片
+				border-image-slice     切割图片
+				border-image-width     边框宽度
+				border-image-repeat    图片的排列方式:round 平铺;repeat 重复;stretch 拉伸
+				border-colors          边框颜色
+			*/
+		</style>
+	</head>
+	<body>
+		<div class="box"></div>
+		<div class="box2"></div>
+	</body>
+</html>

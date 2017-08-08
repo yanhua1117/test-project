@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			p{
+				width: 300px;
+				border: 1px solid #000000;
+				font: 14px/30px "微软雅黑";
+				direction: rtl;      /*排列方式*/
+				unicode-bidi: bidi-override;   /*文字从右到左排列*/
+			}
+			.p1{
+				width: 300px;
+				border: 1px solid #000000;
+				font: 14px/30px "微软雅黑";
+				direction: ltr;
+				unicode-bidi: normal;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+		</style>
+	</head>
+	<body>
+		<p>miaowei</p>
+		<p class="p1">111122222222233333333333333333333333333333333</p>
+	</body>
+</html>

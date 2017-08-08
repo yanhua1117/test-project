@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			h1{
+				font: 100px/200px "微软雅黑";
+				text-align: center;
+				text-shadow: 0 0 10px red;
+			}
+			/*text-shadow:x轴偏移 y轴偏移 模糊程度 颜色*/
+			.diejia{
+				font: 100px/200px "微软雅黑";
+				text-align: center;
+				text-shadow: -5px -10px 1px red,5px 10px 2px green,6px 1px 5px yellow;
+			}
+			/*阴影叠加效果，可以叠加多个阴影，用逗号隔开*/
+			.guangyun{
+				color: white;
+				font-size: 100px;
+				text-shadow: 0 0 10px #FFFFFF,0 0 20px #FFFFFF,0 0 40px #ff00de,0 0 70px #ff00de,0 0 80px #ff00de,0 0 100px #ff00de,0 0 150px #ff00de;
+			}
+			/*光晕效果*/
+			.mohu{
+				font: 100px/200px "微软雅黑";
+				text-align: center;
+				color: #000000;
+				text-shadow: 0 0 0 rgba(0,0,0,1);
+				border: 1px solid #000000;
+				transition: 1s;
+			}
+			.mohu:hover{
+				color: rgba(0,0,0,0);
+				text-shadow: 0 0 100px rgba(0,0,0,0.5);
+			}
+		</style>
+	</head>
+	<body>
+		<h1>miaoV class</h1>
+		<h1 class="diejia">miaoV class</h1>
+		<h1 class="guangyun">miaoV class</h1>
+		<h1 class="mohu">miaoV class</h1>
+	</body>
+</html>

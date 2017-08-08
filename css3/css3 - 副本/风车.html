@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box{
+				width: 400px;
+				height: 400px;
+				margin: 50px auto;
+				transition: 5s linear;
+			}
+			.box div{
+				width: 180px;
+				height: 180px;
+				margin: 10px;
+				border: 1px solid #000;
+				box-sizing: border-box;
+				float: left;
+				background: url(img/bg.jpg) no-repeat;
+			}
+			.box div:nth-child(1),.box div:nth-child(4){
+				border-radius: 0 50%;
+			}
+			.box div:nth-child(2),.box div:nth-child(3){
+				border-radius: 50% 0;
+			}
+			.box:hover{
+				-webkit-transform: rotate(720deg);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</body>
+</html>

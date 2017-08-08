@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				width: 100px;
+				height: 100px;
+				background: red;
+				transition: 1s width,2s 2s height;
+				/*transition: 过渡时间   延迟时间  过渡样式  过渡形式(ease  逐渐变慢；linear  匀速；ease-in  加速；ease-out  减速；ease-in-out  先加速后减速；cubic-bezier  贝塞尔曲线);*/
+			}
+			#box:hover{
+				background: blue;
+				width: 200px;
+				height: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			
+		</div>
+	</body>
+</html>
