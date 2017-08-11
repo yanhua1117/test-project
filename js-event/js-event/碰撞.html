@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div1{
+				width: 100px;
+				height: 100px;
+				background: blue;
+				position: absolute;
+			}
+			img{
+				position: absolute;
+				left: 500px;
+				top: 200px;
+				width: 20%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1"></div>
+		<img src="img/cake02.jpg"/>
+		<script type="text/javascript">
+			window.onload = function (){
+				
+				var oDiv = document.getElementById('div1');
+				var oImg = document.getElementsByTagName('img')[0];
+				var disX = 0;
+				var disY = 0;
+				
+				oDiv.onmousedown = function (ev){
+					var ev = ev || event;
+					
+					disX = ev.clientX-oDiv.offsetLeft;
+					disY = ev.clientY-oDiv.offsetTop;
+					
+					document.onmousemove = function (ev){
+						var ev = ev || event;
+						var l = ev.clientX-disX;
+						var t = ev.clientY-disY;
+						
+						var l1 = l;
+						var r1 = l + oDiv.offsetWidth;
+						var t1 = t;
+						var b1 = t + oDiv.offsetHeight;
+						
+						var l2 = oImg.offsetLeft;
+						var r2 = oImg.offsetLeft + oImg.offsetWidth;
+						var t2 = oImg.offsetTop;
+						var b2 = oImg.offsetTop + oImg.offsetHeight;
+						
+						if ( r1 < l2 || b1 < t2 || l1 > r2 || t1 > b2 ) {
+							oImg.src = 'img/cake02.jpg';
+						} else{
+							oImg.src = 'img/cake04.jpg';
+						}
+						
+						if ( l<50 ) {      //磁性吸附
+							l = 0;
+						}else if( l>document.documentElement.clientWidth-oDiv.offsetWidth ){
+							l = document.documentElement.clientWidth-oDiv.offsetWidth;
+						}
+						
+						if ( t<50 ) {
+							t = 0;
+						}else if( t>document.documentElement.clientHeight-oDiv.offsetHeight ){
+							t = document.documentElement.clientHeight-oDiv.offsetHeight;
+						}
+						
+						oDiv.style.left = l + 'px';
+						oDiv.style.top = t + 'px';
+						
+						return false;
+					}
+					document.onmouseup = function (){
+						document.onmousemove = document.onmouseup = null;
+					}
+				}
+				
+			}
+		</script>
+	</body>
+</html>
