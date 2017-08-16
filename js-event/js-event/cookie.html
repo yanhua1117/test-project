@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * cookie:存储数据，当用户访问了某个网站的时候，我们就可以通过cookie来向访问者电脑上存储数据
+			 * 	1.不同的浏览器存放的cookie的位置不一样，也是不能通用的
+			 * 	2.cookie的存储是以域名的形式进行区分的
+			 * 	3.cookie的数据是可以设置名字的   document.cookie = '名字=值';
+			 * 	4.一个域名下存放的cookie的个数是有限制的，不同的浏览器存放的个数不一样
+			 * 	5.每个cookie存放的内容大小也是有限制的，不同浏览器存放大小也不一样
+			 * 
+			 * 我们通过document.cookie来获取当前网站下的cookie时，得到的字符串形式的值，他包含了当前网站下所有的cookie，他会把所有的cookie
+			 * 通过一个分号+空格的形式串联起来
+			 * 
+			 * 如果我们想长时间存放一个cookie，需要在设置这个cookie的时候设置一个过期的时间  document.cookie = '名称=值；expires='+字符串格式的时间；
+			 * cookie默认是临时存储的，当浏览器关闭进程的时候，cookie销毁
+			 */
+			
+//			var oDate = new Date();
+//			oDate.setDate(oDate.getDate() + 5);
+//			oDate.toGMTString();   //转换为日期字符串
+//			
+//			document.cookie = 'username = yan;expires='+oDate.toGMTString();
+//			document.cookie = 'age = 22';
+//			alert(document.cookie);
+			
+			
+			*******************************************************************
+			//读取cookie的方法
+			function getCookie(key){
+				var arr1 = document.cookie.split('; ');
+				for( var i = 0; i < arr1.length; i++ ){
+					var arr2 = arr1[i].split('=');
+					if(arr2[0] == key){
+						return decodeURI(arr2[1])
+					}
+				}
+			}
+			
+			//设置cookie的方法
+			function setCookie(key,value,t){
+				var oDate = new Date();
+				oDate.setDate(oDate.getDate()+t);
+				document.cookie = key + '=' + value + ';expires=' + oDate.toGMTString();
+			}
+			
+			//移除cookie
+			function removeCookie(key){
+				setCookie(key,'',-1);
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

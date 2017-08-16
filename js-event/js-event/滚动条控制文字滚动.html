@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div1{
+				width:30px;
+				height: 500px;
+				background: black;
+				position: absolute;
+				left: 0;
+				top: 10px;
+				border-radius: 7px;
+			}
+			#div2{
+				width: 30px;
+				height: 30px;
+				background: red;
+				position: absolute;
+				left: 0;
+				top: 0;
+				border-radius: 7px;
+			}
+			#div3{
+				width: 500px;
+				height: 500px;
+				border: 1px solid yellowgreen;
+				position: absolute;
+				left: 50px;
+				top: 10px;
+				overflow: hidden;
+			}
+			#div4{
+				position: relative;
+				left: 0;
+				top: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1">
+			<div id="div2">
+				
+			</div>
+		</div>
+		<div id="div3">
+			<div id="div4">
+				据了解，该夫妻从今年春节后便开始做馒头生意，由于他们经营有道、服务态度好，制作的馒头味道好，让不少顾客都喜欢过来购买，
+				他们每天早晨的4点起床一直忙到晚上9点以后，每天大约蒸面粉16袋左右，蒸馒头大约5000多个，馒头的价格每个在0.4元到1.0元不等，
+				据店主汪伟粗略估算每月夫妻二人收入超过2万元。不少网友对此表示称，“太给力！”，“比打工还好！”等。据了解，该夫妻从今年春节
+				后便开始做馒头生意，由于他们经营有道、服务态度好，制作的馒头味道好，让不少顾客都喜欢过来购买，他们每天早晨的4点起床一直
+				忙到晚上9点以后，每天大约蒸面粉16袋左右，蒸馒头大约5000多个，馒头的价格每个在0.4元到1.0元不等，据店主汪伟粗略估算每月夫
+				妻二人收入超过2万元。不少网友对此表示称，“太给力！”，“比打工还好！”等。据了解，该夫妻从今年春节后便开始做馒头生意，由于
+				他们经营有道、服务态度好，制作的馒头味道好，让不少顾客都喜欢过来购买，他们每天早晨的4点起床一直忙到晚上9点以后，每天大约
+				蒸面粉16袋左右，蒸馒头大约5000多个，馒头的价格每个在0.4元到1.0元不等，据店主汪伟粗略估算每月夫妻二人收入超过2万元。不少
+				网友对此表示称，“太给力！”，“比打工还好！”等。据了解，该夫妻从今年春节后便开始做馒头生意，由于他们经营有道、服务态度好，
+				制作的馒头味道好，让不少顾客都喜欢过来购买，他们每天早晨的4点起床一直忙到晚上9点以后，每天大约蒸面粉16袋左右，蒸馒头大约
+				5000多个，馒头的价格每个在0.4元到1.0元不等，据店主汪伟粗略估算每月夫妻二人收入超过2万元。不少网友对此表示称，“太给力！”
+				，“比打工还好！”等。表示称，“太给力！”，“比表示称，“太给力！”，“比表示称，“太给力！”，“比表示称，“太给力！”，“比表示称，
+				表示称，“太给力！”，“比表示称，“太给力！”，“比表示称，“太给力！”，“比表示称，“太给力！”，“比表示称，“太给力！”，“比
+				表示称，“太给力！”，“比表示称，“太给力！”，“比表示称，“太给力！”，“比表示称，“太给力！”，“比表示称，“太给力！”，“比表示称
+				表示称，“太给力！”，“比表示称，“太给力！”，“比表示称，“太给力！”，“比
+			</div>
+		</div>
+		<script type="text/javascript">
+			window.onload = function(){
+
+				var oDiv1 = document.getElementById('div1');
+				var oDiv2 = document.getElementById('div2');
+				var oDiv3 = document.getElementById('div3');
+				var oDiv4 = document.getElementById('div4');
+				
+				var iMaxTop = oDiv1.offsetHeight - oDiv2.offsetHeight;
+				
+				oDiv2.onmousedown = function(ev){
+					
+					var ev = ev || event;
+					var disY = ev.clientY - this.offsetTop;
+					
+					document.onmousemove = function(ev){
+						
+						var ev = ev || event;
+						var T = ev.clientY - disY;
+						
+						if ( T < 0 ){
+							T = 0;
+						}else if( T > iMaxTop ){
+							T = iMaxTop;	
+						}
+						oDiv2.style.top = T + 'px';
+						
+						var iSacle = T / iMaxTop;
+						oDiv4.style.top = (oDiv3.clientHeight - oDiv4.offsetHeight)*iSacle + 'px';
+						
+						document.onmouseup = function(){
+							document.onmousemove = document.onmouseup = null;
+						}
+					}
+					
+				}
+				
+			}
+		</script>
+	</body>
+</html>
