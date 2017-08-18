@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			//原型:prototype------相当于css中的class
+			
+			/*
+			 * 面向对象的写法：
+			 * function 构造函数(){
+			 * 		this.属性;
+			 * }
+			 * 
+			 * 构造函数.原型.方法 = function(){
+			 * 	
+			 * }
+			 * 
+			 * var 对象1 = new 构造函数();
+			 * 对象1.方法();
+			 */
+			
+			var arr = [1,2,3,4,5];
+			var arr2 = [2,2,2,2,2];
+			
+			Array.prototype.sum = function(){
+				
+				var result = 0;
+				for( var i = 0; i < this.length; i++ ){
+					result += this[i];
+				}
+				return result;
+				
+			}
+			
+			alert( arr.sum() );
+			alert( arr2.sum() );
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

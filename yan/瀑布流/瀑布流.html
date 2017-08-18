@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				margin: 0;
+			}
+			#ul1{
+				width: 1100px;
+				margin: 100px auto 0;
+			}
+			li{
+				width: 247px;
+				list-style: none;
+				float: left;
+				/*display: inline-block;*/
+				margin-right: 10px;
+				margin-bottom: 10px;
+			}
+			li div{
+				border: 1px solid #000;
+				padding: 10px;
+			}
+			li div img{
+				width: 225px;
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<ul id="ul1">
+			<li>
+				<!--<div id="">
+					<img src="http://s11.mogucdn.com/mlcdn/c45406/170724_0i7e6471i675bg0hbffei7a4d58d3_640x960.jpg_240x360.v1cAC.70.webp"/>
+					<p>2017秋季新款红白条纹衬衫女长袖宽松韩版甜美刺绣上衣女百搭</p>
+				</div>
+			</li>
+			<li>
+				<div id="">
+					<img src="http://s11.mogucdn.com/mlcdn/c45406/170724_0i7e6471i675bg0hbffei7a4d58d3_640x960.jpg_240x360.v1cAC.70.webp"/>
+					<p>2017秋季新款红白条纹衬衫女长袖宽松韩版甜美刺绣上衣女百搭</p>
+				</div>
+			</li>
+			<li>
+				<div id="">
+					<img src="http://s11.mogucdn.com/mlcdn/c45406/170724_0i7e6471i675bg0hbffei7a4d58d3_640x960.jpg_240x360.v1cAC.70.webp"/>
+					<p>2017秋季新款红白条纹衬衫女长袖宽松韩版甜美刺绣上衣女百搭</p>
+				</div>
+			</li>
+			<li>
+				<div id="">
+					<img src="http://s11.mogucdn.com/mlcdn/c45406/170724_0i7e6471i675bg0hbffei7a4d58d3_640x960.jpg_240x360.v1cAC.70.webp"/>
+					<p>2017秋季新款红白条纹衬衫女长袖宽松韩版甜美刺绣上衣女百搭</p>
+				</div>
+			</li>
+			<li>
+				<div id="">
+					<img src="http://s3.mogucdn.com/mlcdn/c45406/170724_7i5lfl53bjdhfb43abh46bk66i75f_640x960.jpg_240x360.v1cAC.70.webp"/>
+					<p>2017秋季新款红白条纹衬衫女长袖宽松韩版甜美刺绣上衣女百搭</p>
+				</div>
+			</li>
+			<li>
+				<div id="">
+					<img src="http://s3.mogucdn.com/mlcdn/c45406/170724_7i5lfl53bjdhfb43abh46bk66i75f_640x960.jpg_240x360.v1cAC.70.webp"/>
+					<p>2017秋季新款红白条纹衬衫女长袖宽松韩版甜美刺绣上衣女百搭</p>
+				</div>-->
+			</li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<script src="ajax.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function(){
+				
+				var oUl = document.getElementById('ul1');
+				var aLi = oUl.getElementsByTagName('li');
+				var iLen = aLi.length;
+				
+				//初始化数据处理
+				ajax('get','getPics,php','cpage=',function(data)){
+				
+//					var data = JSON.parse(data);
+					
+					for ( var i = 0; i < data.length; i++ ) {
+						
+						//获取高度最短的li
+						var _index = getShort();
+						
+						var oDiv = document.createElement('div');
+						var oImg = document.createElement('img');
+						var oP = document.createElement('p');
+						
+						oImg.src = data[i].preview;
+						oP.innerHTML = data[i].title;
+						oDiv.appendChild( oImg );
+						oDiv.appendChild( oP );
+						
+						aLi[_index].appendChild( oDiv );
+						
+					}
+				
+				}
+				
+				//找出高度最短的li
+				function getShort(){
+					var index = 0;
+					var ih = aLi[index].offsetHeight;
+					for ( var i = 1; i < iLen; i++ ) {
+						if( aLi[i].offsetHeight < ih ){
+							index = i;
+							ih = aLi[i].offsetHeight;
+						}
+					}
+					return index;
+				}
+				
+			}
+		</script>
+	</body>
+</html>

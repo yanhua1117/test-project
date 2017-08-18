@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script type="text/javascript">
+			window.onload = function(){
+				var oBtn = document.getElementById('btn');
+				
+				oBtn.onclick = function(){
+					
+					//打开浏览器
+					/*
+					 * 1.创建一个ajax对象
+					 * 2.ie6以下用 new ActiveXObject('Microsoft.XMLHttp');（插件）
+					 */
+//					var xhr = new XMLHttpRequest();
+					var xhr = null;
+					//方法一：
+//					if (window.XMLHttpRequest) {
+//						xhr = new XMLHttpRequest();
+//					} else{
+//						xhr = new ActiveXObject('Microsoft.XMLHttp');
+//					}
+					//方法二：
+					try{
+						xhr = new XMLHttpRequest();
+					}catch(e){
+						xhr = new ActiveXObject('Microsoft.XMLHttp');
+					}
+					
+					//在地址栏输入地址
+					/*
+					 * open方法:
+					 * 参数：
+					 * 1.打开方式 get或post
+					 * 2.地址
+					 * 3.是否异步
+					 * 	 异步：非阻塞模式
+					 * 	 同步：阻塞模式
+					 */
+					xhr.open('get','1.txt',true);
+					//提交
+					xhr.send();
+					
+					//等待着服务器返回内容
+					/*
+					 * readyState:ajax工作状态：
+					 * 		0：初始化   还没有调用open()方法
+					 * 		1：载入       调用send()方法，正在发送请求
+					 * 		2：载入完成     send()方法完成，已收到全部相响应内容
+					 * 		3：解析       正在解析相应内容
+					 * 		4：完成       相应内容解析完成，可以在客户端调用了
+					 * responseText:ajax请求返回的内容就被存放在这个属性下面
+					 * on readystate change:当readyState改变时触发
+					 * status:服务器状态，http状态码
+					 */
+					xhr.onreadystatechange = function(){
+						
+						if ( xhr.readyState == 4 ) {
+							alert( xhr.responseText );
+							if( xhr.status == 200 ){
+								alert( xhr.responseText );
+							}else{
+								alert('出错了，Err：' + xhr.status );
+							}
+						}
+						
+					}
+					
+				}
+				/*get方式的两个问题：
+				 * 1.缓存：在url？后面连接一个随机数或者时间戳
+				 * 		'2.get.php?age=30&'+new Date().getTime()'
+				 * 2.乱码：编码encodeURI
+				 * 		'2.get.php?username='+encodeURI('刘伟')+'age=30&'+new Date().getTime()'
+				 */
+				
+				/*post方式的问题：
+				 * post方式，数据放在send()里面作为参数传递
+				 * 		xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');    申明发送的数据类型
+				 * 		xhr.send('username=leo&age=30');
+				 * post没有缓存问题,无需编码
+				 */
+				
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button" name="" id="btn" value="按钮" />
+	</body>
+</html>
