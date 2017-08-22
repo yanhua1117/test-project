@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 100px;
+				height: 100px;
+				background: red;
+				padding: 10px;
+				border: 10px solid #000000;
+			}
+		</style>
+		<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				alert($('div').width());         //width
+				alert($('div').innerWidth());    //width+padding
+				alert($('div').outerWidth());    //width+padding+border    如果在括号中加true，则width+padding+maigin+border
+			})
+		</script>
+	</head>
+	<body>
+		<div>div</div>
+	</body>
+</html>

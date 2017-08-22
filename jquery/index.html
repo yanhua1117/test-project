@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+//				$('#div1').css('background','red');
+				var oDiv = $('#div1');
+				oDiv.click(function(){
+					alert($(this).html());
+				})
+			});
+		</script>
+	</head>
+	<body>
+		<div id="div1">
+			div
+		</div>
+	</body>
+</html>

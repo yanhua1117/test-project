@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+//				ev : event对象
+//				ev:pageX    时间的X轴
+//				
+//				ev.which    相当于keyCode
+//				
+//				ev.preventDefault()    阻止默认事件
+//				ev.stopPropagation()    阻止冒泡
+//				
+//				return false      即阻止默认事件,又阻止冒泡
+
+				$('div').one('click',function(){
+					alert(23);           //one()事件只执行一次
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<div>div1</div>
+		<span>span</span>
+		<p>p</p>
+	</body>
+</html>

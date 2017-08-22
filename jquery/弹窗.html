@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#login{
+				width: 300px;
+				height: 300px;
+				border: 1px solid #000000;
+				position: absolute;
+			}
+			#close{
+				position: absolute;
+				right: 0;
+				top: 0;
+			}
+		</style>
+		<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				
+//				var oDiv = $( '<div>div</div>' );
+//				$( 'body' ).append( oDiv );
+				$('#input1').click(function(){
+					
+					var oLogin = $('<div id="login"><p>用户名：</p><input type="text" name="" id="" value="" /><p>密码：</p><input type="text" name="" id="" value="" /><div id="close">X</div></div>');
+					$('body').append(oLogin);
+					oLogin.css('left',($(window).width() - oLogin.outerWidth())/2);
+					oLogin.css('top',($(window).height() - oLogin.outerHeight())/2);
+					
+					$('#close').click(function(){
+						oLogin.remove();
+					})
+					
+					$(window).on('resize scroll',function(){
+						
+						oLogin.css('left',($(window).width() - oLogin.outerWidth())/2);
+						oLogin.css('top',($(window).height() - oLogin.outerHeight())/2 + $(window).scrollTop());
+						
+					})
+					
+				})
+				
+			})
+		</script>
+	</head>
+	<body style="height: 2000px;">
+		<input type="button" name="input1" id="input1" value="点击" />
+		<!--<div id="login">
+			<p>用户名：</p><input type="text" name="" id="" value="" />
+			<p>密码：</p><input type="text" name="" id="" value="" />
+			<div id="close">X</div>
+		</div>-->
+	</body>
+</html>

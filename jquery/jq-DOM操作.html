@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				//$('span').insertBefore($('div'));   //把一个元素添加到另一个前面
+				//$('div').insertAfter($('span'));    //添加到后面
+				//$('div').appendTo($('span'));      //把div添加到span内的最后一个位置
+				//$('div').prependTo($('span'));     //把div添加到span内的第一个
+				
+				$('span').before($('div'));      //span的前面必须是div
+				$('span').after($('div'));
+				$('span').append($('div'));
+				$('span').prepend($('div'));
+			})
+		</script>
+	</head>
+	<body>
+		<div>div1</div>
+		<span>span</span>
+	</body>
+</html>
