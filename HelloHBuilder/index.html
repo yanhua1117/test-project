@@ -1,108 +1,111 @@
-﻿<!DOCTYPE html>
-<!--
-	欢迎体验HBuilder，最快的web编码工具。
-	烈马是需要驯服的，玩不转HBuilder，你快不了。
-	按照lessson1.txt的指导敲击键盘，你会发现HBuilder的神奇所在。
-	你可以用任何其他工具敲这段代码，至少比HBuilder慢5倍!
-	写几十行代码，来一场无鼠标编程之旅，看看who is e。
-	Are you ready?
-	小贴士：可以把lesson1.txt拖到右边或下边，实现分窗格并排浏览。
-	在注释后的第12行开始敲下lesson1里的按键。
--->
-
-
-
-
-
-
-
-
-
-<!--
-这里是最终敲完的正确代码，可用于比对
-<html>
-	<head>
-		<title></title>
-		<meta charset="UTF-8"/>
-		<script src="test.js" type="text/javascript" charset="utf-8"></script>
-		<script type="text/javascript">
-			function WhoisE () {
-				var e;
-				e = document.getElementsByClassName("classA");
-				e = document.getElementsByTagName("div");
-				e = document.getElementById("d1");
-				e.setAttribute("align","center");
-				e.setAttribute("data-test","2");
-				e.style.fontFamily="微软雅黑";
-				e.style.backgroundImage="url(img/HBuilder.png)";
-				e.style.cssText="background-image: url(img/HBuilder.png);";
-				switch (e.style.display){
-					case "-webkit-box":
-						break;
-					default:
-						break;
-				}
-				if (e.getAttribute("class")!="classA") {
-					e.className="classA";
-				}
-				e.innerHTML="<font color='#CCCCCC'></font>";
-				e = document.getElementById("a1");
-				e.href="#a1";
-				e.target="_blank";
-				e = new Image();
-				e.src="img/HBuilder.png";
-				e = window.indexedDB || window.webkitIndexedDB || window.msIndexedDB || window.mozIndexedDB;
-				if (typeof(e)!="undefined") {
-					e.open("test");
-				}
-				var head = document.getElementsByTagName("head")[0];
-				with (head){
-					var l = lastElementChild;
-					removeChild(l);
-				}
-				e = document.createElement("link");
-				e.rel="stylesheet";
-				e.type="text/css";
-				e.href="test.css";
-				head.appendChild(e);
-				var ss="e is ";
-				if (e.getAttribute("data-test")==null) {
-					ss=ss+e.outerHTML;
-				} else{
-					ss=ss+"unknow";
-				}
-				alert(ss)
-			}
-			addEventListener("DOMContentLoaded",function () {
-				finishLesson(1)
-			})
-		</script>
-		<style type="text/css">
-			body{
-				text-align: center;
-				-webkit-user-select: none;
-			}
-			input[type=button]{
-				width: 90px;
-			}
-			ul{display: none}
-			#d1{
-				font-family: "微软雅黑";
-				background-image: url(img/HBuilder.png)
-			}
-		</style>
-		<link rel="stylesheet" type="text/css" href="test.css"/>
-	</head>
-	<body>
-		<img src="img/HBuilder.png"/>
-		<br />
-		<div id="d1" class="classA" data-test = "1"></div>
-		<a href="#a1" id="a1"></a>
-		<ul>
-			<li></li>
-		</ul>
-		<nav>&nbsp;</nav>
-		<input type="button" name="" id="" value="who is e" onclick="WhoisE()" />
-	</body>
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head> 
+<title>jQuery Animation - fadeTo </title> 
+<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript"> 
+$(document).ready(function(){ 
+$("div[name='divPop']").bind("click",clickMove).bind("dblclick",forward); 
+}) 
+function clickMove(){ 
+var left = $(this).css("left"); 
+if(left == "350px"){ 
+loginMove("right",2); 
+} 
+else if(left == "150px"){ 
+loginMove("right",1); 
+} 
+else if(left == "455px"){ 
+loginMove("right",3); 
+} 
+else if(left == "650px"){ 
+loginMove("left",1); 
+} 
+else if(left == "530px"){ 
+loginMove("left",2); 
+} 
+else{ 
+var cla = $(this).attr("class"); 
+switch (cla) { 
+case "login_1": forward("http://www.baidu.com/");break; 
+case "login_2": forward("http://www.google.cn/");break; 
+case "login_3": forward("http://www.163.com/");break; 
+case "login_4": forward("http://www.sina.com.cn/");break; 
+case "login_5": forward("http://www.sohu.com/");break; 
+case "login_6": forward("http://www.qq.com/");break; 
+default: forward('#'); 
+} 
+} 
+} 
+function loginMove(direction,index){ //动画函数 
+var timerId; 
+if(index<=0){ 
+clearInterval(timerId); //取消动画功能 
+return; 
+} 
+var div = $("[name='divPop']"); //取得所有div 
+var divdivLength = div.length; 
+if(direction=="left"){ 
+div[-1] = div[divLength-1] 
+var n=-2; 
+} 
+else{ 
+div[divLength] = div[0]; 
+var n = 0; 
+} 
+div.each(function(){ //jquery封装的动画功能 
+++n; 
+$(this).animate( 
+{ 
+"top":$(div[n]).css("top"), //取得下一个目标位置div的参数 
+"left":$(div[n]).css("left"), 
+"width":$(div[n]).width(), 
+"height":$(div[n]).height() 
+}, 
+600, 
+function(){ 
+if($(this).css("top")=='150px'){ 
+$(this).css({zIndex:3}); //设置图层置顶 
+} 
+else if ($(this).css("top")=='170px'){ 
+$(this).css({zIndex:2}); 
+} 
+else if ($(this).css("top")=='80px'){ 
+$(this).css({zIndex:1}); 
+} 
+else { 
+$(this).css({zIndex:0}); 
+} 
+} 
+); 
+}) 
+timerId = setInterval(function(){ 
+loginMove(direction,--index); 
+},650); 
+} 
+function forward(url){ 
+window.location.href = url; 
+} 
+</script> 
+</head> 
+<body> 
+<div name="divPop" class="login_1" style="background-color:#f0f0f0;border:solid 1px ;cursor:pointer; width:355px; height:343px; position:absolute; left:330px; top:150px; z-index:3; filter:alpha(opacity=90);"> 
+<div style="text-align:center;">百度</div> 
+</div> 
+<div name="divPop" class="login_2" style="background-color:blue;border:solid 1px;cursor:pointer; width:220px; height:230px; position:absolute; left:650px; top:170px; z-index:2; filter:alpha(opacity=90);"> 
+<div style="text-align:center;">Google</div> 
+</div> 
+<div name="divPop" class="login_3" style="background-color:yellow;border:solid 1px;cursor:pointer; width:136px; height:130px; position:absolute; left:530px; top:80px; z-index:1; filter:alpha(opacity=90); "> 
+<div style="text-align:center;">网易</div> 
+</div> 
+<div name="divPop" class="login_4" style="background-color:red;border:solid 1px;cursor:pointer; width:105px; height:100px; position:absolute; left:455px; top:50px; z-index:0; filter:alpha(opacity=90); "> 
+<div style="text-align:center;">新浪</div> 
+</div> 
+<div name="divPop" class="login_5" style="background-color:#00ff00;border:solid 1px;cursor:pointer; width:136px; height:130px; position:absolute; left:350px; top:80px; z-index:1; filter:alpha(opacity=90); "> 
+<div style="text-align:center;font:write">阿里巴巴</div> 
+</div> 
+<div name="divPop" class="login_6" style="background-color:green;border:solid 1px;cursor:pointer; width:220px; height:230px; position:absolute; left:150px; top:170px; z-index:2; filter:alpha(opacity=90); "> 
+<div style="text-align:center;font:write">腾讯</div> 
+</div> 
+</body> 
 </html>
--->

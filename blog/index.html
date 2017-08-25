@@ -5,22 +5,51 @@
 		<title></title>
 		<link rel="stylesheet" href="css/common.css" />
 		<link rel="stylesheet" href="css/style.css" />
+		<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+		<!--<script src="js/main.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>-->
 	</head>
 	<body>
 		<header>
-			<span class="logo nav-left">小剧客栈</span>
-			<span class="resume nav-left">个人简历</span>
-			<ul class="nav-right">
-				<li><a href="#">个人介绍</a></li>
-				<li><a href="#">专业技能</a></li>
-				<li><a href="#">项目经验</a></li>
-			</ul>
+			<div class="menu-1">
+				<span class="fa fa-home nav-left" id="nav-icon"></span>
+				<span class="logo nav-left">小剧客栈</span>
+				<span class="resume nav-left">个人简历</span>
+				<span class="resume nav-left">博客</span>
+				<ul class="nav-right">
+					<li><a href="#person" id="a1">个人介绍</a></li>
+					<li><a href="#about_me">关于我</a></li>
+					<li><a href="#project_experience">项目经验</a></li>
+				</ul>
+			</div>
+			<div class="menu-2">
+				<div class="menu-2_title">
+					<span class="fa fa-home nav-left"></span>
+					<h3>小剧客栈</h3>
+				</div>
+				<div class="menu-2_icon">
+					<span class="menu-icon1"></span>
+					<span class="menu-icon2"></span>
+					<span class="menu-icon3"></span>
+				</div>
+			</div>
+			<div class="menu-2_list">
+				<ul>
+					<li><span class="fa fa-home"></span>小剧客栈</li>
+					<li><span class="fa fa-file-o"></span>个人简历</li>
+					<li><span class="fa fa-comments-o"></span>博客</li>
+					<li><span class="fa fa-user"></span>关于我</li>
+					<li><span class="fa fa-keyboard-o"></span>项目经验</li>
+			</div>
 		</header>
-		<div class="page1-bg"></div>
+		<!--<a href="#" class="menu-icon">
+			<span class="fa fa-list"></span>
+		</a>-->
+		<div class="page1-bg" id="person"></div>
 		<div class="page1-bg"></div>
 		<div class="page1-bg2"></div>
 		<div class="personal">
-			<div class="personal-img"></div>
+			<!--<div class="personal-img"></div>-->
 			<div class="personal-mask"></div>
 			<div class="personal-right">
 				<h2 class="my-name">我是闫婳</h2>
@@ -29,73 +58,120 @@
 					具备规范的代码编写风格、有自己的逻辑思维与思想。
 				</p>
 				<div class="personal-footer">
-					<a href="#" class="selection-box sele-box1">Hire Me</a>
-					<a href="#" class="selection-box sele-box2">Contace Me</a>
-					<a href="#" class="personal-icon"></a>
-					<a href="#" class="personal-icon"></a>
-					<a href="#" class="personal-icon"></a>
+					<div class="selection-box">
+						<a href="#" class="sele-box1">Hire Me</a>
+						<a href="#" class="sele-box2">Contace Me</a>
+						<!--<span id="sele-icon">></span>-->
+					</div>
+					<div class="pro-icon">
+						<a href="#" class="personal-icon"><span class="fa fa-github information"></span></a>
+						<a href="#" class="personal-icon"><span class="fa fa-weixin information"></span></a>
+						<a href="#" class="personal-icon"><span class="fa fa-weibo information"></span></a>
+					</div>
+					
 				</div>
 			</div>
 		</div>
-		<div class="pro-skills">
-			<h1>专业技能</h1>
-			<div class="sikll-bottom">
-				<ul>
-					<li>熟练使用HTML,CSS+DIV网站重构、优化。</li>
-					<li>熟练使用HTML,CSS+DIV网站重构、优化。</li>
-					<li>熟练使用HTML,CSS+DIV网站重构、优化。</li>
-					<li>熟练使用HTML,CSS+DIV网站重构、优化。</li>
-					<li>熟练使用HTML,CSS+DIV网站重构、优化。</li>
-					<li>熟练使用HTML,CSS+DIV网站重构、优化。</li>
-					<li>熟练使用HTML,CSS+DIV网站重构、优化。</li>
-					<li>熟练使用HTML,CSS+DIV网站重构、优化。</li>
-					<li>熟练使用HTML,CSS+DIV网站重构、优化。</li>
-					<li>熟练使用HTML,CSS+DIV网站重构、优化。</li>
+		<div class="pro-skills" id="about_me">
+			<div class="skills-top">
+				<h1>关于我</h1>
+				<h4>-ABOUT ME-</h4>
+			</div>
+			<div class="skill-bottom">
+				<ul class="my-message">
+					<li>
+						<span class="fa fa-graduation-cap"></span>
+						<div class="message-text">
+							<span class="text-l">学历-</span>
+							<span class="line"></span>
+							<span class="text-r">本科</span>
+						</div>
+					</li>
+					<li>
+						<span class="fa fa-user"></span>
+						<div class="message-text">
+							<span class="text-l">年龄-</span>
+							<span class="line"></span>
+							<span class="text-r">22</span>
+						</div>
+					</li>
+					<li>
+						<span class="fa fa-map-marker"></span>
+						<div class="message-text">
+							<span class="text-l">籍贯-</span>
+							<span class="line"></span>
+							<span class="text-r">吉林 通化</span>
+						</div>
+					</li>
+					<li>
+						<span class="fa fa-address-book"></span>
+						<div class="message-text">
+							<span class="text-l">目前-</span>
+							<span class="line"></span>
+							<span class="text-r">在职</span>
+						</div>
+					</li>
 				</ul>
-				<div class="skills-right">
+				<div class="mess-bottom">
+					<div class="bor-top"></div>
+					<div class="bor-btm"></div>
+					<ul>
+						<li>熟练使用HTML,CSS+DIV网站重构、优化。</li>
+						<li>熟练使用HTML,CSS+DIV网站重构、优化。</li>
+						<li>熟练使用HTML,CSS+DIV网站重构、优化。</li>
+						<li>熟练使用HTML,CSS+DIV网站重构、优化。</li>
+						<li>熟练使用HTML,CSS+DIV网站重构、优化。</li>
+						<li>熟练使用HTML,CSS+DIV网站重构、优化。</li>
+					</ul>
+				</div>
+				
+				<!--<div class="skills-right">
 					<img src="img/70y58PICVDw_1024.jpg"/>
 					<span>个人主页：</span>
 					<a href="#">http://www.xxxxxxxxxxxx.cn</a>
-				</div>
+				</div>-->
 			</div>
 		</div>
-		<div class="project">
+		<div class="project" id="project_experience">
 			<div class="project-mask"></div>
 			<div class="project-bottom">
 				<div class="project-title">
 					<h1>项目经验</h1>
+					<h4>-PROJECT EXPERIENCE-</h4>
 				</div>
-				<!--<ul>
-					<li><img src="img/portfolio1.jpg"/></li>
-					<li><img src="img/portfolio8.jpg"/></li>
-					<li><img src="img/portfolio9.jpg"/></li>
-					<li><img src="img/portfolio2.png"/></li>
-					<li><img src="img/portfolio3.jpg"/></li>
-					<li><img src="img/portfolio7.png"/></li>
-				</ul>-->
 				<div class="project-list">
-					<div class="list-item list-item1">
-						<div>
+					<div class="list-row">
+						<div class="list-item">
 							<img src="img/portfolio1.jpg"/>
+							<a class="content-com content-top">购物商城首页<a>
+							<a class="fa fa-chain content-com"></a>
 						</div>
-						<div>
+						<div class="list-item">
 							<img src="img/portfolio8.jpg"/>
+							<a class="content-com content-top">购物商城详情</a>
+							<a class="fa fa-chain content-com"></a>
 						</div>
-					</div>
-					<div class="list-item list-item1">
-						<div>
+						<div class="list-item">
 							<img src="img/portfolio9.jpg"/>
-						</div>
-						<div>
-							<img src="img/portfolio2.png"/>
+							<a class="content-com content-top">购物商城详情</a>
+							<a class="fa fa-chain content-com"></a>
 						</div>
 					</div>
-					<div class="list-item list-item1">
-						<div>
-							<img src="img/portfolio3.jpg"/>
+					<div class="list-row">
+						<div class="list-item">
+							<img src="img/portfolio2.png"/>
+							<a class="content-com content-top">购物商城详情</a>
+							<a class="fa fa-chain content-com"></a>
 						</div>
-						<div>
+						<div class="list-item">
+							<img src="img/portfolio3.jpg"/>
+							<a class="content-com content-top">购物商城详情</a>
+							<a class="fa fa-chain content-com"></a>
+						</div>
+						<div class="list-item">
 							<img src="img/portfolio7.png"/>
+							<a class="content-com content-top">购物商城详情</a>
+							<a class="fa fa-chain content-com"></a>
 						</div>
 					</div>
 				</div>

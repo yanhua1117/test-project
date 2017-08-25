@@ -8,8 +8,9 @@ html body {
 }
 html body .page1-bg {
   width: 100%;
-  height: 100%;
-  background: url(../img/千库网48fbca446fc8e4e345d16aeb00efc850.jpg) no-repeat left top;
+  height: 0;
+  padding-top: 50%;
+  background: url(../img/77f71004c77e336a93bbbe85415bfc7f.jpg) no-repeat left top;
   background-size: 100% 100%;
   position: absolute;
   left: 0;
@@ -25,10 +26,13 @@ html body .page1-bg2 {
   top: 0;
   z-index: 10;
 }
-html body header:hover {
+html body header:hover .menu-1 {
   background: #FFFFFF;
-  opacity: 0.8;
-  transition: 1s;
+  -webkit-transition: 0.7s ease-in;
+  -moz-transition: 0.7s ease-in;
+  -ms-transition: 0.7s ease-in;
+  -o-transition: 0.7s ease-in;
+  transition: 0.7s ease-in;
 }
 html body header {
   width: 100%;
@@ -37,11 +41,19 @@ html body header {
   /*padding: 0 80px;*/
   position: fixed;
   top: 0;
-  z-index: 100;
+  z-index: 101;
+  /*宽度大于640px时显示的导航样式*/
+  /*宽度小于640px时导航显示样式*/
 }
-html body header .nav-left {
+html body header .menu-1 span {
+  margin-right: 30px;
+}
+html body header .menu-1 #nav-icon {
+  font-size: 28px;
+  margin: 0 10px 0 30px;
+}
+html body header .menu-1 .nav-left {
   display: inline-block;
-  width: 100px;
   /*height: 60px;*/
   font-size: 16px;
   color: #000;
@@ -49,25 +61,128 @@ html body header .nav-left {
   text-align: center;
   padding: 16px 0;
 }
-html body header .logo {
+html body header .menu-1 .logo {
   font-weight: bold;
 }
-html body header .nav-right {
+html body header .menu-1 .nav-right {
   float: right;
   position: absolute;
   right: 0;
   top: 0;
 }
-html body header .nav-right li {
+html body header .menu-1 .nav-right li {
   float: left;
   width: 100px;
   line-height: 16px;
   text-align: center;
   padding: 16px 0;
 }
-html body header .nav-right li a {
+html body header .menu-1 .nav-right li a {
   font-size: 16px;
   color: #000;
+}
+html body header .menu-2 {
+  display: none;
+  background: #FFFFFF;
+  padding: 20px 0;
+  height: 20px;
+  position: relative;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+html body header .menu-2 .menu-2_title {
+  width: 100px;
+  margin: 0 auto;
+}
+html body header .menu-2 .menu-2_title .fa-paw {
+  font-size: 18px;
+}
+html body header .menu-2 .menu-2_title h3 {
+  display: inline-block;
+  font-size: 18px;
+  margin-left: 5px;
+}
+html body header .menu-2 .menu-2_icon {
+  display: inline-block;
+  position: absolute;
+  right: 20px;
+  top: 30%;
+  cursor: pointer;
+}
+html body header .menu-2 .menu-2_icon span {
+  margin: 4px;
+  display: block;
+  width: 22px;
+  height: 4px;
+  background: #000000;
+  border-radius: 5px;
+  -webkit-transition: 0.2s;
+  -moz-transition: 0.2s;
+  -ms-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
+}
+html body header .menu-2 .menu-2_icon:hover .menu-icon1 {
+  -webkit-transform-origin: right center;
+  -moz-transform-origin: right center;
+  -ms-transform-origin: right center;
+  -o-transform-origin: right center;
+  transform-origin: right center;
+  -webkit-transform: rotate(-46deg);
+  -moz-transform: rotate(-46deg);
+  -ms-transform: rotate(-46deg);
+  -o-transform: rotate(-46deg);
+  transform: rotate(-46deg);
+}
+html body header .menu-2 .menu-2_icon:hover .menu-icon3 {
+  -webkit-transform-origin: right center;
+  -moz-transform-origin: right center;
+  -ms-transform-origin: right center;
+  -o-transform-origin: right center;
+  transform-origin: right center;
+  -webkit-transform: rotate(46deg);
+  -moz-transform: rotate(46deg);
+  -ms-transform: rotate(46deg);
+  -o-transform: rotate(46deg);
+  transform: rotate(46deg);
+}
+html body header .menu-2 .menu-2_icon:hover .menu-icon2 {
+  -webkit-transform: translateX(10px);
+  -moz-transform: translateX(10px);
+  -ms-transform: translateX(10px);
+  -o-transform: translateX(10px);
+  transform: translateX(10px);
+  background: rgba(255, 255, 255, 0);
+}
+html body header .menu-2 .menu-2_icon:hover .menu-2_list {
+  -webkit-transform: translateX(200px);
+  -moz-transform: translateX(200px);
+  -ms-transform: translateX(200px);
+  -o-transform: translateX(200px);
+  transform: translateX(200px);
+}
+html body header .menu-2_list {
+  background: #FFFFFF;
+  padding: 1px;
+  display: none;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+html body header .menu-2_list ul {
+  height: 100%;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+html body header .menu-2_list ul li {
+  font-size: 14px;
+  color: grey;
+  width: 110px;
+  margin: 30px auto;
+}
+html body header .menu-2_list ul li span {
+  margin: 0 10px;
+  font-size: 18px;
 }
 html body .personal {
   width: 100%;
@@ -77,13 +192,6 @@ html body .personal {
   top: 35%;
   margin-top: -20px;
   display: flex;
-}
-html body .personal .personal-img {
-  background: url(../img/user.png) no-repeat center top;
-  background-size: 55% 55%;
-  z-index: 30;
-  flex: 1;
-  margin-top: -25px;
 }
 html body .personal .personal-mask {
   width: 100%;
@@ -96,88 +204,198 @@ html body .personal .personal-mask {
   z-index: 20;
 }
 html body .personal .personal-right {
-  z-index: 9999;
-  flex: 1;
+  z-index: 30;
+  width: 900px;
+  margin: 0 auto;
 }
 html body .personal .personal-right .my-name {
   font-size: 36px;
   color: #000;
   margin: 40px 0;
-  font-weight: bold;
 }
 html body .personal .personal-right p {
-  font-size: 12px;
+  font-size: 14px;
   color: #000;
   width: 500px;
   line-height: 30px;
 }
-html body .personal .personal-right .personal-footer {
-  margin-top: 35px;
-}
 html body .personal .personal-right .personal-footer .selection-box {
+  display: inline-block;
+}
+html body .personal .personal-right .personal-footer .selection-box .sele-box1 {
+  border: 2px solid #f0ad4e;
   color: #000;
   font-size: 14px;
   padding: 10px 15px;
   margin-right: 10px;
 }
-html body .personal .personal-right .personal-footer .sele-box1 {
-  border: 2px solid #f0ad4e;
-}
-html body .personal .personal-right .personal-footer .sele-box1:hover {
+html body .personal .personal-right .personal-footer .selection-box .sele-box1:hover {
   background: #F0AD4E;
   transition: 1s;
 }
-html body .personal .personal-right .personal-footer .sele-box2 {
+html body .personal .personal-right .personal-footer .selection-box .sele-box2 {
   border: 2px solid #449d44;
+  color: #000;
+  font-size: 14px;
+  padding: 10px 15px;
+  margin-right: 10px;
 }
-html body .personal .personal-right .personal-footer .sele-box2:hover {
+html body .personal .personal-right .personal-footer .selection-box .sele-box2:hover {
   background: #449D44;
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  -ms-transition: 1s;
+  -o-transition: 1s;
   transition: 1s;
+}
+html body .personal .personal-right .personal-footer .pro-icon {
+  display: inline-block;
+  margin-top: 10px;
+}
+html body .personal .personal-right .personal-footer .pro-icon .personal-icon {
+  display: inline-block;
+  margin: 0 10px;
+}
+html body .personal .personal-right .personal-footer .pro-icon .personal-icon .information {
+  font-size: 36px;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+html body .personal .personal-right .personal-footer .pro-icon .personal-icon:hover .information {
+  font-size: 50px;
 }
 html body .pro-skills {
   width: 100%;
   background: #FFFFFF;
+  background-size: 100% 100%;
   margin-top: 50px;
 }
-html body .pro-skills h1 {
-  font-size: 45px;
-  color: #008baf;
+html body .pro-skills .skills-top {
+  padding: 30px 0;
+}
+html body .pro-skills .skills-top h1 {
+  width: 150px;
+  font-size: 20px;
+  color: #000;
   font-weight: bold;
-  display: inline-block;
-  border-bottom: 3px solid #008baf;
-  margin-left: 100px;
+  border-bottom: 2px solid red;
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 5px;
 }
-html body .pro-skills .sikll-bottom {
-  border-top: 1px solid gainsboro;
+html body .pro-skills .skills-top h4 {
+  width: 150px;
+  text-align: center;
+  font-size: 12px;
+  color: red;
+  font-weight: bold;
+  margin: 0 auto;
+  padding-top: 5px;
+}
+html body .pro-skills .skill-bottom {
   margin: 0 100px;
+  height: 100%;
+}
+html body .pro-skills .skill-bottom .my-message {
+  width: 60%;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 30px;
   display: flex;
+  margin: 0 auto;
 }
-html body .pro-skills .sikll-bottom ul {
-  margin: 80px 0;
-  padding-left: 80px;
+html body .pro-skills .skill-bottom .my-message li {
   flex: 1;
+  display: inline-block;
 }
-html body .pro-skills .sikll-bottom ul li {
+html body .pro-skills .skill-bottom .my-message li .fa-graduation-cap,
+html body .pro-skills .skill-bottom .my-message li .fa-user,
+html body .pro-skills .skill-bottom .my-message li .fa-map-marker,
+html body .pro-skills .skill-bottom .my-message li .fa-address-book {
+  margin: 30px auto;
+  width: 50%;
+  height: 41%;
+  font-size: 36px;
+  color: #000;
+  display: block;
+  border: 5px solid #FFFFFF;
+  border-radius: 50% ;
+  text-align: center;
+  line-height: 80px;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+html body .pro-skills .skill-bottom .my-message li .fa-graduation-cap:hover,
+html body .pro-skills .skill-bottom .my-message li .fa-user:hover,
+html body .pro-skills .skill-bottom .my-message li .fa-map-marker:hover,
+html body .pro-skills .skill-bottom .my-message li .fa-address-book:hover {
+  transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+  -moz-transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+  -o-transform: rotate(360deg);
+  background: #FFFFFF;
+}
+html body .pro-skills .skill-bottom .my-message li .message-text {
+  font-size: 14px;
+  color: #FFFFFF;
+  width: 100px;
+  margin: 0 auto;
+  margin: -10px auto 50px;
+  text-align: center;
+}
+html body .pro-skills .skill-bottom .my-message li .message-text .line {
+  height: 2px;
+  color: #FFFFFF;
+  background: #ccc;
+  transform: rotate(-25deg);
+  -ms-transform: rotate(-25deg);
+  -moz-transform: rotate(-25deg);
+  -webkit-transform: rotate(-25deg);
+  -o-transform: rotate(-25deg);
+}
+html body .pro-skills .skill-bottom .mess-bottom {
+  position: relative;
+  width: 80%;
+  margin: 80px auto 20px;
+  padding: 20px 10px;
+}
+html body .pro-skills .skill-bottom .mess-bottom .bor-top {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50px;
+  height: 50px;
+  border-top: 1px solid red;
+  border-left: 1px solid red;
+}
+html body .pro-skills .skill-bottom .mess-bottom .bor-btm {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  border-bottom: 1px solid red;
+  border-right: 1px solid red;
+}
+html body .pro-skills .skill-bottom .mess-bottom ul {
+  flex: 1;
+  width: 500px;
+  margin: 0 auto;
+}
+html body .pro-skills .skill-bottom .mess-bottom ul li {
   font-size: 14px;
   color: #000000;
   line-height: 35px;
 }
-html body .pro-skills .sikll-bottom .skills-right {
-  margin-top: 80px;
-  flex: 1;
-  margin-left: 300px;
-}
-html body .pro-skills .sikll-bottom .skills-right img {
-  display: block;
-  width: 50%;
-  margin-bottom: 30px;
-}
-html body .pro-skills .sikll-bottom .skills-right span,
-html body .pro-skills .sikll-bottom .skills-right a {
-  font-size: 18px;
-}
-html body .pro-skills .sikll-bottom .skills-right a {
-  color: #008baf;
+html body .pro-skills .skill-bottom .mess-bottom ul li:nth-child(even) {
+  padding-right: 10px;
+  text-align: right;
 }
 html body .project {
   background: url(../img/7065230ad9fe0e846f902db49278f057.jpg) no-repeat left top;
@@ -193,31 +411,109 @@ html body .project .project-bottom {
   position: absolute;
   left: 0;
   top: 0;
-}
-html body .project .project-bottom .project-title {
-  border-bottom: 1px solid gainsboro;
-  margin: 30px 100px;
-}
-html body .project .project-bottom .project-title h1 {
-  font-size: 40px;
-  color: #008baf;
-  font-weight: bold;
-  display: inline-block;
-  border-bottom: 3px solid #008baf;
-}
-html body .project .project-bottom .project-list {
-  margin: 0 100px;
   width: 100%;
 }
-html body .project .project-bottom .project-list .project-list:nth-child(0) {
-  width: 33%;
+html body .project .project-bottom .project-title {
+  margin: 80px 100px 30px;
 }
-html body .project .project-bottom .project-list .project-list:nth-child(1) {
-  width: 33%;
+html body .project .project-bottom .project-title h1 {
+  width: 150px;
+  font-size: 20px;
+  color: #000;
+  font-weight: bold;
+  border-bottom: 2px solid red;
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 5px;
 }
-html body .project .project-bottom .project-list .project-list:nth-child(2) {
-  width: 34%;
+html body .project .project-bottom .project-title h4 {
+  width: 150px;
+  text-align: center;
+  font-size: 12px;
+  color: red;
+  font-weight: bold;
+  margin: 0 auto;
+  padding-top: 5px;
 }
-html body .project .project-bottom .project-list .list-item {
-  float: left;
+html body .project .project-bottom .project-list {
+  margin: 0 auto;
+  width: 1200px;
+}
+html body .project .project-bottom .project-list .list-row {
+  display: flex;
+  justify-content: center;
+}
+html body .project .project-bottom .project-list .list-row .list-item {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  flex: 2;
+}
+html body .project .project-bottom .project-list .list-row .list-item img {
+  height: 100%;
+}
+html body .project .project-bottom .project-list .list-row .list-item .content-com {
+  font-size: 25px;
+  color: #FFFFFF;
+  position: absolute;
+  left: 50%;
+  top: -50px;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+html body .project .project-bottom .project-list .list-row .list-item .fa-chain {
+  position: absolute;
+  left: 50%;
+  top: 320px;
+  border: 2px solid #FFFFFF;
+  border-radius: 50%;
+  padding: 10px;
+  display: inline-block;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+html body .project .project-bottom .project-list .list-row .list-item:hover .content-top,
+html body .project .project-bottom .project-list .list-row .list-item:hover .fa-chain {
+  -webkit-transition: 0.5s ease-out;
+  -moz-transition: 0.5s ease-out;
+  -ms-transition: 0.5s ease-out;
+  -o-transition: 0.5s ease-out;
+  transition: 0.5s ease-out;
+}
+html body .project .project-bottom .project-list .list-row .list-item:hover .content-top {
+  top: 35%;
+}
+html body .project .project-bottom .project-list .list-row .list-item:hover .fa-chain {
+  top: 65%;
+}
+html body .project .project-bottom .project-list .list-row .list-item:hover img {
+  transform: scale(1.5, 1.5);
+  -webkit-transform: scale(1.5, 1.5);
+  -o-transform: scale(1.5, 1.5);
+  -moz-transform: scale(1.5, 1.5);
+  -ms-transform: scale(1.5, 1.5);
+  -webkit-transition: 1s ease-out;
+  -moz-transition: 1s ease-out;
+  -ms-transition: 1s ease-out;
+  -o-transition: 1s ease-out;
+  transition: 1s ease-out;
+}
+@media screen and (max-width: 660px) {
+  .menu-1 {
+    display: none !important;
+  }
+  .menu-2 {
+    display: block !important;
+  }
+}
+@media screen and (max-width: 970px) {
+  .project-list {
+    width: 800px !important;
+  }
 }

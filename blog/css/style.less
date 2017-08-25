@@ -5,9 +5,10 @@ html{
         width: 100%;
         height: 100%;
         .page1-bg{
-            width: 100%;
-            height: 100%;
-            background: url(../img/千库网48fbca446fc8e4e345d16aeb00efc850.jpg)no-repeat left top;
+            width:100%;
+            height:0;
+            padding-top:50%;
+            background: url(../img/77f71004c77e336a93bbbe85415bfc7f.jpg)no-repeat left top;
             background-size: 100% 100%;
             position: absolute;
             left: 0;
@@ -23,10 +24,14 @@ html{
             top: 0;
             z-index: 10;
         }
-        header:hover{
+        header:hover .menu-1{
             background: #FFFFFF;
-            opacity: 0.8;
-            transition: 1s;
+//          opacity: 1;
+            -webkit-transition: .7s ease-in;
+            -moz-transition: .7s ease-in;
+            -ms-transition: .7s ease-in;
+            -o-transition: .7s ease-in;
+            transition: .7s ease-in;
         }
         header{
             width: 100%;            
@@ -35,39 +40,169 @@ html{
             /*padding: 0 80px;*/
             position: fixed;
             top: 0;
-            z-index: 100;
-            .nav-left{
-                display: inline-block;
-                width: 100px;
-                /*height: 60px;*/
-                font-size: 16px;
-                color: #000;
-                line-height: 16px;
-                text-align: center;
-                padding: 16px 0;
-            }
-            .logo{
-                font-weight: bold;
-            }
-            .nav-right{
-                float: right;
-                position: absolute;
-                right: 0;
-                top: 0;
-                li{
-                    float: left;
-                    width: 100px;
-//                  height: 60px;
+            z-index: 101;
+            /*宽度大于640px时显示的导航样式*/
+            .menu-1{
+//              display: none;
+                span{
+                    margin-right: 30px;
+                }
+                #nav-icon{
+                    font-size: 28px;
+                    margin: 0 10px 0 30px;
+                }
+                .nav-left{
+                    display: inline-block;
+    //              width: 100px;
+                    /*height: 60px;*/
+                    font-size: 16px;
+                    color: #000;
                     line-height: 16px;
                     text-align: center;
                     padding: 16px 0;
-                    a{
-                        font-size: 16px;
-                        color: #000;
+                }
+                .logo{
+                    font-weight: bold;
+                }
+                .nav-right{
+                    float: right;
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    li{
+                        float: left;
+                        width: 100px;
+    //                  height: 60px;
+                        line-height: 16px;
+                        text-align: center;
+                        padding: 16px 0;
+                        a{
+                            font-size: 16px;
+                            color: #000;
+                        }
                     }
                 }
             }
+            /*宽度小于640px时导航显示样式*/
+            .menu-2{
+                display: none;
+                background: #FFFFFF;
+                padding: 20px 0;
+                height: 20px;
+                position: relative;
+                box-shadow: 0px 2px 2px rgba(0,0,0,0.3);
+                .menu-2_title{
+//                  display: inline-block;
+//                  position: absolute;
+//                  left: 40%;
+//                  top: 30%;
+                    width: 100px;
+                    margin: 0 auto;
+                    .fa-paw{
+                        font-size: 18px;
+                    }
+                    h3{
+                        display: inline-block;
+                        font-size: 18px;
+                        margin-left: 5px;
+                    }
+                }
+                .menu-2_icon{
+                    display: inline-block;
+                    position: absolute;
+                    right: 20px;
+                    top: 30%;
+                    cursor: pointer;  //鼠标设置为小手
+                    span{
+                        margin: 4px;
+                        display: block;
+                        width: 22px;
+                        height: 4px;
+                        background: #000000;
+//                      border: 1px solid #000000;
+                        border-radius: 5px;
+                        -webkit-transition: 0.2s;
+                        -moz-transition: 0.2s;
+                        -ms-transition: 0.2s;
+                        -o-transition: 0.2s;
+                        transition: 0.2s;
+                    }
+                }
+                .menu-2_icon:hover .menu-icon1{
+                    -webkit-transform-origin: right center;
+                    -moz-transform-origin:  right center;
+                    -ms-transform-origin:  right center;
+                    -o-transform-origin:  right center;
+                    transform-origin:  right center;
+                    -webkit-transform: rotate(-46deg);
+                    -moz-transform: rotate(-46deg);
+                    -ms-transform: rotate(-46deg);
+                    -o-transform: rotate(-46deg);
+                    transform: rotate(-46deg);
+                }
+                .menu-2_icon:hover .menu-icon3{
+                    -webkit-transform-origin: right center;
+                    -moz-transform-origin:  right center;
+                    -ms-transform-origin:  right center;
+                    -o-transform-origin:  right center;
+                    transform-origin:  right center;
+                    -webkit-transform: rotate(46deg);
+                    -moz-transform: rotate(46deg);
+                    -ms-transform: rotate(46deg);
+                    -o-transform: rotate(46deg);
+                    transform: rotate(46deg);
+                }
+                .menu-2_icon:hover .menu-icon2{
+                    -webkit-transform: translateX(10px);
+                    -moz-transform: translateX(10px);
+                    -ms-transform: translateX(10px);
+                    -o-transform: translateX(10px);
+                    transform: translateX(10px);
+                    background: rgba(255,255,255,0);
+                }
+                .menu-2_icon:hover .menu-2_list{
+                    -webkit-transform: translateX(200px);
+                    -moz-transform: translateX(200px);
+                    -ms-transform: translateX(200px);
+                    -o-transform: translateX(200px);
+                    transform: translateX(200px);
+                }
+            }
+            .menu-2_list{
+                background: #FFFFFF;
+                padding: 1px;
+                display: none;
+                -webkit-transition: 0.5s;
+                -moz-transition: 0.5s;
+                -ms-transition: 0.5s;
+                -o-transition: 0.5s;
+                transition: 0.5s;
+                ul{
+                    height: 100%;
+                    box-shadow: 0px 2px 2px rgba(0,0,0,0.3);
+                    li{
+                        font-size: 14px;
+                        color: grey;
+                        width: 110px;
+                        margin: 30px auto;
+                        span{
+                            margin: 0 10px;
+                            font-size: 18px;
+                        }
+                    }
+                }
+                
+            }
         }
+//      .menu-icon{
+//          position: absolute;
+//          top: 20%;
+//          right: 8%;
+//          span{
+//              font-size: 50px;
+//              color: #000;
+//          }
+//      }
         .personal{
             width: 100%;
             height: 100%;
@@ -76,13 +211,13 @@ html{
             top: 35%;
             margin-top: -20px;
             display: flex;
-            .personal-img{
-                background: url(../img/user.png)no-repeat center top;
-                background-size: 55% 55%;
-                z-index: 30;
-                flex: 1;
-                margin-top: -25px;
-            }
+//          .personal-img{
+//              background: url(../img/user.png)no-repeat center top;
+//              background-size: 55% 55%;
+//              z-index: 30;
+//              flex: 1;
+//              margin-top: -25px;
+//          }
             .personal-mask{
                 width: 100%;
                 height: 308px;
@@ -94,16 +229,17 @@ html{
                 z-index: 20;
             }
             .personal-right{
-                z-index: 9999;
-//              width:50%;
+                z-index: 30;
+                width:900px;
+                margin: 0 auto;
 //              margin: 30px 110px 0 0;
 //              float: right;
-                flex: 1;
+//              flex: 1;
+//              padding: 0 300px;
                 .my-name{
                     font-size: 36px;
                     color: #000;
                     margin: 40px 0;
-                    font-weight: bold;
                 }
 //              h3{
 //                  font-size: 22px;
@@ -112,76 +248,200 @@ html{
 //                  margin-bottom: 20px;
 //              }
                 p{
-                    font-size: 12px;
+                    font-size: 14px;
                     color: #000;
                     width: 500px;
                     line-height: 30px;
                 }
                 .personal-footer{
-                    margin-top: 35px;
+//                  margin-top: 35px;
                     .selection-box{
-                        color: #000;
-                        font-size: 14px;
-                        padding: 10px 15px;
-                        margin-right: 10px;
+                        display: inline-block;
+                        .sele-box1{
+                            border: 2px solid #f0ad4e;
+                            color: #000;
+                            font-size: 14px;
+                            padding: 10px 15px;
+                            margin-right: 10px;
+                        }
+                        .sele-box1:hover{
+                            background: #F0AD4E;
+                            transition: 1s;
+                        }
+                        .sele-box2{
+                            border: 2px solid #449d44;
+                            color: #000;
+                            font-size: 14px;
+                            padding: 10px 15px;
+                            margin-right: 10px;
+                        }
+                        .sele-box2:hover{
+                            background: #449D44;
+                            -webkit-transition: 1s;
+                            -moz-transition: 1s;
+                            -ms-transition: 1s;
+                            -o-transition: 1s;
+                            transition: 1s;
+                        }
                     }
-                    .sele-box1{
-                        border: 2px solid #f0ad4e;
+                    
+                    .pro-icon{
+                        display: inline-block;
+                        margin-top: 10px;
+                        .personal-icon{
+                            display: inline-block;
+                            margin: 0 10px;
+                            .information{
+                                font-size: 36px;
+                                -webkit-transition: 0.5s;
+                                -moz-transition: 0.5s;
+                                -ms-transition: 0.5s;
+                                -o-transition: 0.5s;
+                                transition: 0.5s;
+                            }
+                        } 
+                        .personal-icon:hover .information{
+                            font-size: 50px;
+                        }  
                     }
-                    .sele-box1:hover{
-                        background: #F0AD4E;
-                        transition: 1s;
-                    }
-                    .sele-box2{
-                        border: 2px solid #449d44;
-                    }
-                    .sele-box2:hover{
-                        background: #449D44;
-                        transition: 1s;
-                    }
+                   
                 }
             }
         }
         .pro-skills{
             width: 100%;
             background: #FFFFFF;
+//          background: url(../img/14-151130142U1603.jpg)no-repeat left top;
+            background-size: 100% 100%;
             margin-top: 50px;
-            h1{
-                font-size: 45px;
-                color: #008baf;
-                font-weight: bold;
-                display: inline-block;
-                border-bottom: 3px solid #008baf;
-                margin-left: 100px;
+            .skills-top{
+//              width: 100%;
+                padding: 30px 0;
+                h1{
+                    width: 150px;
+                    font-size: 20px;
+                    color: #000;
+                    font-weight: bold;
+                    border-bottom: 2px solid red;
+                    margin: 0 auto;
+                    text-align: center;
+                    padding-bottom: 5px;
+                }
+                h4{
+                    width: 150px;
+                    text-align: center;
+                    font-size: 12px;
+                    color: red;
+                    font-weight: bold;
+                    margin: 0 auto;
+                    padding-top: 5px;
+                }
             }
-            .sikll-bottom{
-                border-top: 1px solid gainsboro;
+            
+            .skill-bottom{
+//              border-top: 1px solid gainsboro;
                 margin: 0 100px;
-                display: flex;
-                ul{
-                    margin: 80px 0;
-                    padding-left: 80px;
-                    flex: 1;
+                height: 100%;
+                .my-message{
+                    width: 60%;
+//                  height: 70%;
+                    background-color: rgba(0,0,0,0.5);
+                    border-radius: 30px;
+                    display: flex;
+                    margin: 0 auto;
                     li{
-                        font-size: 14px;
-                        color: #000000;
-                        line-height: 35px;
+                        flex: 1;
+                        display: inline-block;
+//                      opacity: 1;
+                        .fa-graduation-cap,
+                        .fa-user,
+                        .fa-map-marker,
+                        .fa-address-book{
+                            margin: 30px auto;
+                            width: 50%;
+                            height: 41%;
+                            font-size: 36px;
+                            color: #000;
+                            display: block;
+                            border: 5px solid #FFFFFF;
+                            border-radius: 50% ;
+                            text-align: center;
+                            line-height: 80px;
+                            -webkit-transition: 0.5s;
+                            -moz-transition: 0.5s;
+                            -ms-transition: 0.5s;
+                            -o-transition: 0.5s;
+                            transition: 0.5s;
+                        }
+                        .fa-graduation-cap:hover,
+                        .fa-user:hover,
+                        .fa-map-marker:hover,
+                        .fa-address-book:hover{
+                            transform: rotate(360deg);
+                            -ms-transform: rotate(360deg);
+                            -moz-transform: rotate(360deg);
+                            -webkit-transform: rotate(360deg);
+                            -o-transform: rotate(360deg);
+                            background: #FFFFFF;
+                        }
+                        .message-text{
+                            font-size: 14px;
+                            color: #FFFFFF;
+                            width: 100px;
+                            margin: 0 auto;
+//                          border: 1px solid #FF0000;
+                            margin: -10px auto 50px;
+                            text-align: center;
+                            .line{
+                                height: 2px;
+                                color: #FFFFFF;
+                                background: #ccc;
+                                transform: rotate(-25deg);
+                                -ms-transform: rotate(-25deg);
+                                -moz-transform: rotate(-25deg);
+                                -webkit-transform: rotate(-25deg);
+                                -o-transform: rotate(-25deg);
+                            }
+                        }
                     }
                 }
-                .skills-right{
-                    margin-top: 80px;
-                    flex: 1;
-                    margin-left: 300px;
-                    img{
-                        display: block;
-                        width: 50%;
-                        margin-bottom: 30px;
+                .mess-bottom{
+                    position: relative;
+                    width: 80%;
+                    margin: 80px auto 20px;
+                    padding: 20px 10px;
+//                  border: 1px solid #000000;
+                    .bor-top{
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        width: 50px;
+                        height: 50px;
+                        border-top: 1px solid red;
+                        border-left: 1px solid red;
                     }
-                    span,a{
-                        font-size: 18px;
+                    .bor-btm{
+                        width: 50px;
+                        height: 50px;
+                        position: absolute;
+                        right: 0;
+                        bottom: 0;
+                        border-bottom: 1px solid red;
+                        border-right: 1px solid red;
                     }
-                    a{
-                       color: #008baf; 
+                    ul{
+                        flex: 1;
+                        width: 500px;
+                        margin: 0 auto;
+                        li{
+                            font-size: 14px;
+                            color: #000000;
+                            line-height: 35px;
+                        }
+                        li:nth-child(even){
+                            padding-right: 10px;
+                            text-align: right;
+                        }
                     }
                 }
             }
@@ -203,48 +463,116 @@ html{
                 position: absolute;
                 left: 0;
                 top: 0;
+                width: 100%;
 //              padding-top: 50px;
                 .project-title{
-                    border-bottom: 1px solid gainsboro;
-                    margin: 30px 100px;
+                    margin: 80px 100px 30px;
                     h1{
-                        font-size: 40px;
-                        color: #008baf;
+                        width: 150px;
+                        font-size: 20px;
+                        color: #000;
                         font-weight: bold;
-                        display: inline-block;
-                        border-bottom: 3px solid #008baf;
-//                      margin-left: 100px;
+                        border-bottom: 2px solid red;
+                        margin: 0 auto;
+                        text-align: center;
+                        padding-bottom: 5px;
+                    }
+                    h4{
+                        width: 150px;
+                        text-align: center;
+                        font-size: 12px;
+                        color: red;
+                        font-weight: bold;
+                        margin: 0 auto;
+                        padding-top: 5px;
                     }
                 }
-//              ul{
-//                  border-top: 1px solid gainsboro;
-//                  margin: 0 100px;
-//                  li{
-////                     float: left; 
-////                     width: 50%;
-//                     display: inline-block;
-//                     img{
-//                         width: 80%;
-//                     }
-//                  }
-//              }
                 .project-list{
-                    margin: 0 100px;
-                    width: 100%;
-                    .project-list:nth-child(0){
-                        width: 33%;
-                    }
-                    .project-list:nth-child(1){
-                        width: 33%;
-                    }
-                    .project-list:nth-child(2){
-                        width: 34%;
-                    }
-                    .list-item{
-                        float: left;
+                    margin: 0 auto;
+                    width: 1200px;
+                    .list-row{
+                        display: flex;
+                        justify-content: center;
+                        .list-item{
+                            position: relative;
+                            overflow: hidden;
+                            display: inline-block;
+                            flex: 2;
+                            img{
+                                height: 100%;
+                            }
+                            .content-com{
+                                font-size: 25px;
+                                color: #FFFFFF;
+                                position: absolute;
+                                left: 50%;
+                                top: -50px;
+                                -webkit-transform: translateX(-50%);
+                                -moz-transform: translateX(-50%);
+                                -ms-transform: translateX(-50%);
+                                -o-transform: translateX(-50%);
+                                transform: translateX(-50%);
+                            }
+                            .fa-chain{
+                                position: absolute;
+                                left: 50%;
+                                top: 320px;
+                                border: 2px solid #FFFFFF;
+                                border-radius: 50%;
+                                padding: 10px;
+                                display:  inline-block;
+                                -webkit-transform: translateX(-50%);
+                                -moz-transform: translateX(-50%);
+                                -ms-transform: translateX(-50%);
+                                -o-transform: translateX(-50%);
+                                transform: translateX(-50%);
+                            }
+                        }
+                        .list-item:hover .content-top,
+                        .list-item:hover .fa-chain{
+                            -webkit-transition: 0.5s ease-out;
+                            -moz-transition: 0.5s ease-out;
+                            -ms-transition: 0.5s ease-out;
+                            -o-transition: 0.5s ease-out;
+                            transition: 0.5s ease-out;
+                        }
+                        .list-item:hover .content-top{
+                            top: 35%; 
+                        }
+                        .list-item:hover .fa-chain{
+                            top: 65%; 
+                        }
+                        .list-item:hover img{
+                            transform:scale(1.5,1.5);
+                            -webkit-transform:scale(1.5,1.5);
+                            -o-transform:scale(1.5,1.5);
+                            -moz-transform:scale(1.5,1.5);
+                            -ms-transform:scale(1.5,1.5);
+                            -webkit-transition: 1s ease-out;
+                            -moz-transition: 1s ease-out;
+                            -ms-transition: 1s ease-out;
+                            -o-transition: 1s ease-out;
+                            transition: 1s ease-out;
+                        }
                     }
                 }
             }
         }
+    }
+}
+@media screen and (max-width:660px){
+    .menu-1{
+        display: none !important;
+    }   
+    .menu-2{
+        display: block !important;
+    } 
+}
+@media screen and (max-width:970px){
+    .project-list{
+        width: 800px !important;
+    }
+    .list-item{
+        
     }
 }
