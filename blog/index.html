@@ -2,14 +2,20 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
+		<meta name="viewport"
+          content=" height = device-height,
+                    width = device-width,
+                    initial-scale = 1.0,
+                    minimum-scale = 1.0,
+                    maximum-scale = 1.0,
+                    user-scalable = no"/>
 		<title></title>
 		<link rel="stylesheet" href="css/common.css" />
 		<link rel="stylesheet" href="css/style.css" />
 		<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-		<!--<script src="js/main.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>-->
 	</head>
 	<body>
+		<!--<canvas id="fadeOpen"></canvas>-->
 		<header>
 			<div class="menu-1">
 				<span class="fa fa-home nav-left" id="nav-icon"></span>
@@ -46,11 +52,10 @@
 			<span class="fa fa-list"></span>
 		</a>-->
 		<div class="page1-bg" id="person"></div>
-		<div class="page1-bg"></div>
-		<div class="page1-bg2"></div>
+		<!--<div class="page1-bg"></div>-->
+
 		<div class="personal">
-			<!--<div class="personal-img"></div>-->
-			<div class="personal-mask"></div>
+			<div class="page1-bg2"></div>
 			<div class="personal-right">
 				<h2 class="my-name">我是闫婳</h2>
 				<!--<h3>个人介绍</h3>-->
@@ -72,7 +77,8 @@
 				</div>
 			</div>
 		</div>
-		<div class="pro-skills" id="about_me">
+		<div class="pro-skills">
+			<div class="tolink" id="about_me"></div>
 			<div class="skills-top">
 				<h1>关于我</h1>
 				<h4>-ABOUT ME-</h4>
@@ -80,34 +86,38 @@
 			<div class="skill-bottom">
 				<ul class="my-message">
 					<li>
-						<span class="fa fa-graduation-cap"></span>
+						<div class="about-me-icon">
+							<span class="fa fa-graduation-cap"></span>
+						</div>
 						<div class="message-text">
 							<span class="text-l">学历-</span>
-							<span class="line"></span>
 							<span class="text-r">本科</span>
 						</div>
 					</li>
 					<li>
-						<span class="fa fa-user"></span>
+						<div class="about-me-icon">
+							<span class="fa fa-user"></span>
+						</div>
 						<div class="message-text">
 							<span class="text-l">年龄-</span>
-							<span class="line"></span>
 							<span class="text-r">22</span>
 						</div>
 					</li>
 					<li>
-						<span class="fa fa-map-marker"></span>
+						<div class="about-me-icon">
+							<span class="fa fa-map-marker"></span>
+						</div>
 						<div class="message-text">
 							<span class="text-l">籍贯-</span>
-							<span class="line"></span>
 							<span class="text-r">吉林 通化</span>
 						</div>
 					</li>
 					<li>
-						<span class="fa fa-address-book"></span>
+						<div class="about-me-icon">
+							<span class="fa fa-address-book"></span>
+						</div>
 						<div class="message-text">
 							<span class="text-l">目前-</span>
-							<span class="line"></span>
 							<span class="text-r">在职</span>
 						</div>
 					</li>
@@ -115,7 +125,7 @@
 				<div class="mess-bottom">
 					<div class="bor-top"></div>
 					<div class="bor-btm"></div>
-					<ul>
+					<ul class="my-resume">
 						<li>熟练使用HTML,CSS+DIV网站重构、优化。</li>
 						<li>熟练使用HTML,CSS+DIV网站重构、优化。</li>
 						<li>熟练使用HTML,CSS+DIV网站重构、优化。</li>
@@ -124,12 +134,6 @@
 						<li>熟练使用HTML,CSS+DIV网站重构、优化。</li>
 					</ul>
 				</div>
-				
-				<!--<div class="skills-right">
-					<img src="img/70y58PICVDw_1024.jpg"/>
-					<span>个人主页：</span>
-					<a href="#">http://www.xxxxxxxxxxxx.cn</a>
-				</div>-->
 			</div>
 		</div>
 		<div class="project" id="project_experience">
@@ -143,39 +147,46 @@
 					<div class="list-row">
 						<div class="list-item">
 							<img src="img/portfolio1.jpg"/>
-							<a class="content-com content-top">购物商城首页<a>
-							<a class="fa fa-chain content-com"></a>
+							<a href="production/album/index.html" target="_blank" class="pro-link"></a>
+							<span class="content-com content-top">散列画廊<span>
+							<span class="fa fa-chain content-com" href=""></span>
 						</div>
 						<div class="list-item">
 							<img src="img/portfolio8.jpg"/>
-							<a class="content-com content-top">购物商城详情</a>
-							<a class="fa fa-chain content-com"></a>
+							<a href="production/Photo-wall/index.html" target="_blank" class="pro-link"></a>
+							<span class="content-com content-top">CSS3照片墙<span>
+							<span class="fa fa-chain content-com" href=""></span>
 						</div>
 						<div class="list-item">
 							<img src="img/portfolio9.jpg"/>
-							<a class="content-com content-top">购物商城详情</a>
-							<a class="fa fa-chain content-com"></a>
+							<a href="production/picture-hint/index.html" target="_blank" class="pro-link"></a>
+							<span class="content-com content-top">图片提示样式<span>
+							<span class="fa fa-chain content-com" href=""></span>
 						</div>
-					</div>
-					<div class="list-row">
 						<div class="list-item">
 							<img src="img/portfolio2.png"/>
-							<a class="content-com content-top">购物商城详情</a>
-							<a class="fa fa-chain content-com"></a>
+							<a href="production/slide/index.html" target="_blank" class="pro-link"></a>
+							<span class="content-com content-top">幻灯片展示<span>
+							<span class="fa fa-chain content-com" href=""></span>
 						</div>
 						<div class="list-item">
 							<img src="img/portfolio3.jpg"/>
-							<a class="content-com content-top">购物商城详情</a>
-							<a class="fa fa-chain content-com"></a>
+							<a href="production/waterfall-layout/index.html" target="_blank" class="pro-link"></a>
+							<span class="content-com content-top">瀑布流布局<span>
+							<span class="fa fa-chain content-com" href=""></span>
 						</div>
 						<div class="list-item">
 							<img src="img/portfolio7.png"/>
-							<a class="content-com content-top">购物商城详情</a>
-							<a class="fa fa-chain content-com"></a>
+							<a href="#" target="_blank" class="pro-link"></a>
+							<span class="content-com content-top">购物商城首页<span>
+							<span class="fa fa-chain content-com" href=""></span>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</body>
+	<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/main.js" type="text/javascript" charset="utf-8"></script>
+	
 </html>

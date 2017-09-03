@@ -62,7 +62,7 @@
 				bottom: -13px;
 				/*background: red;*/
 			}
-			.slider .ctrl .ctri-i{
+			.slider .ctrl .ctrl-i{
 				display: inline-block;
 				width: 150px;
 				height: 13px;
@@ -71,7 +71,7 @@
 				position: relative;
 				margin-left: 1px;
 			}
-			.slider .ctrl .ctri-i img{
+			.slider .ctrl .ctrl-i img{
 				width: 100%;
 				position: absolute;
 				left: 0;
@@ -84,10 +84,10 @@
 				-o-transition: all .2s;
 				transition: all .2s;
 			}
-			.slider .ctrl .ctri-i:hover{
+			.slider .ctrl .ctrl-i:hover{
 				background: #F0F0F0;
 			}
-			.slider .ctrl .ctri-i:hover img{
+			.slider .ctrl .ctrl-i:hover img{
 				bottom: 13px;
 				-webkit-box-reflect: below 0px -webkit-gradient(
 					linear,
@@ -99,11 +99,11 @@
 				);
 				opacity: 1;
 			}
-			.slider .ctrl .ctri-i_active:hover,
-			.slider .ctrl .ctri-i_active{
+			.slider .ctrl .ctrl-i_active:hover,
+			.slider .ctrl .ctrl-i_active{
 				background: #000000;
 			}
-			.slider .ctrl .ctri-i_active:hover img{
+			.slider .ctrl .ctrl-i_active:hover img{
 				opacity: 0;
 			}
 			.slider .main .main-i{
@@ -153,7 +153,7 @@
 				</div>
 			</div>
 			<div class="ctrl" id="template_ctrl">
-				<a href="javascript:switchSlider({{index}});" class="ctri-i" id="ctrl_{{index}}">
+				<a href="javascript:switchSlider({{index}});" class="ctrl-i" id="ctrl_{{index}}">
 					<img src="img/{{index}}.jpg"/>
 				</a>
 			</div>

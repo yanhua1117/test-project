@@ -5,45 +5,44 @@ html {
 html body {
   width: 100%;
   height: 100%;
+  position: relative;
+  min-width: 360px;
 }
 html body .page1-bg {
   width: 100%;
-  height: 0;
-  padding-top: 50%;
-  background: url(../img/77f71004c77e336a93bbbe85415bfc7f.jpg) no-repeat left top;
-  background-size: 100% 100%;
+  height: 100%;
+  background: url(../img/index_bg.jpg) no-repeat left top;
+  background-size: cover;
   position: absolute;
   left: 0;
   top: 0;
   z-index: -1;
 }
-html body .page1-bg2 {
-  width: 100%;
-  height: 100%;
-  background: url(../img/mask.png);
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 10;
-}
 html body header:hover .menu-1 {
   background: #FFFFFF;
-  -webkit-transition: 0.7s ease-in;
-  -moz-transition: 0.7s ease-in;
-  -ms-transition: 0.7s ease-in;
-  -o-transition: 0.7s ease-in;
-  transition: 0.7s ease-in;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  -webkit-transition: 0.5s ease-in;
+  -moz-transition: 0.5s ease-in;
+  -ms-transition: 0.5s ease-in;
+  -o-transition: 0.5s ease-in;
+  transition: 0.5s ease-in;
 }
 html body header {
   width: 100%;
-  /*height: 60px;*/
-  /*background: #FFFFFF;*/
-  /*padding: 0 80px;*/
   position: fixed;
   top: 0;
   z-index: 101;
   /*宽度大于640px时显示的导航样式*/
   /*宽度小于640px时导航显示样式*/
+}
+html body header .active {
+  background: #FFFFFF;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  -webkit-transition: 0.5s ease-in;
+  -moz-transition: 0.5s ease-in;
+  -ms-transition: 0.5s ease-in;
+  -o-transition: 0.5s ease-in;
+  transition: 0.5s ease-in;
 }
 html body header .menu-1 span {
   margin-right: 30px;
@@ -51,15 +50,16 @@ html body header .menu-1 span {
 html body header .menu-1 #nav-icon {
   font-size: 28px;
   margin: 0 10px 0 30px;
+  padding: 14px 0;
 }
 html body header .menu-1 .nav-left {
   display: inline-block;
-  /*height: 60px;*/
   font-size: 16px;
   color: #000;
-  line-height: 16px;
+  line-height: 30px;
   text-align: center;
   padding: 16px 0;
+  vertical-align: top;
 }
 html body header .menu-1 .logo {
   font-weight: bold;
@@ -68,7 +68,7 @@ html body header .menu-1 .nav-right {
   float: right;
   position: absolute;
   right: 0;
-  top: 0;
+  top: 7px;
 }
 html body header .menu-1 .nav-right li {
   float: left;
@@ -185,42 +185,52 @@ html body header .menu-2_list ul li span {
   font-size: 18px;
 }
 html body .personal {
-  width: 100%;
   height: 100%;
   position: relative;
-  left: 0;
-  top: 35%;
-  margin-top: -20px;
-  display: flex;
 }
-html body .personal .personal-mask {
+html body .personal * {
+  -webkit-transition: all 0.3;
+  -moz-transition: all 0.3;
+  -ms-transition: all 0.3;
+  -o-transition: all 0.3;
+  transition: all 0.3;
+}
+html body .personal .page1-bg2 {
   width: 100%;
-  height: 308px;
-  background: #FFFFFF;
-  opacity: 0.5;
+  height: 100%;
+  background: url(../img/mask.png);
   position: absolute;
   left: 0;
   top: 0;
-  z-index: 20;
+  z-index: 10;
 }
 html body .personal .personal-right {
-  z-index: 30;
-  width: 900px;
-  margin: 0 auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 55%;
+  transform: translateY(-50%);
+  padding: 30px 10%;
+  background: rgba(255, 255, 255, 0.5);
+  z-index: 20;
 }
 html body .personal .personal-right .my-name {
   font-size: 36px;
   color: #000;
-  margin: 40px 0;
 }
 html body .personal .personal-right p {
   font-size: 14px;
   color: #000;
-  width: 500px;
   line-height: 30px;
+  max-width: 500px;
+}
+html body .personal .personal-right .personal-footer {
+  margin-top: 20px;
 }
 html body .personal .personal-right .personal-footer .selection-box {
   display: inline-block;
+  line-height: 40px;
+  vertical-align: top;
 }
 html body .personal .personal-right .personal-footer .selection-box .sele-box1 {
   border: 2px solid #f0ad4e;
@@ -250,7 +260,6 @@ html body .personal .personal-right .personal-footer .selection-box .sele-box2:h
 }
 html body .personal .personal-right .personal-footer .pro-icon {
   display: inline-block;
-  margin-top: 10px;
 }
 html body .personal .personal-right .personal-footer .pro-icon .personal-icon {
   display: inline-block;
@@ -258,20 +267,19 @@ html body .personal .personal-right .personal-footer .pro-icon .personal-icon {
 }
 html body .personal .personal-right .personal-footer .pro-icon .personal-icon .information {
   font-size: 36px;
-  -webkit-transition: 0.5s;
-  -moz-transition: 0.5s;
-  -ms-transition: 0.5s;
-  -o-transition: 0.5s;
-  transition: 0.5s;
-}
-html body .personal .personal-right .personal-footer .pro-icon .personal-icon:hover .information {
-  font-size: 50px;
 }
 html body .pro-skills {
+  position: relative;
   width: 100%;
   background: #FFFFFF;
   background-size: 100% 100%;
-  margin-top: 50px;
+}
+html body .pro-skills .tolink {
+  position: absolute;
+  top: -20px;
+  left: 0;
+  height: 0;
+  opacity: 0;
 }
 html body .pro-skills .skills-top {
   padding: 30px 0;
@@ -296,44 +304,37 @@ html body .pro-skills .skills-top h4 {
   padding-top: 5px;
 }
 html body .pro-skills .skill-bottom {
-  margin: 0 100px;
-  height: 100%;
+  margin: 0 auto;
 }
 html body .pro-skills .skill-bottom .my-message {
-  width: 60%;
+  display: flex;
+  margin-left: 50%;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 30px;
-  display: flex;
-  margin: 0 auto;
+  transform: translateX(-50%);
+  width: 600px;
 }
 html body .pro-skills .skill-bottom .my-message li {
   flex: 1;
   display: inline-block;
+  padding: 20px;
 }
-html body .pro-skills .skill-bottom .my-message li .fa-graduation-cap,
-html body .pro-skills .skill-bottom .my-message li .fa-user,
-html body .pro-skills .skill-bottom .my-message li .fa-map-marker,
-html body .pro-skills .skill-bottom .my-message li .fa-address-book {
-  margin: 30px auto;
-  width: 50%;
-  height: 41%;
+html body .pro-skills .skill-bottom .my-message li .about-me-icon {
+  margin: 0 auto;
+  width: 43px;
   font-size: 36px;
   color: #000;
-  display: block;
   border: 5px solid #FFFFFF;
-  border-radius: 50% ;
+  border-radius: 50%;
   text-align: center;
-  line-height: 80px;
+  padding: 20px;
   -webkit-transition: 0.5s;
   -moz-transition: 0.5s;
   -ms-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s;
 }
-html body .pro-skills .skill-bottom .my-message li .fa-graduation-cap:hover,
-html body .pro-skills .skill-bottom .my-message li .fa-user:hover,
-html body .pro-skills .skill-bottom .my-message li .fa-map-marker:hover,
-html body .pro-skills .skill-bottom .my-message li .fa-address-book:hover {
+html body .pro-skills .skill-bottom .my-message li .about-me-icon:hover {
   transform: rotate(360deg);
   -ms-transform: rotate(360deg);
   -moz-transform: rotate(360deg);
@@ -344,10 +345,9 @@ html body .pro-skills .skill-bottom .my-message li .fa-address-book:hover {
 html body .pro-skills .skill-bottom .my-message li .message-text {
   font-size: 14px;
   color: #FFFFFF;
-  width: 100px;
   margin: 0 auto;
-  margin: -10px auto 50px;
   text-align: center;
+  margin-top: 13px;
 }
 html body .pro-skills .skill-bottom .my-message li .message-text .line {
   height: 2px;
@@ -383,19 +383,21 @@ html body .pro-skills .skill-bottom .mess-bottom .bor-btm {
   border-bottom: 1px solid red;
   border-right: 1px solid red;
 }
-html body .pro-skills .skill-bottom .mess-bottom ul {
+html body .pro-skills .skill-bottom .mess-bottom .my-resume {
   flex: 1;
-  width: 500px;
   margin: 0 auto;
 }
-html body .pro-skills .skill-bottom .mess-bottom ul li {
+html body .pro-skills .skill-bottom .mess-bottom .my-resume li {
   font-size: 14px;
   color: #000000;
   line-height: 35px;
 }
-html body .pro-skills .skill-bottom .mess-bottom ul li:nth-child(even) {
-  padding-right: 10px;
+html body .pro-skills .skill-bottom .mess-bottom .my-resume li:nth-child(even) {
+  padding-right: 50%;
   text-align: right;
+}
+html body .pro-skills .skill-bottom .mess-bottom .my-resume li:nth-child(odd) {
+  padding-left: 50%;
 }
 html body .project {
   background: url(../img/7065230ad9fe0e846f902db49278f057.jpg) no-repeat left top;
@@ -436,23 +438,40 @@ html body .project .project-bottom .project-title h4 {
   padding-top: 5px;
 }
 html body .project .project-bottom .project-list {
-  margin: 0 auto;
-  width: 1200px;
+  width: 100%;
 }
 html body .project .project-bottom .project-list .list-row {
+  width: 1215px;
   display: flex;
   justify-content: center;
+  flex-flow: row wrap;
+  margin-left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
 }
 html body .project .project-bottom .project-list .list-row .list-item {
   position: relative;
   overflow: hidden;
   display: inline-block;
-  flex: 2;
+  width: 33.33%;
 }
 html body .project .project-bottom .project-list .list-row .list-item img {
   height: 100%;
 }
+html body .project .project-bottom .project-list .list-row .list-item .pro-link {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 222;
+}
 html body .project .project-bottom .project-list .list-row .list-item .content-com {
+  display: inline-block;
   font-size: 25px;
   color: #FFFFFF;
   position: absolute;
@@ -467,7 +486,7 @@ html body .project .project-bottom .project-list .list-row .list-item .content-c
 html body .project .project-bottom .project-list .list-row .list-item .fa-chain {
   position: absolute;
   left: 50%;
-  top: 320px;
+  top: 365px;
   border: 2px solid #FFFFFF;
   border-radius: 50%;
   padding: 10px;
@@ -490,7 +509,7 @@ html body .project .project-bottom .project-list .list-row .list-item:hover .con
   top: 35%;
 }
 html body .project .project-bottom .project-list .list-row .list-item:hover .fa-chain {
-  top: 65%;
+  top: 200%;
 }
 html body .project .project-bottom .project-list .list-row .list-item:hover img {
   transform: scale(1.5, 1.5);
@@ -504,6 +523,23 @@ html body .project .project-bottom .project-list .list-row .list-item:hover img 
   -o-transition: 1s ease-out;
   transition: 1s ease-out;
 }
+#fadeOpen {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 111;
+}
+@media screen and (max-width: 800px) {
+  .my-resume li:nth-child(even) {
+    padding-right: 40% !important;
+  }
+  .my-resume li:nth-child(odd) {
+    padding-left: 40% !important;
+  }
+}
 @media screen and (max-width: 660px) {
   .menu-1 {
     display: none !important;
@@ -511,9 +547,61 @@ html body .project .project-bottom .project-list .list-row .list-item:hover img 
   .menu-2 {
     display: block !important;
   }
+  .my-message {
+    flex-flow: row wrap !important;
+    width: 300px !important;
+  }
+  .my-message li {
+    width: 50% !important;
+    padding: 15px !important;
+  }
+  .my-resume li:nth-child(even) {
+    padding-right: 60px !important;
+  }
+  .my-resume li:nth-child(odd) {
+    padding-left: 60px !important;
+  }
 }
-@media screen and (max-width: 970px) {
-  .project-list {
-    width: 800px !important;
+@media screen and (max-width: 520px) {
+  .personal-right {
+    padding: 30px 5% !important;
+  }
+  .personal-right .my-name {
+    text-align: center;
+  }
+  .selection-box,
+  .pro-icon {
+    display: block !important;
+    text-align: center !important;
+  }
+  .pro-icon {
+    margin-top: 20px !important;
+  }
+}
+@media screen and (max-width: 550px) {
+  .my-resume li:nth-child(even) {
+    text-align: center !important;
+    padding-right: 0 !important;
+  }
+  .my-resume li:nth-child(odd) {
+    text-align: center !important;
+    padding-left: 0 !important;
+  }
+}
+@media screen and (max-width: 1250px) {
+  .list-row {
+    width: 810px !important;
+  }
+  .list-row .list-item {
+    width: 50% !important;
+  }
+}
+@media screen and (max-width: 860px) {
+  .list-row {
+    width: 405px !important;
+  }
+  .list-row .list-item {
+    width: 100% !important;
+    margin: 0 auto !important;
   }
 }

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/common.css"/>
+		<style type="text/css">
+			body{
+				padding: 50px 0;
+				background: #FFFFFF;
+				font-size: 14px;
+				font-family:'Avenir Next';
+				color: #555;
+				-webkit-font-smoothing: antialiased;
+			}
+			.slider .main .main-i,
+			.slider .main,
+			.slider{
+				width: 100%;
+				height: 400px;
+				position: relative;
+			}
+			.slider .main{
+				overflow: hidden;
+			}
+			.slider .main .main-i{
+				
+			}
+			.slider .main .main-i img{
+				width: 100%;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			.slider .main .main-i .caption{
+				position: absolute;
+				right: 50%;
+				top: 30%;
+				z-index: 9;
+				
+			}
+			.slider .main .main-i .caption h2{
+				font-size: 40px;
+				line-height: 50px;
+				color: #B5B5B5;
+				text-align: right;
+			}
+			.slider .main .main-i .caption h3{
+				font-size: 70px;
+				line-height: 70px;
+				color: #000;
+				text-align: right;
+				font-family: 'Open Sans Condensed';
+			}
+			.slider .ctrl{
+				width: 100%;
+				height: 13px;
+				line-height: 13px;
+				text-align: center;
+				position: absolute;
+				left: 0;
+				bottom: -13px;
+				/*background: red;*/
+			}
+			.slider .ctrl .ctrl-i{
+				display: inline-block;
+				width: 150px;
+				height: 13px;
+				background: #666;
+				box-shadow: 0 1px 1px rgba(0,0,0,.3);
+				position: relative;
+				margin-left: 1px;
+			}
+			.slider .ctrl .ctrl-i img{
+				width: 100%;
+				position: absolute;
+				left: 0;
+				bottom: 50px;
+				z-index: 1;
+				opacity: 0;
+				-webkit-transition: all .2s;
+				-moz-transition: all .2s;
+				-ms-transition: all .2s;
+				-o-transition: all .2s;
+				transition: all .2s;
+			}
+			.slider .ctrl .ctrl-i:hover{
+				background: #F0F0F0;
+			}
+			.slider .ctrl .ctrl-i:hover img{
+				bottom: 13px;
+				-webkit-box-reflect: below 0px -webkit-gradient(
+					linear,
+					left top,
+					left bottom,
+					from(transparent),
+					color-stop(50%,transparent),
+					to(rgba(255,255,255,.3))
+				);
+				opacity: 1;
+			}
+			.slider .ctrl .ctrl-i_active:hover,
+			.slider .ctrl .ctrl-i_active{
+				background: #000000;
+			}
+			.slider .ctrl .ctrl-i_active:hover img{
+				opacity: 0;
+			}
+			.slider .main .main-i{
+				opacity: 0;
+				position: absolute;
+				right: 50%;
+				top: 0;
+				-webkit-transition: all 0.5s;
+				-moz-transition: all 0.5s;
+				-ms-transition: all 0.5s;
+				-o-transition: all 0.5s;
+				transition: all 0.5s;
+			}
+			.slider .main .main-i h2{
+				margin-right: 45px;
+			}
+			.slider .main .main-i h3{
+				margin-right: -45px;
+			}
+			.slider .main .main-i h2,
+			.slider .main .main-i h3{
+				-webkit-transition: all 8s;
+				-moz-transition: all 8s;
+				-ms-transition: all 8s;
+				-o-transition: all 8s;
+				transition: all 8s;
+			}
+			.slider .main .main-i_active{
+				right: 0;
+				opacity: 1;
+			}
+			.slider .main .main-i_active h2,
+			.slider .main .main-i_active h3{
+				margin-right: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="slider">
+			<div class="main" id="template_main">
+				<div class="main-i" id="main_{{index}}">
+					<div class="caption">
+						<h2>{{h2}}</h2>
+						<h3>{{h3}}</h3>
+					</div>
+					<img src="img/{{index}}.jpg"/>
+				</div>
+			</div>
+			<div class="ctrl" id="template_ctrl">
+				<a href="javascript:switchSlider({{index}});" class="ctrl-i" id="ctrl_{{index}}">
+					<img src="img/{{index}}.jpg"/>
+				</a>
+			</div>
+		</div>
+		<script type="text/javascript">
+			//数据定义
+			var data = [
+				{img:1,h1:'Creative',h2:'DUET'},
+				{img:2,h1:'Friendly',h2:'DEVIL'},
+				{img:3,h1:'Tranquilent',h2:'COMPATRIOT'},
+				{img:4,h1:'Insecure',h2:'HUSSLER'},
+				{img:5,h1:'Loving',h2:'REBEL'},
+				{img:6,h1:'Passionate',h2:'SEEKER'},
+				{img:7,h1:'Crazy',h2:'FRIEND'}
+			];
+			
+			//定义通用函数
+			var g = function (id){
+				
+				if ( id.substr(0,1) == '.' ) {
+					return document.getElementsByClassName(id.substr(1));
+				}
+				return document.getElementById(id);
+				
+			}
+			
+			//添加幻灯片的操作
+			function addSliders(){
+				//获取模板
+				var tpl_main = g('template_main').innerHTML
+								.replace(/^\s*/,'')
+								.replace(/\s*$/,'');
+				var tpl_ctrl = g('template_ctrl').innerHTML
+								.replace(/^\s*/,'')
+								.replace(/\s*$/,'');
+				//定义最终输出HTML的变量
+				var out_main = [];
+				var out_ctrl = [];
+				
+				//遍历所有数据，构建最终输出的HTML
+				for( i in data ){
+					var _html_main = tpl_main
+								.replace(/{{index}}/g,data[i].img)
+								.replace(/{{h2}}/g,data[i].h1)
+								.replace(/{{h3}}/g,data[i].h2);
+								
+					var _html_ctrl = tpl_ctrl
+								.replace(/{{index}}/g,data[i].img);
+								
+					out_main.push(_html_main);
+					out_ctrl.push(_html_ctrl);
+				}
+				
+				//把html会写到对应的DOM里面
+				g('template_main').innerHTML = out_main.join('');
+				g('template_ctrl').innerHTML = out_ctrl.join('');
+			}
+			
+//			//幻灯片切换
+			function switchSlider(n){
+				
+				//获得要展现的幻灯片和按钮的DOM
+				var main = g('main_'+n);
+				var ctrl = g('ctrl_'+n);
+				
+				//获得所有的幻灯片及控制按钮
+				var clear_main = g('.main-i');
+				var clear_ctrl = g('.ctrl-i');
+				
+//				//清楚所有的active样式
+				for ( var i = 0; i < clear_ctrl.length; i++ ) {
+					clear_main[i].className = clear_main[i].className.replace(' main-i_active','');
+					clear_ctrl[i].className = clear_ctrl[i].className.replace(' ctrl-i_active','');
+				}
+				//附加样式
+				main.className += ' main-i_active';
+				ctrl.className += ' ctrl-i_active';
+				
+			}
+			
+			window.onload = function(){
+				
+				addSliders();
+				switchSlider(1);
+				
+			}
+		</script>
+	</body>
+</html>
