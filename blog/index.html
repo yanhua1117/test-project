@@ -9,7 +9,7 @@
                     minimum-scale = 1.0,
                     maximum-scale = 1.0,
                     user-scalable = no"/>
-		<title></title>
+		<title>YANHUA's HOME</title>
 		<link rel="stylesheet" href="css/common.css" />
 		<link rel="stylesheet" href="css/style.css" />
 		<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -19,9 +19,9 @@
 		<header>
 			<div class="menu-1">
 				<span class="fa fa-home nav-left" id="nav-icon"></span>
-				<span class="logo nav-left">小剧客栈</span>
-				<span class="resume nav-left">个人简历</span>
-				<span class="resume nav-left">博客</span>
+				<span class="logo nav-left">HOME</span>
+				<!--<span class="resume nav-left">个人简历</span>-->
+				<!--<span class="resume nav-left">博客</span>-->
 				<ul class="nav-right">
 					<li><a href="#person" id="a1">个人介绍</a></li>
 					<li><a href="#about_me">关于我</a></li>
@@ -31,7 +31,7 @@
 			<div class="menu-2">
 				<div class="menu-2_title">
 					<span class="fa fa-home nav-left"></span>
-					<h3>小剧客栈</h3>
+					<h3>HOME</h3>
 				</div>
 				<div class="menu-2_icon">
 					<span class="menu-icon1"></span>
@@ -40,12 +40,12 @@
 				</div>
 			</div>
 			<div class="menu-2_list">
-				<ul>
-					<li><span class="fa fa-home"></span>小剧客栈</li>
-					<li><span class="fa fa-file-o"></span>个人简历</li>
-					<li><span class="fa fa-comments-o"></span>博客</li>
-					<li><span class="fa fa-user"></span>关于我</li>
-					<li><span class="fa fa-keyboard-o"></span>项目经验</li>
+				<ul id="menu-item">
+					<a href="#person"><li><span class="fa fa-home"></span>HOME</li></a>
+					<a href=""><li><span class="fa fa-file-o"></span>个人介绍</li></a>
+					<!--<a href=""><li><span class="fa fa-comments-o"></span>博客</li></a>-->
+					<a href="#about_me"><li><span class="fa fa-user"></span>关于我</li></a>
+					<a href="#project_experience"><li><span class="fa fa-keyboard-o"></span>项目经验</li></a>
 			</div>
 		</header>
 		<!--<a href="#" class="menu-icon">
@@ -53,8 +53,11 @@
 		</a>-->
 		<div class="page1-bg" id="person"></div>
 		<!--<div class="page1-bg"></div>-->
-
 		<div class="personal">
+			<div class="contact">
+				<span id="close-icon">点我关闭</span>
+				<img src="img/wechat.jpg" id="contact-img"/>
+			</div>
 			<div class="page1-bg2"></div>
 			<div class="personal-right">
 				<h2 class="my-name">我是闫婳</h2>
@@ -127,11 +130,11 @@
 					<div class="bor-btm"></div>
 					<ul class="my-resume">
 						<li>熟练使用HTML,CSS+DIV网站重构、优化。</li>
-						<li>熟练使用HTML,CSS+DIV网站重构、优化。</li>
-						<li>熟练使用HTML,CSS+DIV网站重构、优化。</li>
-						<li>熟练使用HTML,CSS+DIV网站重构、优化。</li>
-						<li>熟练使用HTML,CSS+DIV网站重构、优化。</li>
-						<li>熟练使用HTML,CSS+DIV网站重构、优化。</li>
+						<li>熟悉photoshop、HBiulder、sublime等开发工具的使用，能够高精度还原设计稿</li>
+						<li>熟悉html5+css3</li>
+						<li>能够用JavaScript写出良好的动态交互页面</li>
+						<li>熟练ajax,jquery,less等技术</li>
+						<li>个人博客尝试实现了响应式设计开发</li>
 					</ul>
 				</div>
 			</div>
@@ -146,39 +149,45 @@
 				<div class="project-list">
 					<div class="list-row">
 						<div class="list-item">
+							<div class="list-mask"></div>
 							<img src="img/portfolio1.jpg"/>
 							<a href="production/album/index.html" target="_blank" class="pro-link"></a>
 							<span class="content-com content-top">散列画廊<span>
 							<span class="fa fa-chain content-com" href=""></span>
 						</div>
 						<div class="list-item">
+							<div class="list-mask"></div>
 							<img src="img/portfolio8.jpg"/>
 							<a href="production/Photo-wall/index.html" target="_blank" class="pro-link"></a>
 							<span class="content-com content-top">CSS3照片墙<span>
 							<span class="fa fa-chain content-com" href=""></span>
 						</div>
 						<div class="list-item">
+							<div class="list-mask"></div>
 							<img src="img/portfolio9.jpg"/>
 							<a href="production/picture-hint/index.html" target="_blank" class="pro-link"></a>
 							<span class="content-com content-top">图片提示样式<span>
 							<span class="fa fa-chain content-com" href=""></span>
 						</div>
 						<div class="list-item">
+							<div class="list-mask"></div>
 							<img src="img/portfolio2.png"/>
 							<a href="production/slide/index.html" target="_blank" class="pro-link"></a>
 							<span class="content-com content-top">幻灯片展示<span>
 							<span class="fa fa-chain content-com" href=""></span>
 						</div>
 						<div class="list-item">
+							<div class="list-mask"></div>
 							<img src="img/portfolio3.jpg"/>
 							<a href="production/waterfall-layout/index.html" target="_blank" class="pro-link"></a>
 							<span class="content-com content-top">瀑布流布局<span>
 							<span class="fa fa-chain content-com" href=""></span>
 						</div>
 						<div class="list-item">
+							<div class="list-mask"></div>
 							<img src="img/portfolio7.png"/>
-							<a href="#" target="_blank" class="pro-link"></a>
-							<span class="content-com content-top">购物商城首页<span>
+							<a href="production/Shopping-cart/index.html" target="_blank" class="pro-link"></a>
+							<span class="content-com content-top">购物车<span>
 							<span class="fa fa-chain content-com" href=""></span>
 						</div>
 					</div>
